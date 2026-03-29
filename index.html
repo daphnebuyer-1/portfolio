@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAMI SOUDA | BUYER / DIRECTOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; color: #fff; font-family: "serif"; overflow-x: hidden; }
+        :root { --bg: #000; --text: #fff; --accent: #e5e4e2; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: var(--bg); color: var(--text); font-family: 'Noto Serif JP', serif; line-height: 1.8; overflow-x: hidden; }
+        /* Hero Section (AI Studioのデザインを再現) */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* ここであなたの画像を読み込みます */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('main-visual.jpg') center/cover no-repeat;
+            background-color: var(--bg); /* 黒背景 */
             text-align: center;
         }
-        .name { font-size: 3rem; letter-spacing: 0.5em; margin-bottom: 20px; font-weight: 300; }
-        .title { font-size: 0.9rem; letter-spacing: 0.8em; color: #ccc; text-transform: uppercase; }
+        .name { font-size: 3rem; letter-spacing: 0.5em; margin-bottom: 20px; font-weight: 300; text-transform: uppercase; }
+        .title { font-size: 0.9rem; letter-spacing: 0.8em; color: var(--accent); text-transform: uppercase; }
+        /* Content Section */
         section { padding: 100px 20px; text-align: center; max-width: 800px; margin: 0 auto; line-height: 2; }
     </style>
 </head>
