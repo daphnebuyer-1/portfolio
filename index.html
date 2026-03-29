@@ -1,19 +1,20 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import { ArrowRight, ChevronDown, Mail, MessageSquare, PenLine, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ChevronDown,
+  Mail,
+  MessageSquare,
+  PenLine,
+  Twitter,
+} from "lucide-react";
 
-const FadeIn = ({
-  children,
-  delay = 0,
-}: {
+type FadeInProps = {
   children: React.ReactNode;
   delay?: number;
-}) => (
+};
+
+const FadeIn = ({ children, delay = 0 }: FadeInProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -30,46 +31,47 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-deep-gray selection:bg-plum-pink selection:text-black">
-      {/* Navigation */}
+    <div className="min-h-screen bg-white text-[#4a4a4a] selection:bg-[#d4a5a5] selection:text-black">
       <nav
-        className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between px-8 py-6 transition-all duration-500 ${
+        className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-5 transition-all duration-500 md:px-8 ${
           scrolled
-            ? "border-b border-black/5 bg-white/90 py-4 backdrop-blur-md"
+            ? "border-b border-black/5 bg-white/90 backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
-        <div className="text-sm font-light uppercase tracking-[0.4em] text-white md:text-deep-gray">
-          <span className={scrolled ? "text-deep-gray" : "text-white"}>
-            AMAMI SOUDA
-          </span>
+        <div
+          className={`text-sm font-light uppercase tracking-[0.4em] transition-colors duration-500 ${
+            scrolled ? "text-[#4a4a4a]" : "text-white"
+          }`}
+        >
+          AMAMI SOUDA
         </div>
 
         <div
-          className={`flex gap-8 text-[10px] font-light uppercase tracking-[0.3em] ${
-            scrolled ? "text-deep-gray" : "text-white"
+          className={`flex gap-4 text-[10px] font-light uppercase tracking-[0.3em] transition-colors duration-500 md:gap-8 ${
+            scrolled ? "text-[#4a4a4a]" : "text-white"
           }`}
         >
-          <a href="#about" className="transition-colors hover:text-plum-pink">
+          <a href="#about" className="transition-colors hover:text-[#d4a5a5]">
             About
           </a>
-          <a href="#philosophy" className="transition-colors hover:text-plum-pink">
+          <a href="#philosophy" className="transition-colors hover:text-[#d4a5a5]">
             Philosophy
           </a>
-          <a href="#partnership" className="transition-colors hover:text-plum-pink">
+          <a href="#partnership" className="transition-colors hover:text-[#d4a5a5]">
             Partnership
           </a>
-          <a href="#contact" className="transition-colors hover:text-plum-pink">
+          <a href="#contact" className="transition-colors hover:text-[#d4a5a5]">
             Contact
           </a>
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="relative flex h-screen items-center justify-center overflow-hidden bg-black px-8">
         <div className="absolute inset-0 z-0">
           <motion.img
@@ -89,37 +91,36 @@ export default function App() {
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff02_1px,transparent_1px)] bg-[size:120px_120px] opacity-40" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:120px_120px] opacity-40" />
         </div>
 
         <div className="relative z-10 max-w-4xl text-center">
           <FadeIn>
-            <h1 className="text-2xl font-light uppercase leading-tight tracking-[0.8em] text-white/90 drop-shadow-[0_0_30px_rgba(255,255,255,0.05)] md:text-3xl">
+            <h1 className="text-2xl font-light uppercase leading-tight tracking-[0.8em] text-white/90 md:text-3xl">
               AMAMI SOUDA
             </h1>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <p className="mt-8 text-[9px] font-light uppercase tracking-[1.6em] text-plum-pink opacity-80 md:text-[10px]">
+            <p className="mt-8 text-[9px] font-light uppercase tracking-[1.6em] text-[#d4a5a5] opacity-80 md:text-[10px]">
               Buyer / Director
             </p>
           </FadeIn>
         </div>
 
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.1, 0.3, 0.1] }}
+          animate={{ y: [0, 8, 0], opacity: [0.15, 0.35, 0.15] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-platinum"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[#e5e4e2]"
         >
           <ChevronDown size={14} strokeWidth={1} />
         </motion.div>
       </section>
 
-      {/* Introduction */}
       <section id="about" className="mx-auto max-w-4xl px-8 py-32">
         <div className="pt-12 md:pt-24">
           <FadeIn delay={0.2}>
             <div className="mb-12">
-              <span className="mb-4 block text-sm font-medium tracking-[0.3em] text-plum-pink">
+              <span className="mb-4 block text-sm font-medium tracking-[0.3em] text-[#d4a5a5]">
                 早田天美
               </span>
               <p className="text-xl font-light leading-loose tracking-wider md:text-2xl">
@@ -131,52 +132,51 @@ export default function App() {
             </div>
 
             <div className="mb-16 space-y-8">
-              <h3 className="border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+              <h3 className="border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
                 Profile
               </h3>
 
-              <div className="space-y-4 text-sm font-light leading-relaxed text-deep-gray md:text-base">
+              <div className="space-y-4 text-sm font-light leading-relaxed md:text-base">
                 <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <span className="text-plum-pink/80">2002年</span>
+                  <span className="text-[#d4a5a5]/80">2002年</span>
                   <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
                 </div>
                 <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <span className="text-plum-pink/80">2008年ー2026年</span>
+                  <span className="text-[#d4a5a5]/80">2008年ー2026年</span>
                   <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
                 </div>
               </div>
 
-              <div className="pt-4 text-sm font-light leading-relaxed text-deep-gray opacity-80 md:text-base">
-                <p className="mb-4 text-[10px] uppercase tracking-widest text-plum-pink/80">
+              <div className="pt-4 text-sm font-light leading-relaxed opacity-80 md:text-base">
+                <p className="mb-4 text-[10px] uppercase tracking-widest text-[#d4a5a5]/80">
                   Expertise since 2002
                 </p>
                 <ul className="list-none space-y-3">
                   <li className="flex gap-3">
-                    <span className="font-bold text-plum-pink">/</span>
+                    <span className="font-bold text-[#d4a5a5]">/</span>
                     <span>
-                      コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）５年
+                      コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年
                     </span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="font-bold text-plum-pink">/</span>
-                    <span>ジュエリー（主に真珠５年）</span>
+                    <span className="font-bold text-[#d4a5a5]">/</span>
+                    <span>ジュエリー（主に真珠5年）</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="font-bold text-plum-pink">/</span>
-                    <span>日用品５年</span>
+                    <span className="font-bold text-[#d4a5a5]">/</span>
+                    <span>日用品5年</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="font-bold text-plum-pink">/</span>
-                    <span>バッグを中心とした服飾雑貨５年</span>
+                    <span className="font-bold text-[#d4a5a5]">/</span>
+                    <span>バッグを中心とした服飾雑貨5年</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="space-y-6 text-sm font-light leading-relaxed text-deep-gray md:text-base">
+            <div className="space-y-6 text-sm font-light leading-relaxed md:text-base">
               <p>
-                かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品
-                3億円前後の実績。
+                かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品3億円前後の実績。
                 それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
               </p>
               <p>
@@ -201,18 +201,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* Core Philosophy */}
-      <section
-        id="philosophy"
-        className="relative overflow-hidden bg-black px-8 py-32 text-white"
-      >
+      <section id="philosophy" className="relative overflow-hidden bg-black px-8 py-32 text-white">
         <div className="pointer-events-none absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl">
           <FadeIn>
-            <h2 className="mb-24 border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+            <h2 className="mb-24 border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
               Core Philosophy
             </h2>
           </FadeIn>
@@ -220,7 +216,7 @@ export default function App() {
           <div className="grid gap-16 md:grid-cols-3 md:gap-8">
             <FadeIn delay={0.1}>
               <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-plum-pink/30 transition-colors duration-700 group-hover:text-plum-pink/50">
+                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
                   01
                 </span>
                 <h3 className="text-lg font-medium tracking-[0.3em]">見抜く。</h3>
@@ -233,7 +229,7 @@ export default function App() {
 
             <FadeIn delay={0.3}>
               <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-plum-pink/30 transition-colors duration-700 group-hover:text-plum-pink/50">
+                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
                   02
                 </span>
                 <h3 className="text-lg font-medium tracking-[0.3em]">整える。</h3>
@@ -247,7 +243,7 @@ export default function App() {
 
             <FadeIn delay={0.5}>
               <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-plum-pink/30 transition-colors duration-700 group-hover:text-plum-pink/50">
+                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
                   03
                 </span>
                 <h3 className="text-lg font-medium tracking-[0.3em]">届ける。</h3>
@@ -262,20 +258,16 @@ export default function App() {
         </div>
       </section>
 
-      {/* Service / Partnership */}
-      <section
-        id="partnership"
-        className="relative overflow-hidden bg-black px-8 py-32 text-white"
-      >
+      <section id="partnership" className="relative overflow-hidden bg-black px-8 py-32 text-white">
         <div className="pointer-events-none absolute inset-0 opacity-5">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_center,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px]" />
+          <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:20px_20px]" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl">
           <div className="flex flex-col gap-16 md:flex-row">
             <div className="md:w-1/3">
               <FadeIn>
-                <h2 className="mb-12 border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+                <h2 className="mb-12 border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
                   Partnership
                 </h2>
                 <p className="text-sm font-light leading-loose tracking-widest text-white/50">
@@ -289,14 +281,14 @@ export default function App() {
             <div className="md:w-2/3">
               <FadeIn delay={0.2}>
                 <div className="space-y-16">
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-plum-pink">
+                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
                     <div className="mb-6 flex items-end justify-between">
                       <h3 className="text-2xl font-light tracking-[0.2em]">
                         Value Definition
                       </h3>
                       <ArrowRight
                         size={16}
-                        className="translate-x-[-1rem] text-plum-pink opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
                       />
                     </div>
                     <p className="text-sm font-light leading-relaxed text-white/40">
@@ -305,14 +297,14 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-plum-pink">
+                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
                     <div className="mb-6 flex items-end justify-between">
                       <h3 className="text-2xl font-light tracking-[0.2em]">
                         Direction &amp; Story
                       </h3>
                       <ArrowRight
                         size={16}
-                        className="translate-x-[-1rem] text-plum-pink opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
                       />
                     </div>
                     <p className="text-sm font-light leading-relaxed text-white/40">
@@ -321,14 +313,14 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-plum-pink">
+                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
                     <div className="mb-6 flex items-end justify-between">
                       <h3 className="text-2xl font-light tracking-[0.2em]">
                         Hands-on Support
                       </h3>
                       <ArrowRight
                         size={16}
-                        className="translate-x-[-1rem] text-plum-pink opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
                       />
                     </div>
                     <p className="text-sm font-light leading-relaxed text-white/40">
@@ -343,20 +335,19 @@ export default function App() {
         </div>
       </section>
 
-      {/* Journal Section */}
       <section className="border-t border-black/5 bg-white px-8 py-32">
         <div className="mx-auto max-w-4xl">
           <FadeIn>
-            <div className="group relative border border-plum-pink/10 p-8 transition-all duration-700 hover:border-plum-pink/30 md:p-16">
+            <div className="group relative border border-[#d4a5a5]/10 p-8 transition-all duration-700 hover:border-[#d4a5a5]/30 md:p-16">
               <div className="flex flex-col items-start justify-between gap-12 md:flex-row md:items-center">
                 <div className="space-y-6">
-                  <h2 className="text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+                  <h2 className="text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
                     Journal
                   </h2>
                   <h3 className="text-2xl font-light leading-relaxed tracking-[0.1em] md:text-3xl">
                     お買い物はお仕事です
                   </h3>
-                  <p className="max-w-md text-sm font-light leading-loose text-deep-gray/60">
+                  <p className="max-w-md text-sm font-light leading-loose text-[#4a4a4a]/60">
                     出会った“良い商品”だけを備忘録としてまとめました。
                     <br />
                     訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
@@ -367,7 +358,7 @@ export default function App() {
                   href="https://daphnemeria-blog.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-6 text-[10px] font-medium uppercase tracking-[0.4em] transition-all group-hover:text-plum-pink"
+                  className="flex items-center gap-6 text-[10px] font-medium uppercase tracking-[0.4em] transition-all group-hover:text-[#d4a5a5]"
                 >
                   Visit Blog
                   <ArrowRight
@@ -381,21 +372,17 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer / CTA */}
-      <footer
-        id="contact"
-        className="border-t border-black/5 bg-white px-8 py-32"
-      >
+      <footer id="contact" className="border-t border-black/5 bg-white px-8 py-32">
         <div className="mx-auto max-w-3xl text-center">
           <FadeIn>
-            <p className="mb-16 text-sm font-light tracking-widest text-deep-gray">
+            <p className="mb-16 text-sm font-light tracking-widest text-[#4a4a4a]">
               静かな対話から、新しい価値を始めましょう。
             </p>
 
             <div className="mb-24 flex justify-center gap-8 md:gap-12">
               <a
-                href="#"
-                className="group flex flex-col items-center gap-4 text-deep-gray transition-colors hover:text-plum-pink"
+                href="mailto:your-email@example.com"
+                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
               >
                 <Mail
                   size={20}
@@ -411,7 +398,7 @@ export default function App() {
                 href="https://daphnemeria-blog.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-deep-gray transition-colors hover:text-plum-pink"
+                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
               >
                 <MessageSquare
                   size={20}
@@ -427,7 +414,7 @@ export default function App() {
                 href="https://note.com/daphnemeria"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-deep-gray transition-colors hover:text-plum-pink"
+                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
               >
                 <PenLine
                   size={20}
@@ -443,7 +430,7 @@ export default function App() {
                 href="https://x.com/daphnebuyer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-deep-gray transition-colors hover:text-plum-pink"
+                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
               >
                 <Twitter
                   size={20}
@@ -451,12 +438,12 @@ export default function App() {
                   className="transition-transform group-hover:scale-110"
                 />
                 <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 transition-opacity group-hover:opacity-100">
-                  X (Twitter)
+                  X
                 </span>
               </a>
             </div>
 
-            <div className="text-[10px] font-light uppercase tracking-[0.4em] text-deep-gray/40">
+            <div className="text-[10px] font-light uppercase tracking-[0.4em] text-[#4a4a4a]/40">
               © {new Date().getFullYear()} All Rights Reserved.
             </div>
           </FadeIn>
