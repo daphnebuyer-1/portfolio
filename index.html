@@ -1,166 +1,345 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AMAMI SOUDA | Buyer / Director</title>
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+import React, { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { ArrowRight, ChevronDown, Mail, MessageSquare, PenLine, Twitter } from "lucide-react";
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Noto Serif JP", serif;
-      background: #fff;
-      color: #4a4a4a;
-      line-height: 1.8;
-    }
+const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+  >
+    {children}
+  </motion.div>
+);
 
-    .container {
-      width: min(1000px, 90%);
-      margin: auto;
-    }
+export default function App() {
+  const [scrolled, setScrolled] = useState(false);
 
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      padding: 20px 0;
-      transition: 0.3s;
-    }
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    nav.scrolled {
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
+  return (
+    <div className="min-h-screen bg-white selection:bg-plum-pink selection:text-black">
+      {/* Navigation */}
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-8 py-6 flex justify-between items-center ${
+          scrolled ? "bg-white/90 backdrop-blur-md py-4 border-b border-black/5" : "bg-transparent"
+        }`}
+      >
+        <div className="text-sm tracking-[0.4em] font-light uppercase">
+        </div>
+        <div className="flex gap-8 text-[10px] tracking-[0.3em] uppercase font-light">
+          <a href="#about" className="hover:text-plum-pink transition-colors">About</a>
+          <a href="#philosophy" className="hover:text-plum-pink transition-colors">Philosophy</a>
+          <a href="#partnership" className="hover:text-plum-pink transition-colors">Partnership</a>
+          <a href="#contact" className="hover:text-plum-pink transition-colors">Contact</a>
+        </div>
+      </nav>
 
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden px-8 bg-black">
+        <div className="absolute inset-0 z-0">
+          <motion.img
+            initial={{ scale: 1.1, opacity: 0.2 }}
+            animate={{ 
+              scale: [1.1, 1.15, 1.1],
+              opacity: [0.15, 0.25, 0.15]
+            }}
+            transition={{ 
+              duration: 15, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
+            alt="Anko - Faint fragrance of plum blossoms in the deep dark"
+            className="w-full h-full object-cover grayscale brightness-[0.3] contrast-150 blur-[2px]"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff02_1px,transparent_1px)] bg-[size:120px_120px] opacity-40"></div>
+        </div>
+        
+        <div className="relative z-10 text-center max-w-4xl">
+          <FadeIn>
+            <h1 className="text-2xl md:text-3xl font-light tracking-[0.8em] leading-tight uppercase text-white/90 drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+              AMAMI SOUDA
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.4}>
+            <p className="mt-8 text-[9px] md:text-[10px] tracking-[1.6em] text-plum-pink font-light uppercase opacity-80">
+              Buyer / Director
+            </p>
+          </FadeIn>
+        </div>
 
-    .brand {
-      letter-spacing: 0.3em;
-      font-size: 14px;
-      color: white;
-    }
+        <motion.div 
+          animate={{ y: [0, 8, 0], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-platinum"
+        >
+          <ChevronDown size={14} strokeWidth={1} />
+        </motion.div>
+      </section>
 
-    nav.scrolled .brand {
-      color: #4a4a4a;
-    }
+      {/* Introduction */}
+      <section id="about" className="py-32 px-8 max-w-4xl mx-auto">
+        <div className="pt-12 md:pt-24">
+          <FadeIn delay={0.2}>
+            <div className="mb-12">
+              <span className="text-sm tracking-[0.3em] text-plum-pink font-medium block mb-4">早田天美</span>
+              <p className="text-xl md:text-2xl leading-loose tracking-wider font-light">
+                2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br />
+                上質な商材やユニークな商材、などさまざまな商材に向き合い、積み上げてきた23年の歳月は、
+                単なるキャリアではなく、私の「技術」そのものになりました。
+              </p>
+            </div>
 
-    .links a {
-      margin-left: 20px;
-      font-size: 12px;
-      color: white;
-      text-decoration: none;
-    }
+            <div className="mb-16 space-y-8">
+                <h3 className="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium border-l border-plum-pink pl-4">Profile</h3>
+                <div className="space-y-4 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                  <div className="grid grid-cols-[120px_1fr] gap-4">
+                    <span className="text-plum-pink/80">2002年</span>
+                    <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
+                  </div>
+                  <div className="grid grid-cols-[120px_1fr] gap-4">
+                    <span className="text-plum-pink/80">2008年ー2026年</span>
+                    <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
+                  </div>
+                </div>
+                
+                <div className="pt-4 text-sm md:text-base leading-relaxed text-deep-gray font-light opacity-80">
+                  <p className="mb-4 tracking-widest text-[10px] uppercase text-plum-pink/80">Expertise since 2002</p>
+                  <ul className="space-y-3 list-none">
+                    <li className="flex gap-3">
+                      <span className="text-plum-pink font-bold">/</span>
+                      <span>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）５年</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-plum-pink font-bold">/</span>
+                      <span>ジュエリー（主に真珠５年）</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-plum-pink font-bold">/</span>
+                      <span>日用品５年</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-plum-pink font-bold">/</span>
+                      <span>バッグを中心とした服飾雑貨５年</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-    nav.scrolled .links a {
-      color: #4a4a4a;
-    }
+              <div className="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                <p>
+                  かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品 3億円前後の実績。
+                  それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
+                </p>
+                <p>
+                  複雑に絡み合う商品情報を解きほぐし、
+                  ひとり一人の人の心に届く「研ぎ澄まされた言葉」へと整えるための礎。
+                </p>
+                <p>
+                  真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、商材を勉強し専門性を磨き上げました。<br />
+                  その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の”暗黙知”が伝わりにくいもの。
+                  それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように噛み砕いて翻訳をしていく。
+                  その作業が一番大切なことだと考えます。
+                </p>
+                <p>
+                  「 あなた（ブランド・メーカー）にとっての”当たり前”はまったくあたりまえではない」ということ。<br />
+                  そして、それが一番大切なブランドの個性かもしれないということ。
+                </p>
+                <p>
+                  一緒に見つけてみませんか。
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+      </section>
 
-    .hero {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop') center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
+      {/* Core Philosophy */}
+      <section id="philosophy" className="py-32 bg-black text-white px-8 overflow-hidden relative">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="w-full h-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <FadeIn>
+            <h2 className="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-24 border-l border-plum-pink pl-4">Core Philosophy</h2>
+          </FadeIn>
+          
+          <div className="grid md:grid-cols-3 gap-16 md:gap-8">
+            <FadeIn delay={0.1}>
+              <div className="space-y-8 group">
+                <span className="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">01</span>
+                <h3 className="text-lg tracking-[0.3em] font-medium">見抜く。</h3>
+                <p className="text-sm leading-loose text-white/50 font-light tracking-wider">
+                  溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。
+                  冷静な自他分析こそが、本質を捉える唯一の道。
+                </p>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.3}>
+              <div className="space-y-8 group">
+                <span className="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">02</span>
+                <h3 className="text-lg tracking-[0.3em] font-medium">整える。</h3>
+                <p className="text-sm leading-loose text-white/50 font-light tracking-wider">
+                  価値があるのに、まだ届いていない。
+                  その乖離を、論理的な見せ方と言葉の力で埋め、
+                  あるべき姿へと再構築する。
+                </p>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.5}>
+              <div className="space-y-8 group">
+                <span className="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">03</span>
+                <h3 className="text-lg tracking-[0.3em] font-medium">届ける。</h3>
+                <p className="text-sm leading-loose text-white/50 font-light tracking-wider">
+                  「わからない」を「わかった」へ。
+                  一過性のコンサルティングではなく、
+                  誠実な対話を通じて、市場との幸福な出会いを創出する。
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
 
-    .hero h1 {
-      letter-spacing: 0.4em;
-      font-weight: 300;
-    }
+      {/* Service / Partnership */}
+      <section id="partnership" className="py-32 px-8 bg-black text-white overflow-hidden relative">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="w-full h-full bg-[radial-gradient(circle_at_center,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row gap-16">
+            <div className="md:w-1/3">
+              <FadeIn>
+                <h2 className="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-12 border-l border-plum-pink pl-4">Partnership</h2>
+                <p className="text-sm leading-loose text-white/50 font-light tracking-widest">
+                  伝え方に悩むブランド、<br />
+                  価値を再定義したい営業担当者へ。
+                </p>
+              </FadeIn>
+            </div>
+            <div className="md:w-2/3">
+              <FadeIn delay={0.2}>
+                <div className="space-y-16">
+                  <div className="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
+                    <div className="flex justify-between items-end mb-6">
+                      <h3 className="text-2xl font-light tracking-[0.2em]">Value Definition</h3>
+                      <ArrowRight size={16} className="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" />
+                    </div>
+                    <p className="text-sm leading-relaxed text-white/40 font-light">
+                      商材の強みを抽出し、市場での立ち位置を明確にします。
+                      「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
+                    </p>
+                  </div>
 
-    section {
-      padding: 100px 0;
-    }
+                  <div className="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
+                    <div className="flex justify-between items-end mb-6">
+                      <h3 className="text-2xl font-light tracking-[0.2em]">Direction & Story</h3>
+                      <ArrowRight size={16} className="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" />
+                    </div>
+                    <p className="text-sm leading-relaxed text-white/40 font-light">
+                      ビジュアルとテキストの両面から、商材の魅力を最大化。
+                      顧客の心に深く沈み込む、静かなストーリーを構築します。
+                    </p>
+                  </div>
 
-    .philosophy {
-      background: black;
-      color: white;
-    }
+                  <div className="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
+                    <div className="flex justify-between items-end mb-6">
+                      <h3 className="text-2xl font-light tracking-[0.2em]">Hands-on Support</h3>
+                      <ArrowRight size={16} className="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" />
+                    </div>
+                    <p className="text-sm leading-relaxed text-white/40 font-light">
+                      単なる助言に留まらず、現場の「わからない」に寄り添い、
+                      共に手を動かし、解決の糸口を見出すまで伴走します。
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 30px;
-    }
+      {/* Journal Section */}
+      <section className="py-32 px-8 bg-white border-t border-black/5">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <div className="group relative p-8 md:p-16 border border-plum-pink/10 hover:border-plum-pink/30 transition-all duration-700">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+                <div className="space-y-6">
+                  <h2 className="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium">Journal</h2>
+                  <h3 className="text-2xl md:text-3xl font-light tracking-[0.1em] leading-relaxed">
+                    お買い物はお仕事です
+                  </h3>
+                  <p className="text-sm text-deep-gray/60 font-light max-w-md leading-loose">
+                    出会った”良い商品”だけを備忘録としてまとめました。<br />
+                    訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
+                  </p>
+                </div>
+                <a 
+                  href="https://daphnemeria-blog.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-6 text-[10px] tracking-[0.4em] uppercase font-medium group-hover:text-plum-pink transition-all"
+                >
+                  Visit Blog <ArrowRight size={14} className="group-hover:translate-x-4 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
-    .footer {
-      text-align: center;
-      padding: 80px 0;
-    }
+      {/* Footer / CTA */}
+      <footer id="contact" className="py-32 px-8 bg-white border-t border-black/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <FadeIn>
+            <h2 className="text-2xl md:text-3xl font-light tracking-[0.2em] mb-12">
+              答えは、あなたの商品の中に。<br />
+              それを共に、磨き上げるために。
+            </h2>
+            <p className="text-sm text-deep-gray font-light tracking-widest mb-16">
+              静かな対話から、新しい価値を始めましょう。
+            </p>
+            
+            <div className="flex justify-center gap-8 md:gap-12 mb-24">
+              <a href="#" className="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
+                <Mail size={20} strokeWidth={1} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Email</span>
+              </a>
+              <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer" className="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
+                <MessageSquare size={20} strokeWidth={1} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Blog</span>
+              </a>
+              <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer" className="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
+                <PenLine size={20} strokeWidth={1} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Note</span>
+              </a>
+              <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer" className="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
+                <Twitter size={20} strokeWidth={1} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">X (Twitter)</span>
+              </a>
+            </div>
 
-    @media(max-width:768px){
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<nav id="nav">
-  <div class="container nav-inner">
-    <div class="brand">AMAMI SOUDA</div>
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#philosophy">Philosophy</a>
-      <a href="#contact">Contact</a>
+            <div className="text-[10px] tracking-[0.4em] text-deep-gray/40 uppercase font-light">
+              © {new Date().getFullYear()} All Rights Reserved.
+            </div>
+          </FadeIn>
+        </div>
+      </footer>
     </div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div>
-    <h1>AMAMI SOUDA</h1>
-    <p>Buyer / Director</p>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <p>2002年から様々な商材に向き合い、積み上げてきた経験は単なるキャリアではなく技術そのものです。</p>
-  </div>
-</section>
-
-<section id="philosophy" class="philosophy">
-  <div class="container grid">
-    <div>
-      <h3>見抜く。</h3>
-      <p>本質を見抜く力。</p>
-    </div>
-    <div>
-      <h3>整える。</h3>
-      <p>価値を再構築する。</p>
-    </div>
-    <div>
-      <h3>届ける。</h3>
-      <p>価値を伝える。</p>
-    </div>
-  </div>
-</section>
-
-<footer id="contact" class="footer">
-  <div class="container">
-    <p>静かな対話から、新しい価値を始めましょう。</p>
-    <p>Email / Note / Instagram</p>
-  </div>
-</footer>
-
-<script>
-window.addEventListener("scroll", function(){
-  document.getElementById("nav").classList.toggle("scrolled", window.scrollY > 50);
-});
-</script>
-
-</body>
-</html>
+  );
+}
