@@ -1,664 +1,180 @@
-import React, { useEffect, useState } from "react";
-
-export default function App() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <>
-      <style>{`
-        * {
-          box-sizing: border-box;
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAMI SOUDA | Buyer / Director</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'plum-pink': '#d4a5a5',
+                        'platinum': '#e5e4e2',
+                        'deep-gray': '#4a4a4a',
+                    },
+                    fontFamily: { serif: ['"Noto Serif JP"', 'serif'] }
+                }
+            }
         }
-
-        html {
-          scroll-behavior: smooth;
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root { --font-serif: "Noto Serif JP", serif; }
+        body, html { 
+            margin: 0; padding: 0; width: 100%; overflow-x: hidden; 
+            font-family: var(--font-serif); 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
-
-        body {
-          margin: 0;
-          background: #ffffff;
-          color: #4a4a4a;
-          font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-          line-height: 1.8;
-          -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .page {
-          min-height: 100vh;
-          background: #ffffff;
-        }
-
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          z-index: 1000;
-          transition: all 0.35s ease;
-          padding: 22px 0;
-          background: transparent;
-        }
-
-        .nav.scrolled {
-          background: rgba(255, 255, 255, 0.94);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          padding: 14px 0;
-        }
-
-        .nav-inner {
-          width: min(1180px, calc(100% - 48px));
-          margin: 0 auto;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 24px;
-        }
-
-        .brand {
-          font-size: 14px;
-          font-weight: 400;
-          letter-spacing: 0.34em;
-          color: ${scrolled ? "#4a4a4a" : "#ffffff"};
-          white-space: nowrap;
-          transition: color 0.35s ease;
-        }
-
-        .nav-links {
-          display: flex;
-          gap: 28px;
-          flex-wrap: wrap;
-        }
-
-        .nav-links a {
-          font-size: 11px;
-          letter-spacing: 0.22em;
-          color: ${scrolled ? "#4a4a4a" : "#ffffff"};
-          transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-          color: #d4a5a5;
-        }
-
-        .hero {
-          position: relative;
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          background: #000000;
-          text-align: center;
-          padding: 0 24px;
-        }
-
-        .hero-bg {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0.4;
-          filter: grayscale(100%) brightness(35%) contrast(130%);
-        }
-
-        .hero-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.58),
-            rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.75)
-          );
-        }
-
-        .hero-content {
-          position: relative;
-          z-index: 1;
-          max-width: 900px;
-        }
-
-        .hero-title {
-          margin: 0;
-          font-size: clamp(28px, 5vw, 42px);
-          font-weight: 300;
-          letter-spacing: 0.42em;
-          color: rgba(255, 255, 255, 0.94);
-        }
-
-        .hero-subtitle {
-          margin-top: 28px;
-          font-size: 11px;
-          letter-spacing: 0.42em;
-          color: #d4a5a5;
-          text-transform: uppercase;
-        }
-
-        .scroll-mark {
-          position: absolute;
-          left: 50%;
-          bottom: 26px;
-          transform: translateX(-50%);
-          color: rgba(255, 255, 255, 0.55);
-          font-size: 18px;
-          z-index: 1;
-        }
-
-        .section {
-          padding: 110px 0;
-        }
-
-        .container {
-          width: min(1100px, calc(100% - 48px));
-          margin: 0 auto;
-        }
-
-        .narrow {
-          width: min(820px, calc(100% - 48px));
-          margin: 0 auto;
-        }
-
-        .section-label {
-          margin: 0 0 28px 0;
-          padding-left: 16px;
-          border-left: 1px solid #d4a5a5;
-          color: #d4a5a5;
-          font-size: 11px;
-          letter-spacing: 0.34em;
-          text-transform: uppercase;
-        }
-
-        .name {
-          color: #d4a5a5;
-          font-size: 14px;
-          letter-spacing: 0.2em;
-          margin-bottom: 18px;
-        }
-
-        .lead {
-          margin: 0 0 44px 0;
-          font-size: clamp(22px, 3vw, 32px);
-          font-weight: 300;
-          line-height: 2;
-        }
-
-        .profile-grid {
-          display: grid;
-          gap: 16px;
-          margin-bottom: 36px;
-        }
-
-        .profile-row {
-          display: grid;
-          grid-template-columns: 120px 1fr;
-          gap: 18px;
-        }
-
-        .profile-year {
-          color: rgba(212, 165, 165, 0.95);
-        }
-
-        .expertise-title {
-          margin: 18px 0 16px 0;
-          color: rgba(212, 165, 165, 0.85);
-          font-size: 11px;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-        }
-
-        .expertise-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-
-        .expertise-list li {
-          margin: 0 0 12px 0;
-          padding-left: 20px;
-          position: relative;
-        }
-
-        .expertise-list li::before {
-          content: "/";
-          position: absolute;
-          left: 0;
-          color: #d4a5a5;
-        }
-
-        .body-copy p {
-          margin: 0 0 20px 0;
-          font-size: 16px;
-        }
-
-        .dark-section {
-          background: #000000;
-          color: #ffffff;
-        }
-
-        .philosophy-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 36px;
-        }
-
-        .card-number {
-          font-size: 54px;
-          font-style: italic;
-          font-weight: 300;
-          color: rgba(212, 165, 165, 0.35);
-          margin-bottom: 22px;
-        }
-
-        .card-title {
-          margin: 0 0 18px 0;
-          font-size: 22px;
-          letter-spacing: 0.15em;
-        }
-
-        .card-text {
-          margin: 0;
-          color: rgba(255, 255, 255, 0.58);
-          font-size: 15px;
-          line-height: 2;
-        }
-
-        .partnership-wrap {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 54px;
-        }
-
-        .muted {
-          color: rgba(255, 255, 255, 0.56);
-        }
-
-        .service {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 0 0 34px 0;
-          margin: 0 0 34px 0;
-        }
-
-        .service-head {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          gap: 16px;
-          margin-bottom: 12px;
-        }
-
-        .service h3 {
-          margin: 0;
-          font-size: 30px;
-          font-weight: 300;
-          letter-spacing: 0.08em;
-        }
-
-        .service-arrow {
-          color: #d4a5a5;
-          font-size: 16px;
-        }
-
-        .service p {
-          margin: 0;
-          color: rgba(255, 255, 255, 0.45);
-        }
-
-        .journal {
-          border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .journal-box {
-          border: 1px solid rgba(212, 165, 165, 0.16);
-          padding: 36px;
-        }
-
-        .journal-flex {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 40px;
-        }
-
-        .journal-label {
-          margin: 0 0 18px 0;
-          color: #d4a5a5;
-          font-size: 11px;
-          letter-spacing: 0.34em;
-          text-transform: uppercase;
-        }
-
-        .journal-title {
-          margin: 0 0 18px 0;
-          font-size: clamp(26px, 3vw, 36px);
-          font-weight: 300;
-          line-height: 1.7;
-          letter-spacing: 0.08em;
-        }
-
-        .journal-text {
-          margin: 0;
-          max-width: 520px;
-          color: rgba(74, 74, 74, 0.64);
-        }
-
-        .journal-link {
-          white-space: nowrap;
-          font-size: 11px;
-          letter-spacing: 0.28em;
-          text-transform: uppercase;
-          color: #4a4a4a;
-        }
-
-        .journal-link:hover {
-          color: #d4a5a5;
-        }
-
-        .footer {
-          border-top: 1px solid rgba(0, 0, 0, 0.05);
-          text-align: center;
-          background: #ffffff;
-        }
-
-        .footer-sub {
-          margin: 0 0 54px 0;
-          color: rgba(74, 74, 74, 0.75);
-          letter-spacing: 0.12em;
-        }
-
-        .socials {
-          display: flex;
-          justify-content: center;
-          gap: 30px;
-          flex-wrap: wrap;
-          margin-bottom: 64px;
-        }
-
-        .socials a {
-          color: #4a4a4a;
-          border-bottom: 1px solid transparent;
-          padding-bottom: 4px;
-          transition: 0.3s ease;
-        }
-
-        .socials a:hover {
-          color: #d4a5a5;
-          border-color: #d4a5a5;
-        }
-
-        .copyright {
-          font-size: 11px;
-          letter-spacing: 0.28em;
-          color: rgba(74, 74, 74, 0.35);
-          text-transform: uppercase;
-        }
-
-        @media (max-width: 900px) {
-          .philosophy-grid,
-          .partnership-wrap,
-          .journal-flex {
-            grid-template-columns: 1fr;
-            display: grid;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .nav-inner {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          .nav-links {
-            gap: 16px;
-          }
-
-          .profile-row {
-            grid-template-columns: 1fr;
-            gap: 4px;
-          }
-
-          .section {
-            padding: 90px 0;
-          }
-
-          .journal-box {
-            padding: 28px;
-          }
-        }
-      `}</style>
-
-      <div className="page">
-        <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
-          <div className="nav-inner">
-            <div className="brand">AMAMI SOUDA</div>
-            <div className="nav-links">
-              <a href="#about">About</a>
-              <a href="#philosophy">Philosophy</a>
-              <a href="#partnership">Partnership</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
-        </nav>
-
-        <section className="hero">
-          <img
-            className="hero-bg"
-            src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
-            alt="Background visual"
-            referrerPolicy="no-referrer"
-          />
-          <div className="hero-overlay" />
-
-          <div className="hero-content">
-            <h1 className="hero-title">AMAMI SOUDA</h1>
-            <div className="hero-subtitle">Buyer / Director</div>
-          </div>
-
-          <div className="scroll-mark">↓</div>
-        </section>
-
-        <section id="about" className="section">
-          <div className="narrow">
-            <div className="name">早田天美</div>
-
-            <p className="lead">
-              2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br />
-              上質な商材やユニークな商材など、さまざまな商材に向き合い、
-              積み上げてきた23年の歳月は、単なるキャリアではなく、
-              私の「技術」そのものになりました。
+        h1, h2, h3, p, span, a, div { font-family: var(--font-serif) !important; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1.2s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .dot-bg { background-image: radial-gradient(#ffffff05 1px, transparent 1px); background-size: 40px 40px; }
+    </style>
+</head>
+<body class="bg-white text-deep-gray font-serif">
+
+    <nav id="nav" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-8 py-6 flex justify-between items-center bg-transparent">
+        <div class="text-sm tracking-[0.4em] font-light uppercase text-white mix-blend-difference">AMAMI SOUDA</div>
+        <div class="flex gap-8 text-[10px] tracking-[0.3em] uppercase font-light text-white mix-blend-difference">
+            <a href="#about" class="hover:text-plum-pink transition-colors">About</a>
+            <a href="#philosophy" class="hover:text-plum-pink transition-colors">Philosophy</a>
+            <a href="#partnership" class="hover:text-plum-pink transition-colors">Partnership</a>
+            <a href="#contact" class="hover:text-plum-pink transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop" 
+                 class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 opacity-40 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
+            <div class="absolute inset-0 dot-bg opacity-30"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 reveal">
+            <h1 class="text-2xl md:text-4xl font-light tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
+            <p class="mt-8 text-[9px] md:text-[11px] tracking-[1.6em] text-plum-pink font-light uppercase opacity-90">Buyer / Director</p>
+        </div>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-platinum/20 animate-bounce z-10">
+            <i data-lucide="chevron-down" stroke-width="1" size="16"></i>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 px-8 max-w-4xl mx-auto overflow-hidden">
+        <div class="reveal">
+            <span class="text-sm tracking-[0.3em] text-plum-pink font-medium block mb-4">早田天美</span>
+            <p class="text-xl md:text-2xl leading-loose tracking-wider font-light mb-12">
+                2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br class="hidden md:block" />
+                上質な商材やユニークな商材、などさまざまな商材に向き合い、積み上げてきた23年の歳月は、
+                単なるキャリアではなく、私の「技術」そのものになりました。
             </p>
 
-            <h2 className="section-label">Profile</h2>
-
-            <div className="profile-grid">
-              <div className="profile-row">
-                <div className="profile-year">2002年</div>
-                <div>ネットショップにてコスチュームジュエリーをECにて販売</div>
-              </div>
-              <div className="profile-row">
-                <div className="profile-year">2008年–2026年</div>
-                <div>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</div>
-              </div>
+            <div class="mb-16 space-y-8">
+                <h3 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium border-l border-plum-pink pl-4">Profile</h3>
+                <div class="space-y-4 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] gap-4">
+                        <span class="text-plum-pink/80">2002年</span>
+                        <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
+                    </div>
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] gap-4">
+                        <span class="text-plum-pink/80">2008年ー2026年</span>
+                        <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
+                    </div>
+                </div>
+                <div class="pt-4 text-sm md:text-base leading-relaxed text-deep-gray font-light opacity-80">
+                    <p class="mb-4 tracking-widest text-[10px] uppercase text-plum-pink/80">Expertise since 2002</p>
+                    <ul class="space-y-3 list-none">
+                        <li class="flex gap-3"><span class="text-plum-pink font-bold">/</span><span>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）５年</span></li>
+                        <li class="flex gap-3"><span class="text-plum-pink font-bold">/</span><span>ジュエリー（主に真珠５年）</span></li>
+                        <li class="flex gap-3"><span class="text-plum-pink font-bold">/</span><span>日用品５年</span></li>
+                        <li class="flex gap-3"><span class="text-plum-pink font-bold">/</span><span>バッグを中心とした服飾雑貨５年</span></li>
+                    </ul>
+                </div>
             </div>
 
-            <div className="expertise-title">Expertise since 2002</div>
-            <ul className="expertise-list">
-              <li>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年</li>
-              <li>ジュエリー（主に真珠）5年</li>
-              <li>日用品 5年</li>
-              <li>バッグを中心とした服飾雑貨 5年</li>
-            </ul>
-
-            <div className="body-copy" style={{ marginTop: 40 }}>
-              <p>
-                かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品3億円前後の実績。
-                それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
-              </p>
-
-              <p>
-                複雑に絡み合う商品情報を解きほぐし、ひとり一人の人の心に届く
-                「研ぎ澄まされた言葉」へと整えるための礎。
-              </p>
-
-              <p>
-                真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、
-                商材を勉強し専門性を磨き上げました。<br />
-                その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の暗黙知が伝わりにくいもの。
-                それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように
-                噛み砕いて翻訳していく。その作業が一番大切なことだと考えます。
-              </p>
-
-              <p>
-                「あなた（ブランド・メーカー）にとっての当たり前は、まったく当たり前ではない」ということ。<br />
-                そして、それが一番大切なブランドの個性かもしれないということ。
-              </p>
-
-              <p>一緒に見つけてみませんか。</p>
+            <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                <p>かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品 3億円前後の実績。それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。</p>
+                <p>複雑に絡み合う商品情報を解きほぐし、ひとり一人の人の心に届く「研ぎ澄まされた言葉」へと整えるための礎。</p>
+                <p>真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、商材を勉強し専門性を磨き上げました。<br />その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の”暗黙知”が伝わりにくいもの。それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように噛み砕いて翻訳をしていく。その作業が一番大切なことだと考えます。</p>
+                <p>「 あなた（ブランド・メーカー）にとっての”当たり前”はまったくあたりまえではない」ということ。<br />そして、それが一番大切なブランドの個性かもしれないということ。</p>
+                <p>一緒に見つけてみませんか。</p>
             </div>
-          </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="philosophy" className="section dark-section">
-          <div className="container">
-            <h2 className="section-label">Core Philosophy</h2>
-
-            <div className="philosophy-grid">
-              <div>
-                <div className="card-number">01</div>
-                <h3 className="card-title">見抜く。</h3>
-                <p className="card-text">
-                  溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。
-                  冷静な自他分析こそが、本質を捉える唯一の道。
-                </p>
-              </div>
-
-              <div>
-                <div className="card-number">02</div>
-                <h3 className="card-title">整える。</h3>
-                <p className="card-text">
-                  価値があるのに、まだ届いていない。
-                  その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。
-                </p>
-              </div>
-
-              <div>
-                <div className="card-number">03</div>
-                <h3 className="card-title">届ける。</h3>
-                <p className="card-text">
-                  「わからない」を「わかった」へ。
-                  一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。
-                </p>
-              </div>
+    <section id="philosophy" class="py-32 bg-black text-white px-8 dot-bg">
+        <div class="max-w-5xl mx-auto">
+            <div class="reveal">
+                <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-24 border-l border-plum-pink pl-4">Core Philosophy</h2>
             </div>
-          </div>
-        </section>
-
-        <section id="partnership" className="section dark-section">
-          <div className="container">
-            <div className="partnership-wrap">
-              <div>
-                <h2 className="section-label">Partnership</h2>
-                <p className="muted">
-                  伝え方に悩むブランド、<br />
-                  価値を再定義したい営業担当者へ。
-                </p>
-              </div>
-
-              <div>
-                <div className="service">
-                  <div className="service-head">
-                    <h3>Value Definition</h3>
-                    <span className="service-arrow">→</span>
-                  </div>
-                  <p>
-                    商材の強みを抽出し、市場での立ち位置を明確にします。
-                    「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
-                  </p>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="reveal space-y-8 group">
+                    <span class="text-5xl font-light text-plum-pink/30 italic">01</span>
+                    <h3 class="text-lg tracking-[0.3em] font-medium">見抜く。</h3>
+                    <p class="text-sm leading-loose text-white/50 font-light">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。</p>
                 </div>
-
-                <div className="service">
-                  <div className="service-head">
-                    <h3>Direction &amp; Story</h3>
-                    <span className="service-arrow">→</span>
-                  </div>
-                  <p>
-                    ビジュアルとテキストの両面から、商材の魅力を最大化。
-                    顧客の心に深く沈み込む、静かなストーリーを構築します。
-                  </p>
+                <div class="reveal space-y-8 group" style="transition-delay: 0.2s;">
+                    <span class="text-5xl font-light text-plum-pink/30 italic">02</span>
+                    <h3 class="text-lg tracking-[0.3em] font-medium">整える。</h3>
+                    <p class="text-sm leading-loose text-white/50 font-light">価値があるのに届いていない。その乖離を論理的に埋める。</p>
                 </div>
-
-                <div className="service">
-                  <div className="service-head">
-                    <h3>Hands-on Support</h3>
-                    <span className="service-arrow">→</span>
-                  </div>
-                  <p>
-                    単なる助言に留まらず、現場の「わからない」に寄り添い、
-                    共に手を動かし、解決の糸口を見出すまで伴走します。
-                  </p>
+                <div class="reveal space-y-8 group" style="transition-delay: 0.4s;">
+                    <span class="text-5xl font-light text-plum-pink/30 italic">03</span>
+                    <h3 class="text-lg tracking-[0.3em] font-medium">届ける。</h3>
+                    <p class="text-sm leading-loose text-white/50 font-light">市場との幸福な出会いを創出する。</p>
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
+        </div>
+    </section>
 
-        <section className="section journal">
-          <div className="narrow">
-            <div className="journal-box">
-              <div className="journal-flex">
-                <div>
-                  <div className="journal-label">Journal</div>
-                  <h3 className="journal-title">お買い物はお仕事です</h3>
-                  <p className="journal-text">
-                    出会った“良い商品”だけを備忘録としてまとめました。<br />
-                    訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
-                  </p>
-                </div>
-
-                <a
-                  className="journal-link"
-                  href="https://daphnemeria-blog.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Blog →
+    <footer id="contact" class="py-32 px-8 bg-white text-center border-t border-black/5">
+        <div class="reveal max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-light tracking-[0.2em] mb-12 text-deep-gray">
+                答えは、あなたの商品の中に。<br />それを共に、磨き上げるために。
+            </h2>
+            <p class="text-sm text-deep-gray/60 font-light tracking-widest mb-16">静かな対話から、新しい価値を始めましょう。</p>
+            
+            <div class="flex justify-center gap-12 mb-24">
+                <a href="mailto:your-email@example.com" class="group flex flex-col items-center gap-2">
+                    <i data-lucide="mail" class="text-deep-gray group-hover:text-plum-pink transition-colors"></i>
+                    <span class="text-[9px] opacity-40 group-hover:opacity-100 uppercase tracking-widest">Email</span>
                 </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <footer id="contact" className="section footer">
-          <div className="narrow">
-            <p className="footer-sub">静かな対話から、新しい価値を始めましょう。</p>
-
-            <div className="socials">
-              <a href="mailto:your-email@example.com">Email</a>
-              <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer">Blog</a>
-              <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer">Note</a>
-              <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://note.com/your_account" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2">
+                    <i data-lucide="book-open" class="text-deep-gray group-hover:text-plum-pink transition-colors"></i>
+                    <span class="text-[9px] opacity-40 group-hover:opacity-100 uppercase tracking-widest">Note</span>
+                </a>
+                <a href="https://instagram.com/your_account" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2">
+                    <i data-lucide="instagram" class="text-deep-gray group-hover:text-plum-pink transition-colors"></i>
+                    <span class="text-[9px] opacity-40 group-hover:opacity-100 uppercase tracking-widest">Instagram</span>
+                </a>
             </div>
 
-            <div className="copyright">
-              © {new Date().getFullYear()} All Rights Reserved.
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
-  );
-}
+            <div class="text-[10px] tracking-[0.4em] text-deep-gray/30 uppercase">© 2026 AMAMI SOUDA</div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
+            } else {
+                nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
+            }
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
