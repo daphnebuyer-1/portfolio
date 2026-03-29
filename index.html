@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAMI SOUDA | Buyer / Director</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -15,8 +17,8 @@
                         'platinum': '#e5e4e2',
                         'deep-gray': '#4a4a4a',
                     },
-                    fontFamily: {
-                        serif: ['"Noto Serif JP"', 'serif'],
+                    fontFamily: { 
+                        serif: ['"Noto Serif JP"', 'serif'] 
                     }
                 }
             }
@@ -24,17 +26,23 @@
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Noto Serif JP', serif; scroll-behavior: smooth; }
-        .selection\:bg-plum-pink::selection { background-color: #d4a5a5; color: black; }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 1.2s cubic-bezier(0.21, 0.47, 0.32, 0.98); }
+        /* 日本語をきれいに見せるための設定 */
+        body, html { 
+            margin: 0; padding: 0; width: 100%; overflow-x: hidden; 
+            font-family: 'Noto Serif JP', serif; 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased; /* 文字の輪郭を滑らかにする */
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        .dot-bg { background-image: radial-gradient(#ffffff05 1px, transparent 1px); background-size: 40px 40px; }
     </style>
 </head>
-<body class="min-h-screen bg-white selection:bg-plum-pink selection:text-black">
+<body class="bg-white text-deep-gray font-serif">
 
-    <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 px-8 py-6 flex justify-between items-center bg-transparent">
-        <div class="text-sm tracking-[0.4em] font-light uppercase"></div>
-        <div class="flex gap-8 text-[10px] tracking-[0.3em] uppercase font-light">
+    <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-6 flex justify-between items-center bg-transparent">
+        <div class="text-xs tracking-[0.4em] font-light uppercase text-white mix-blend-difference">AMAMI SOUDA</div>
+        <div class="flex gap-6 text-[10px] tracking-[0.2em] uppercase font-light text-white mix-blend-difference">
             <a href="#about" class="hover:text-plum-pink transition-colors">About</a>
             <a href="#philosophy" class="hover:text-plum-pink transition-colors">Philosophy</a>
             <a href="#partnership" class="hover:text-plum-pink transition-colors">Partnership</a>
@@ -42,154 +50,69 @@
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center overflow-hidden px-8 bg-black">
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop" 
-                 alt="Background" 
-                 class="w-full h-full object-cover grayscale brightness-[0.3] contrast-150 blur-[2px] opacity-20">
-            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff02_1px,transparent_1px)] bg-[size:120px_120px] opacity-40"></div>
+                 class="w-full h-full object-cover grayscale brightness-[0.3] opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
         </div>
         
-        <div class="relative z-10 text-center max-w-4xl reveal">
-            <h1 class="text-2xl md:text-3xl font-light tracking-[0.8em] leading-tight uppercase text-white/90 drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+        <div class="relative z-10 text-center px-4 reveal">
+            <h1 class="text-3xl md:text-5xl font-light tracking-[0.6em] leading-tight uppercase text-white">
                 AMAMI SOUDA
             </h1>
-            <p class="mt-8 text-[9px] md:text-[10px] tracking-[1.6em] text-plum-pink font-light uppercase opacity-80">
+            <p class="mt-10 text-[10px] md:text-xs tracking-[1.2em] text-plum-pink font-light uppercase">
                 Buyer / Director
             </p>
         </div>
 
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-platinum animate-bounce opacity-30">
-            <i data-lucide="chevron-down" stroke-width="1" size="14"></i>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+            <i data-lucide="chevron-down" stroke-width="1" size="20"></i>
         </div>
     </section>
 
-    <section id="about" class="py-32 px-8 max-w-4xl mx-auto">
-        <div class="pt-12 md:pt-24 reveal">
-            <div class="mb-12">
-                <span class="text-sm tracking-[0.3em] text-plum-pink font-medium block mb-4">早田天美</span>
-                <p class="text-xl md:text-2xl leading-loose tracking-wider font-light text-deep-gray">
-                    2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br />
-                    上質な商材やユニークな商材など、さまざまな商材に向き合い積み上げてきた23年の歳月は、
-                    単なるキャリアではなく、私の「技術」そのものになりました。
-                </p>
-            </div>
+    <section id="about" class="py-32 px-6 max-w-4xl mx-auto overflow-hidden">
+        <div class="reveal">
+            <span class="text-sm tracking-[0.3em] text-plum-pink font-medium block mb-6">早田天美</span>
+            <p class="text-xl md:text-2xl leading-loose tracking-[0.15em] font-light text-deep-gray mb-16">
+                2002年から、さまざまな商材に向き合い積み上げてきた23年の歳月は、<br class="hidden md:block">
+                単なるキャリアではなく、私の「技術」そのものになりました。
+            </p>
 
-            <div class="mb-16 space-y-8">
-                <h3 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium border-l border-plum-pink pl-4">Profile</h3>
-                <div class="space-y-4 text-sm md:text-base leading-relaxed text-deep-gray font-light">
-                    <div class="grid grid-cols-[120px_1fr] gap-4">
-                        <span class="text-plum-pink/80">2002年</span>
-                        <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
-                    </div>
-                    <div class="grid grid-cols-[120px_1fr] gap-4">
-                        <span class="text-plum-pink/80">2008年ー2026年</span>
-                        <span>ジュピターショップチャンネルにてMD・バイヤー</span>
-                    </div>
+            <div class="space-y-12">
+                <div class="border-l-2 border-plum-pink pl-6">
+                    <h3 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-4">Expertise</h3>
+                    <p class="text-sm md:text-base leading-relaxed text-deep-gray/80 font-light">
+                        テレビ通販にて1日で3億円の実績。市場の熱狂を冷静に分析し、商品の「真価」を見抜く。<br class="hidden md:block">
+                        ブランドの”当たり前”を、誰かにとっての”特別”へと翻訳します。
+                    </p>
                 </div>
             </div>
-
-            <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
-                <p>かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品 3億円前後の実績。それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこその実績です。</p>
-                <p>「あなたにとっての”当たり前”はまったく当たり前ではない」ということ。一緒に見つけてみませんか。</p>
-            </div>
         </div>
     </section>
 
-    <section id="philosophy" class="py-32 bg-black text-white px-8 overflow-hidden relative">
-        <div class="max-w-5xl mx-auto relative z-10">
+    <section id="philosophy" class="py-32 bg-black text-white px-6 dot-bg">
+        <div class="max-w-5xl mx-auto">
             <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-24 border-l border-plum-pink pl-4 reveal">Core Philosophy</h2>
             
-            <div class="grid md:grid-cols-3 gap-16 md:gap-8">
-                <div class="space-y-8 group reveal">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors">01</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">見抜く。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。</p>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="reveal space-y-6">
+                    <span class="text-3xl font-light text-plum-pink/40 italic">01 / 見抜く</span>
+                    <p class="text-sm leading-loose text-white/60 font-light">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。</p>
                 </div>
-                <div class="space-y-8 group reveal">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors">02</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">整える。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で再構築する。</p>
+                <div class="reveal space-y-6" style="transition-delay: 0.2s;">
+                    <span class="text-3xl font-light text-plum-pink/40 italic">02 / 整える</span>
+                    <p class="text-sm leading-loose text-white/60 font-light">論理的な見せ方と言葉の力で、あるべき姿へと再構築する。</p>
                 </div>
-                <div class="space-y-8 group reveal">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors">03</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">届ける。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">「わからない」を「わかった」へ。市場との幸福な出会いを創出する。</p>
+                <div class="reveal space-y-6" style="transition-delay: 0.4s;">
+                    <span class="text-3xl font-light text-plum-pink/40 italic">03 / 届ける</span>
+                    <p class="text-sm leading-loose text-white/60 font-light">「わからない」を「わかった」へ。市場との幸福な出会いを創出する。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="partnership" class="py-32 px-8 bg-black text-white overflow-hidden relative border-t border-white/5">
-        <div class="max-w-5xl mx-auto relative z-10">
-            <div class="flex flex-col md:flex-row gap-16">
-                <div class="md:w-1/3 reveal">
-                    <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-12 border-l border-plum-pink pl-4">Partnership</h2>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-widest">伝え方に悩むブランド、価値を再定義したい営業担当者へ。</p>
-                </div>
-                <div class="md:w-2/3 space-y-16 reveal">
-                    <div class="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors">
-                        <h3 class="text-2xl font-light tracking-[0.2em] mb-4">Value Definition</h3>
-                        <p class="text-sm text-white/40 font-light">商材の強みを抽出し、市場での立ち位置を明確にします。</p>
-                    </div>
-                    <div class="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors">
-                        <h3 class="text-2xl font-light tracking-[0.2em] mb-4">Direction & Story</h3>
-                        <p class="text-sm text-white/40 font-light">ビジュアルとテキストの両面から、商材の魅力を最大化します。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="py-32 px-8 bg-white border-t border-black/5">
-        <div class="max-w-3xl mx-auto text-center reveal">
-            <h2 class="text-2xl md:text-3xl font-light tracking-[0.2em] mb-12 text-deep-gray">答えは、あなたの商品の中に。</h2>
-            <div class="flex justify-center gap-12 mb-24">
-                <a href="#" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                    <i data-lucide="mail" stroke-width="1" size="20"></i>
-                    <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100">Email</span>
-                </a>
-                <a href="#" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                    <i data-lucide="message-square" stroke-width="1" size="20"></i>
-                    <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100">Note</span>
-                </a>
-                <a href="#" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                    <i data-lucide="instagram" stroke-width="1" size="20"></i>
-                    <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100">Instagram</span>
-                </a>
-            </div>
-            <div class="text-[10px] tracking-[0.4em] text-deep-gray/40 uppercase font-light">© 2026 AMAMI SOUDA All Rights Reserved.</div>
-        </div>
-    </footer>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Scroll Handling (Navbar & Reveal)
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
-                nav.classList.remove('bg-transparent');
-            } else {
-                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
-                nav.classList.add('bg-transparent');
-            }
-
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        });
-
-        // Trigger first reveal
-        window.dispatchEvent(new Event('scroll'));
-    </script>
-</body>
-</html>
+    <footer id="contact" class="py-32 px-6 bg-white border-t border-gray-100 text-center">
+        <div class="reveal max-w-3xl mx-auto">
+            <h2 class="text-2xl font-light tracking-[0.2em] mb-12 text-deep-gray">答えは、あなたの商品の中に。</h2>
+            <div class="
