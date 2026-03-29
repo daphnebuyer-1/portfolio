@@ -6,9 +6,10 @@
   <title>AMAMI SOUDA | Buyer / Director</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -16,11 +17,12 @@
         extend: {
           colors: {
             "plum-pink": "#d4a5a5",
-            platinum: "#e5e4e2",
+            "platinum": "#e5e4e2",
             "deep-gray": "#4a4a4a"
           },
           fontFamily: {
-            serif: ['"Noto Serif JP"', "serif"]
+            serif: ['"Noto Serif JP"', "serif"],
+            sans: ['"Inter"', "sans-serif"]
           }
         }
       }
@@ -30,20 +32,26 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       overflow-x: hidden;
-      font-family: "Noto Serif JP", serif;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-family: "Noto Serif JP", serif;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     .reveal {
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.8s ease-out;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     .reveal.active {
@@ -52,111 +60,310 @@
     }
 
     .dot-bg {
-      background-image: radial-gradient(#ffffff05 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
-    .selection-plum::selection {
+    ::selection {
       background-color: #d4a5a5;
-      color: black;
+      color: #000;
     }
 
-    .nav-light .nav-brand,
-    .nav-light .nav-link {
-      color: white;
-      mix-blend-mode: difference;
+    .nav-transparent {
+      background: transparent;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .nav-solid {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-transparent .nav-brand,
+    .nav-transparent .nav-link {
+      color: #ffffff;
     }
 
     .nav-solid .nav-brand,
     .nav-solid .nav-link {
       color: #4a4a4a;
-      mix-blend-mode: normal;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.25), rgba(0,0,0,0.7));
+    }
+
+    .nav-link:hover,
+    .social-link:hover {
+      color: #d4a5a5;
     }
   </style>
 </head>
 
-<body class="bg-white text-deep-gray font-serif selection-plum">
+<body class="bg-white text-deep-gray font-serif">
 
-<nav id="nav" class="nav-light fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 transition-all duration-500">
-  <div class="nav-brand text-sm tracking-[0.4em] font-light uppercase">AMAMI SOUDA</div>
-  <div class="flex gap-8 text-[10px] tracking-[0.3em] uppercase font-light">
-    <a href="#about" class="nav-link hover:text-plum-pink">About</a>
-    <a href="#philosophy" class="nav-link hover:text-plum-pink">Philosophy</a>
-    <a href="#partnership" class="nav-link hover:text-plum-pink">Partnership</a>
-    <a href="#contact" class="nav-link hover:text-plum-pink">Contact</a>
-  </div>
-</nav>
+  <nav id="nav" class="nav-transparent fixed top-0 left-0 z-50 w-full transition-all duration-500">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-8">
+      <div class="nav-brand font-sans text-sm font-light uppercase tracking-[0.4em]">
+        AMAMI SOUDA
+      </div>
 
-<section class="relative h-screen flex items-center justify-center bg-black">
-  <img src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
-       class="absolute w-full h-full object-cover opacity-40" />
-  <div class="relative z-10 text-center reveal">
-    <h1 class="text-3xl tracking-[0.8em] text-white">AMAMI SOUDA</h1>
-    <p class="mt-6 text-xs tracking-[1.5em] text-plum-pink">Buyer / Director</p>
-  </div>
-</section>
-
-<section id="about" class="py-32 px-8 max-w-4xl mx-auto">
-  <div class="reveal">
-    <span class="text-plum-pink">早田天美</span>
-    <p class="mt-6 text-xl leading-loose">
-      2002年からジュエリー、伝統工芸、高級皮革などに向き合い続けた23年。
-      それは単なるキャリアではなく、技術そのものです。
-    </p>
-  </div>
-</section>
-
-<section id="philosophy" class="py-32 bg-black text-white dot-bg px-8">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
-    <div class="reveal">
-      <h3>見抜く</h3>
-      <p>本質を見抜く力</p>
+      <div class="flex gap-5 md:gap-8 text-[10px] font-light uppercase tracking-[0.3em]">
+        <a href="#about" class="nav-link transition-colors duration-300">About</a>
+        <a href="#philosophy" class="nav-link transition-colors duration-300">Philosophy</a>
+        <a href="#partnership" class="nav-link transition-colors duration-300">Partnership</a>
+        <a href="#contact" class="nav-link transition-colors duration-300">Contact</a>
+      </div>
     </div>
-    <div class="reveal">
-      <h3>整える</h3>
-      <p>価値を再構築する</p>
+  </nav>
+
+  <section class="relative flex h-screen items-center justify-center overflow-hidden bg-black px-6 md:px-8">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
+        alt="Background visual"
+        class="h-full w-full object-cover opacity-40"
+      />
+      <div class="hero-overlay absolute inset-0"></div>
     </div>
-    <div class="reveal">
-      <h3>届ける</h3>
-      <p>価値を伝える</p>
+
+    <div class="reveal relative z-10 max-w-4xl text-center">
+      <h1 class="font-sans text-2xl font-light uppercase leading-tight tracking-[0.6em] text-white md:text-3xl">
+        AMAMI SOUDA
+      </h1>
+      <p class="mt-8 text-[10px] font-light uppercase tracking-[1.2em] text-plum-pink md:text-xs">
+        Buyer / Director
+      </p>
     </div>
-  </div>
-</section>
 
-<footer id="contact" class="py-32 text-center">
-  <h2>お問い合わせ</h2>
-</footer>
+    <div class="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 text-white/50">
+      <i data-lucide="chevron-down" stroke-width="1.2" size="18"></i>
+    </div>
+  </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  <section id="about" class="mx-auto max-w-4xl px-6 py-24 md:px-8 md:py-32">
+    <div class="reveal">
+      <span class="mb-4 block text-sm font-medium tracking-[0.3em] text-plum-pink">早田天美</span>
 
-  if (window.lucide) {
-    lucide.createIcons();
-  }
+      <p class="mb-12 text-xl font-light leading-loose tracking-wide md:text-2xl">
+        2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br />
+        上質な商材やユニークな商材など、さまざまな商材に向き合い、積み上げてきた23年の歳月は、
+        単なるキャリアではなく、私の「技術」そのものになりました。
+      </p>
 
-  const nav = document.getElementById("nav");
-  const reveals = document.querySelectorAll(".reveal");
+      <div class="mb-16 space-y-8">
+        <h2 class="border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+          Profile
+        </h2>
 
-  function handleScroll() {
-    if (window.scrollY > 50) {
-      nav.classList.add("nav-solid", "bg-white", "py-4");
-      nav.classList.remove("nav-light", "py-6");
-    } else {
-      nav.classList.add("nav-light", "py-6");
-      nav.classList.remove("nav-solid", "bg-white", "py-4");
-    }
+        <div class="space-y-4 text-sm font-light leading-relaxed md:text-base">
+          <div class="grid grid-cols-[100px_1fr] gap-4 md:grid-cols-[120px_1fr]">
+            <span class="text-plum-pink/80">2002年</span>
+            <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
+          </div>
 
-    reveals.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 50) {
-        el.classList.add("active");
+          <div class="grid grid-cols-[100px_1fr] gap-4 md:grid-cols-[120px_1fr]">
+            <span class="text-plum-pink/80">2008年–2026年</span>
+            <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
+          </div>
+        </div>
+
+        <div class="pt-4 text-sm font-light leading-relaxed opacity-80 md:text-base">
+          <p class="mb-4 text-[10px] uppercase tracking-widest text-plum-pink/80">Expertise since 2002</p>
+
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3">
+              <span class="font-bold text-plum-pink">/</span>
+              <span>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-plum-pink">/</span>
+              <span>ジュエリー（主に真珠）5年</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-plum-pink">/</span>
+              <span>日用品 5年</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-plum-pink">/</span>
+              <span>バッグを中心とした服飾雑貨 5年</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6 text-sm font-light leading-relaxed md:text-base">
+        <p>
+          かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品3億円前後の実績。
+          それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
+        </p>
+
+        <p>
+          複雑に絡み合う商品情報を解きほぐし、ひとり一人の人の心に届く「研ぎ澄まされた言葉」へと整えるための礎。
+        </p>
+
+        <p>
+          真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、商材を勉強し専門性を磨き上げました。<br />
+          その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の暗黙知が伝わりにくいもの。
+          それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように噛み砕いて翻訳していく。
+          その作業が一番大切なことだと考えます。
+        </p>
+
+        <p>
+          「あなた（ブランド・メーカー）にとっての当たり前は、まったく当たり前ではない」ということ。<br />
+          そして、それが一番大切なブランドの個性かもしれないということ。
+        </p>
+
+        <p>一緒に見つけてみませんか。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="dot-bg bg-black px-6 py-24 text-white md:px-8 md:py-32">
+    <div class="mx-auto max-w-5xl">
+      <div class="reveal">
+        <h2 class="mb-20 border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink md:mb-24">
+          Core Philosophy
+        </h2>
+      </div>
+
+      <div class="grid gap-14 md:grid-cols-3 md:gap-8">
+        <div class="reveal space-y-8">
+          <span class="text-5xl font-light italic text-plum-pink/30">01</span>
+          <h3 class="text-lg font-medium tracking-[0.3em]">見抜く。</h3>
+          <p class="text-sm font-light leading-loose tracking-wider text-white/50">
+            溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。冷静な自他分析こそが、本質を捉える唯一の道。
+          </p>
+        </div>
+
+        <div class="reveal space-y-8" style="transition-delay: 0.2s;">
+          <span class="text-5xl font-light italic text-plum-pink/30">02</span>
+          <h3 class="text-lg font-medium tracking-[0.3em]">整える。</h3>
+          <p class="text-sm font-light leading-loose tracking-wider text-white/50">
+            価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。
+          </p>
+        </div>
+
+        <div class="reveal space-y-8" style="transition-delay: 0.4s;">
+          <span class="text-5xl font-light italic text-plum-pink/30">03</span>
+          <h3 class="text-lg font-medium tracking-[0.3em]">届ける。</h3>
+          <p class="text-sm font-light leading-loose tracking-wider text-white/50">
+            「わからない」を「わかった」へ。一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partnership" class="dot-bg border-t border-white/5 bg-black px-6 py-24 text-white md:px-8 md:py-32">
+    <div class="mx-auto max-w-5xl">
+      <div class="flex flex-col gap-16 md:flex-row">
+        <div class="reveal md:w-1/3">
+          <h2 class="mb-12 border-l border-plum-pink pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-plum-pink">
+            Partnership
+          </h2>
+          <p class="text-sm font-light leading-loose tracking-widest text-white/50">
+            伝え方に悩むブランド、<br />
+            価値を再定義したい営業担当者へ。
+          </p>
+        </div>
+
+        <div class="reveal md:w-2/3" style="transition-delay: 0.2s;">
+          <div class="space-y-16">
+            <div class="group border-b border-white/10 pb-12 transition-colors hover:border-plum-pink">
+              <div class="mb-6 flex items-end justify-between">
+                <h3 class="text-2xl font-light tracking-[0.2em]">Value Definition</h3>
+                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 transition-all group-hover:opacity-100" size="16"></i>
+              </div>
+              <p class="text-sm font-light leading-relaxed text-white/40">
+                商材の強みを抽出し、市場での立ち位置を明確にします。「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
+              </p>
+            </div>
+
+            <div class="group border-b border-white/10 pb-12 transition-colors hover:border-plum-pink">
+              <div class="mb-6 flex items-end justify-between">
+                <h3 class="text-2xl font-light tracking-[0.2em]">Direction &amp; Story</h3>
+                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 transition-all group-hover:opacity-100" size="16"></i>
+              </div>
+              <p class="text-sm font-light leading-relaxed text-white/40">
+                ビジュアルとテキストの両面から、商材の魅力を最大化。顧客の心に深く沈み込む、静かなストーリーを構築します。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-white px-6 py-24 text-center md:px-8 md:py-32">
+    <div class="reveal mx-auto max-w-3xl">
+      <h2 class="mb-12 text-2xl font-light tracking-[0.2em] md:text-3xl">
+        答えは、あなたの商品の中に。<br />
+        それを共に、磨き上げるために。
+      </h2>
+
+      <p class="mb-16 text-sm font-light tracking-widest text-deep-gray/60">
+        静かな対話から、新しい価値を始めましょう。
+      </p>
+
+      <div class="mb-24 flex justify-center gap-10 md:gap-12">
+        <a href="mailto:your-email@example.com" class="social-link flex flex-col items-center gap-4 transition-colors duration-300" aria-label="Email">
+          <i data-lucide="mail" class="text-deep-gray" stroke-width="1"></i>
+          <span class="text-[10px] uppercase tracking-[0.3em] opacity-50">Email</span>
+        </a>
+
+        <a href="https://note.com/" class="social-link flex flex-col items-center gap-4 transition-colors duration-300" aria-label="Note">
+          <i data-lucide="message-square" class="text-deep-gray" stroke-width="1"></i>
+          <span class="text-[10px] uppercase tracking-[0.3em] opacity-50">Note</span>
+        </a>
+
+        <a href="https://www.instagram.com/" class="social-link flex flex-col items-center gap-4 transition-colors duration-300" aria-label="Instagram">
+          <i data-lucide="instagram" class="text-deep-gray" stroke-width="1"></i>
+          <span class="text-[10px] uppercase tracking-[0.3em] opacity-50">Instagram</span>
+        </a>
+      </div>
+
+      <div class="text-[10px] font-light uppercase tracking-[0.4em] text-deep-gray/30">
+        © 2026 All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.lucide) {
+        lucide.createIcons();
       }
+
+      const nav = document.getElementById("nav");
+      const reveals = document.querySelectorAll(".reveal");
+
+      function onScroll() {
+        if (window.scrollY > 50) {
+          nav.classList.remove("nav-transparent");
+          nav.classList.add("nav-solid");
+        } else {
+          nav.classList.remove("nav-solid");
+          nav.classList.add("nav-transparent");
+        }
+
+        reveals.forEach(function (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 50) {
+            el.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", onScroll);
+      onScroll();
     });
-  }
-
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
-});
-</script>
-
+  </script>
 </body>
 </html>
