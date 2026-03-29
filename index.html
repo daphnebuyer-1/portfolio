@@ -1,454 +1,664 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ChevronDown,
-  Mail,
-  MessageSquare,
-  PenLine,
-  Twitter,
-} from "lucide-react";
-
-type FadeInProps = {
-  children: React.ReactNode;
-  delay?: number;
-};
-
-const FadeIn = ({ children, delay = 0 }: FadeInProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-  >
-    {children}
-  </motion.div>
-);
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-[#4a4a4a] selection:bg-[#d4a5a5] selection:text-black">
-      <nav
-        className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-5 transition-all duration-500 md:px-8 ${
-          scrolled
-            ? "border-b border-black/5 bg-white/90 backdrop-blur-md"
-            : "bg-transparent"
-        }`}
-      >
-        <div
-          className={`text-sm font-light uppercase tracking-[0.4em] transition-colors duration-500 ${
-            scrolled ? "text-[#4a4a4a]" : "text-white"
-          }`}
-        >
-          AMAMI SOUDA
-        </div>
+    <>
+      <style>{`
+        * {
+          box-sizing: border-box;
+        }
 
-        <div
-          className={`flex gap-4 text-[10px] font-light uppercase tracking-[0.3em] transition-colors duration-500 md:gap-8 ${
-            scrolled ? "text-[#4a4a4a]" : "text-white"
-          }`}
-        >
-          <a href="#about" className="transition-colors hover:text-[#d4a5a5]">
-            About
-          </a>
-          <a href="#philosophy" className="transition-colors hover:text-[#d4a5a5]">
-            Philosophy
-          </a>
-          <a href="#partnership" className="transition-colors hover:text-[#d4a5a5]">
-            Partnership
-          </a>
-          <a href="#contact" className="transition-colors hover:text-[#d4a5a5]">
-            Contact
-          </a>
-        </div>
-      </nav>
+        html {
+          scroll-behavior: smooth;
+        }
 
-      <section className="relative flex h-screen items-center justify-center overflow-hidden bg-black px-8">
-        <div className="absolute inset-0 z-0">
-          <motion.img
-            initial={{ scale: 1.1, opacity: 0.2 }}
-            animate={{
-              scale: [1.1, 1.15, 1.1],
-              opacity: [0.15, 0.25, 0.15],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+        body {
+          margin: 0;
+          background: #ffffff;
+          color: #4a4a4a;
+          font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+          line-height: 1.8;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .page {
+          min-height: 100vh;
+          background: #ffffff;
+        }
+
+        .nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1000;
+          transition: all 0.35s ease;
+          padding: 22px 0;
+          background: transparent;
+        }
+
+        .nav.scrolled {
+          background: rgba(255, 255, 255, 0.94);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          padding: 14px 0;
+        }
+
+        .nav-inner {
+          width: min(1180px, calc(100% - 48px));
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+        }
+
+        .brand {
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0.34em;
+          color: ${scrolled ? "#4a4a4a" : "#ffffff"};
+          white-space: nowrap;
+          transition: color 0.35s ease;
+        }
+
+        .nav-links {
+          display: flex;
+          gap: 28px;
+          flex-wrap: wrap;
+        }
+
+        .nav-links a {
+          font-size: 11px;
+          letter-spacing: 0.22em;
+          color: ${scrolled ? "#4a4a4a" : "#ffffff"};
+          transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+          color: #d4a5a5;
+        }
+
+        .hero {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          background: #000000;
+          text-align: center;
+          padding: 0 24px;
+        }
+
+        .hero-bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.4;
+          filter: grayscale(100%) brightness(35%) contrast(130%);
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.58),
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.75)
+          );
+        }
+
+        .hero-content {
+          position: relative;
+          z-index: 1;
+          max-width: 900px;
+        }
+
+        .hero-title {
+          margin: 0;
+          font-size: clamp(28px, 5vw, 42px);
+          font-weight: 300;
+          letter-spacing: 0.42em;
+          color: rgba(255, 255, 255, 0.94);
+        }
+
+        .hero-subtitle {
+          margin-top: 28px;
+          font-size: 11px;
+          letter-spacing: 0.42em;
+          color: #d4a5a5;
+          text-transform: uppercase;
+        }
+
+        .scroll-mark {
+          position: absolute;
+          left: 50%;
+          bottom: 26px;
+          transform: translateX(-50%);
+          color: rgba(255, 255, 255, 0.55);
+          font-size: 18px;
+          z-index: 1;
+        }
+
+        .section {
+          padding: 110px 0;
+        }
+
+        .container {
+          width: min(1100px, calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .narrow {
+          width: min(820px, calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .section-label {
+          margin: 0 0 28px 0;
+          padding-left: 16px;
+          border-left: 1px solid #d4a5a5;
+          color: #d4a5a5;
+          font-size: 11px;
+          letter-spacing: 0.34em;
+          text-transform: uppercase;
+        }
+
+        .name {
+          color: #d4a5a5;
+          font-size: 14px;
+          letter-spacing: 0.2em;
+          margin-bottom: 18px;
+        }
+
+        .lead {
+          margin: 0 0 44px 0;
+          font-size: clamp(22px, 3vw, 32px);
+          font-weight: 300;
+          line-height: 2;
+        }
+
+        .profile-grid {
+          display: grid;
+          gap: 16px;
+          margin-bottom: 36px;
+        }
+
+        .profile-row {
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          gap: 18px;
+        }
+
+        .profile-year {
+          color: rgba(212, 165, 165, 0.95);
+        }
+
+        .expertise-title {
+          margin: 18px 0 16px 0;
+          color: rgba(212, 165, 165, 0.85);
+          font-size: 11px;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+        }
+
+        .expertise-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .expertise-list li {
+          margin: 0 0 12px 0;
+          padding-left: 20px;
+          position: relative;
+        }
+
+        .expertise-list li::before {
+          content: "/";
+          position: absolute;
+          left: 0;
+          color: #d4a5a5;
+        }
+
+        .body-copy p {
+          margin: 0 0 20px 0;
+          font-size: 16px;
+        }
+
+        .dark-section {
+          background: #000000;
+          color: #ffffff;
+        }
+
+        .philosophy-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 36px;
+        }
+
+        .card-number {
+          font-size: 54px;
+          font-style: italic;
+          font-weight: 300;
+          color: rgba(212, 165, 165, 0.35);
+          margin-bottom: 22px;
+        }
+
+        .card-title {
+          margin: 0 0 18px 0;
+          font-size: 22px;
+          letter-spacing: 0.15em;
+        }
+
+        .card-text {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.58);
+          font-size: 15px;
+          line-height: 2;
+        }
+
+        .partnership-wrap {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 54px;
+        }
+
+        .muted {
+          color: rgba(255, 255, 255, 0.56);
+        }
+
+        .service {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 0 0 34px 0;
+          margin: 0 0 34px 0;
+        }
+
+        .service-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 16px;
+          margin-bottom: 12px;
+        }
+
+        .service h3 {
+          margin: 0;
+          font-size: 30px;
+          font-weight: 300;
+          letter-spacing: 0.08em;
+        }
+
+        .service-arrow {
+          color: #d4a5a5;
+          font-size: 16px;
+        }
+
+        .service p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.45);
+        }
+
+        .journal {
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .journal-box {
+          border: 1px solid rgba(212, 165, 165, 0.16);
+          padding: 36px;
+        }
+
+        .journal-flex {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 40px;
+        }
+
+        .journal-label {
+          margin: 0 0 18px 0;
+          color: #d4a5a5;
+          font-size: 11px;
+          letter-spacing: 0.34em;
+          text-transform: uppercase;
+        }
+
+        .journal-title {
+          margin: 0 0 18px 0;
+          font-size: clamp(26px, 3vw, 36px);
+          font-weight: 300;
+          line-height: 1.7;
+          letter-spacing: 0.08em;
+        }
+
+        .journal-text {
+          margin: 0;
+          max-width: 520px;
+          color: rgba(74, 74, 74, 0.64);
+        }
+
+        .journal-link {
+          white-space: nowrap;
+          font-size: 11px;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          color: #4a4a4a;
+        }
+
+        .journal-link:hover {
+          color: #d4a5a5;
+        }
+
+        .footer {
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+          text-align: center;
+          background: #ffffff;
+        }
+
+        .footer-sub {
+          margin: 0 0 54px 0;
+          color: rgba(74, 74, 74, 0.75);
+          letter-spacing: 0.12em;
+        }
+
+        .socials {
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          flex-wrap: wrap;
+          margin-bottom: 64px;
+        }
+
+        .socials a {
+          color: #4a4a4a;
+          border-bottom: 1px solid transparent;
+          padding-bottom: 4px;
+          transition: 0.3s ease;
+        }
+
+        .socials a:hover {
+          color: #d4a5a5;
+          border-color: #d4a5a5;
+        }
+
+        .copyright {
+          font-size: 11px;
+          letter-spacing: 0.28em;
+          color: rgba(74, 74, 74, 0.35);
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+          .philosophy-grid,
+          .partnership-wrap,
+          .journal-flex {
+            grid-template-columns: 1fr;
+            display: grid;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .nav-inner {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .nav-links {
+            gap: 16px;
+          }
+
+          .profile-row {
+            grid-template-columns: 1fr;
+            gap: 4px;
+          }
+
+          .section {
+            padding: 90px 0;
+          }
+
+          .journal-box {
+            padding: 28px;
+          }
+        }
+      `}</style>
+
+      <div className="page">
+        <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
+          <div className="nav-inner">
+            <div className="brand">AMAMI SOUDA</div>
+            <div className="nav-links">
+              <a href="#about">About</a>
+              <a href="#philosophy">Philosophy</a>
+              <a href="#partnership">Partnership</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </nav>
+
+        <section className="hero">
+          <img
+            className="hero-bg"
             src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
             alt="Background visual"
-            className="h-full w-full object-cover grayscale brightness-[0.3] contrast-150 blur-[2px]"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:120px_120px] opacity-40" />
-        </div>
+          <div className="hero-overlay" />
 
-        <div className="relative z-10 max-w-4xl text-center">
-          <FadeIn>
-            <h1 className="text-2xl font-light uppercase leading-tight tracking-[0.8em] text-white/90 md:text-3xl">
-              AMAMI SOUDA
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.4}>
-            <p className="mt-8 text-[9px] font-light uppercase tracking-[1.6em] text-[#d4a5a5] opacity-80 md:text-[10px]">
-              Buyer / Director
+          <div className="hero-content">
+            <h1 className="hero-title">AMAMI SOUDA</h1>
+            <div className="hero-subtitle">Buyer / Director</div>
+          </div>
+
+          <div className="scroll-mark">↓</div>
+        </section>
+
+        <section id="about" className="section">
+          <div className="narrow">
+            <div className="name">早田天美</div>
+
+            <p className="lead">
+              2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br />
+              上質な商材やユニークな商材など、さまざまな商材に向き合い、
+              積み上げてきた23年の歳月は、単なるキャリアではなく、
+              私の「技術」そのものになりました。
             </p>
-          </FadeIn>
-        </div>
 
-        <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.15, 0.35, 0.15] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[#e5e4e2]"
-        >
-          <ChevronDown size={14} strokeWidth={1} />
-        </motion.div>
-      </section>
+            <h2 className="section-label">Profile</h2>
 
-      <section id="about" className="mx-auto max-w-4xl px-8 py-32">
-        <div className="pt-12 md:pt-24">
-          <FadeIn delay={0.2}>
-            <div className="mb-12">
-              <span className="mb-4 block text-sm font-medium tracking-[0.3em] text-[#d4a5a5]">
-                早田天美
-              </span>
-              <p className="text-xl font-light leading-loose tracking-wider md:text-2xl">
-                2002年からジュエリー、伝統工芸、そして高級皮革etc...。
-                <br />
-                上質な商材やユニークな商材、などさまざまな商材に向き合い、積み上げてきた23年の歳月は、
-                単なるキャリアではなく、私の「技術」そのものになりました。
-              </p>
-            </div>
-
-            <div className="mb-16 space-y-8">
-              <h3 className="border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
-                Profile
-              </h3>
-
-              <div className="space-y-4 text-sm font-light leading-relaxed md:text-base">
-                <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <span className="text-[#d4a5a5]/80">2002年</span>
-                  <span>ネットショップにてコスチュームジュエリーをECにて販売</span>
-                </div>
-                <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <span className="text-[#d4a5a5]/80">2008年ー2026年</span>
-                  <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
-                </div>
+            <div className="profile-grid">
+              <div className="profile-row">
+                <div className="profile-year">2002年</div>
+                <div>ネットショップにてコスチュームジュエリーをECにて販売</div>
               </div>
-
-              <div className="pt-4 text-sm font-light leading-relaxed opacity-80 md:text-base">
-                <p className="mb-4 text-[10px] uppercase tracking-widest text-[#d4a5a5]/80">
-                  Expertise since 2002
-                </p>
-                <ul className="list-none space-y-3">
-                  <li className="flex gap-3">
-                    <span className="font-bold text-[#d4a5a5]">/</span>
-                    <span>
-                      コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-[#d4a5a5]">/</span>
-                    <span>ジュエリー（主に真珠5年）</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-[#d4a5a5]">/</span>
-                    <span>日用品5年</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-[#d4a5a5]">/</span>
-                    <span>バッグを中心とした服飾雑貨5年</span>
-                  </li>
-                </ul>
+              <div className="profile-row">
+                <div className="profile-year">2008年–2026年</div>
+                <div>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</div>
               </div>
             </div>
 
-            <div className="space-y-6 text-sm font-light leading-relaxed md:text-base">
+            <div className="expertise-title">Expertise since 2002</div>
+            <ul className="expertise-list">
+              <li>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年</li>
+              <li>ジュエリー（主に真珠）5年</li>
+              <li>日用品 5年</li>
+              <li>バッグを中心とした服飾雑貨 5年</li>
+            </ul>
+
+            <div className="body-copy" style={{ marginTop: 40 }}>
               <p>
                 かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品3億円前後の実績。
                 それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
               </p>
+
               <p>
-                複雑に絡み合う商品情報を解きほぐし、
-                ひとり一人の人の心に届く「研ぎ澄まされた言葉」へと整えるための礎。
+                複雑に絡み合う商品情報を解きほぐし、ひとり一人の人の心に届く
+                「研ぎ澄まされた言葉」へと整えるための礎。
               </p>
+
               <p>
-                真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、商材を勉強し専門性を磨き上げました。
-                <br />
-                その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の“暗黙知”が伝わりにくいもの。
-                それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように噛み砕いて翻訳をしていく。
-                その作業が一番大切なことだと考えます。
+                真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、
+                商材を勉強し専門性を磨き上げました。<br />
+                その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の暗黙知が伝わりにくいもの。
+                それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように
+                噛み砕いて翻訳していく。その作業が一番大切なことだと考えます。
               </p>
+
               <p>
-                「あなた（ブランド・メーカー）にとっての“当たり前”はまったくあたりまえではない」ということ。
-                <br />
+                「あなた（ブランド・メーカー）にとっての当たり前は、まったく当たり前ではない」ということ。<br />
                 そして、それが一番大切なブランドの個性かもしれないということ。
               </p>
+
               <p>一緒に見つけてみませんか。</p>
             </div>
-          </FadeIn>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section id="philosophy" className="relative overflow-hidden bg-black px-8 py-32 text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        </div>
+        <section id="philosophy" className="section dark-section">
+          <div className="container">
+            <h2 className="section-label">Core Philosophy</h2>
 
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <FadeIn>
-            <h2 className="mb-24 border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
-              Core Philosophy
-            </h2>
-          </FadeIn>
-
-          <div className="grid gap-16 md:grid-cols-3 md:gap-8">
-            <FadeIn delay={0.1}>
-              <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
-                  01
-                </span>
-                <h3 className="text-lg font-medium tracking-[0.3em]">見抜く。</h3>
-                <p className="text-sm font-light leading-loose tracking-wider text-white/50">
+            <div className="philosophy-grid">
+              <div>
+                <div className="card-number">01</div>
+                <h3 className="card-title">見抜く。</h3>
+                <p className="card-text">
                   溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。
                   冷静な自他分析こそが、本質を捉える唯一の道。
                 </p>
               </div>
-            </FadeIn>
 
-            <FadeIn delay={0.3}>
-              <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
-                  02
-                </span>
-                <h3 className="text-lg font-medium tracking-[0.3em]">整える。</h3>
-                <p className="text-sm font-light leading-loose tracking-wider text-white/50">
+              <div>
+                <div className="card-number">02</div>
+                <h3 className="card-title">整える。</h3>
+                <p className="card-text">
                   価値があるのに、まだ届いていない。
-                  その乖離を、論理的な見せ方と言葉の力で埋め、
-                  あるべき姿へと再構築する。
+                  その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。
                 </p>
               </div>
-            </FadeIn>
 
-            <FadeIn delay={0.5}>
-              <div className="group space-y-8">
-                <span className="text-5xl font-light italic text-[#d4a5a5]/30 transition-colors duration-700 group-hover:text-[#d4a5a5]/50">
-                  03
-                </span>
-                <h3 className="text-lg font-medium tracking-[0.3em]">届ける。</h3>
-                <p className="text-sm font-light leading-loose tracking-wider text-white/50">
+              <div>
+                <div className="card-number">03</div>
+                <h3 className="card-title">届ける。</h3>
+                <p className="card-text">
                   「わからない」を「わかった」へ。
-                  一過性のコンサルティングではなく、
-                  誠実な対話を通じて、市場との幸福な出会いを創出する。
+                  一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。
                 </p>
               </div>
-            </FadeIn>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="partnership" className="relative overflow-hidden bg-black px-8 py-32 text-white">
-        <div className="pointer-events-none absolute inset-0 opacity-5">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:20px_20px]" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="flex flex-col gap-16 md:flex-row">
-            <div className="md:w-1/3">
-              <FadeIn>
-                <h2 className="mb-12 border-l border-[#d4a5a5] pl-4 text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
-                  Partnership
-                </h2>
-                <p className="text-sm font-light leading-loose tracking-widest text-white/50">
-                  伝え方に悩むブランド、
-                  <br />
+        <section id="partnership" className="section dark-section">
+          <div className="container">
+            <div className="partnership-wrap">
+              <div>
+                <h2 className="section-label">Partnership</h2>
+                <p className="muted">
+                  伝え方に悩むブランド、<br />
                   価値を再定義したい営業担当者へ。
                 </p>
-              </FadeIn>
-            </div>
+              </div>
 
-            <div className="md:w-2/3">
-              <FadeIn delay={0.2}>
-                <div className="space-y-16">
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
-                    <div className="mb-6 flex items-end justify-between">
-                      <h3 className="text-2xl font-light tracking-[0.2em]">
-                        Value Definition
-                      </h3>
-                      <ArrowRight
-                        size={16}
-                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
-                      />
-                    </div>
-                    <p className="text-sm font-light leading-relaxed text-white/40">
-                      商材の強みを抽出し、市場での立ち位置を明確にします。
-                      「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
-                    </p>
+              <div>
+                <div className="service">
+                  <div className="service-head">
+                    <h3>Value Definition</h3>
+                    <span className="service-arrow">→</span>
                   </div>
-
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
-                    <div className="mb-6 flex items-end justify-between">
-                      <h3 className="text-2xl font-light tracking-[0.2em]">
-                        Direction &amp; Story
-                      </h3>
-                      <ArrowRight
-                        size={16}
-                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
-                      />
-                    </div>
-                    <p className="text-sm font-light leading-relaxed text-white/40">
-                      ビジュアルとテキストの両面から、商材の魅力を最大化。
-                      顧客の心に深く沈み込む、静かなストーリーを構築します。
-                    </p>
-                  </div>
-
-                  <div className="group border-b border-white/10 pb-12 transition-colors duration-500 hover:border-[#d4a5a5]">
-                    <div className="mb-6 flex items-end justify-between">
-                      <h3 className="text-2xl font-light tracking-[0.2em]">
-                        Hands-on Support
-                      </h3>
-                      <ArrowRight
-                        size={16}
-                        className="translate-x-[-1rem] text-[#d4a5a5] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
-                      />
-                    </div>
-                    <p className="text-sm font-light leading-relaxed text-white/40">
-                      単なる助言に留まらず、現場の「わからない」に寄り添い、
-                      共に手を動かし、解決の糸口を見出すまで伴走します。
-                    </p>
-                  </div>
+                  <p>
+                    商材の強みを抽出し、市場での立ち位置を明確にします。
+                    「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
+                  </p>
                 </div>
-              </FadeIn>
+
+                <div className="service">
+                  <div className="service-head">
+                    <h3>Direction &amp; Story</h3>
+                    <span className="service-arrow">→</span>
+                  </div>
+                  <p>
+                    ビジュアルとテキストの両面から、商材の魅力を最大化。
+                    顧客の心に深く沈み込む、静かなストーリーを構築します。
+                  </p>
+                </div>
+
+                <div className="service">
+                  <div className="service-head">
+                    <h3>Hands-on Support</h3>
+                    <span className="service-arrow">→</span>
+                  </div>
+                  <p>
+                    単なる助言に留まらず、現場の「わからない」に寄り添い、
+                    共に手を動かし、解決の糸口を見出すまで伴走します。
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-t border-black/5 bg-white px-8 py-32">
-        <div className="mx-auto max-w-4xl">
-          <FadeIn>
-            <div className="group relative border border-[#d4a5a5]/10 p-8 transition-all duration-700 hover:border-[#d4a5a5]/30 md:p-16">
-              <div className="flex flex-col items-start justify-between gap-12 md:flex-row md:items-center">
-                <div className="space-y-6">
-                  <h2 className="text-[10px] font-medium uppercase tracking-[0.5em] text-[#d4a5a5]">
-                    Journal
-                  </h2>
-                  <h3 className="text-2xl font-light leading-relaxed tracking-[0.1em] md:text-3xl">
-                    お買い物はお仕事です
-                  </h3>
-                  <p className="max-w-md text-sm font-light leading-loose text-[#4a4a4a]/60">
-                    出会った“良い商品”だけを備忘録としてまとめました。
-                    <br />
+        <section className="section journal">
+          <div className="narrow">
+            <div className="journal-box">
+              <div className="journal-flex">
+                <div>
+                  <div className="journal-label">Journal</div>
+                  <h3 className="journal-title">お買い物はお仕事です</h3>
+                  <p className="journal-text">
+                    出会った“良い商品”だけを備忘録としてまとめました。<br />
                     訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
                   </p>
                 </div>
 
                 <a
+                  className="journal-link"
                   href="https://daphnemeria-blog.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-6 text-[10px] font-medium uppercase tracking-[0.4em] transition-all group-hover:text-[#d4a5a5]"
                 >
-                  Visit Blog
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-4"
-                  />
+                  Visit Blog →
                 </a>
               </div>
             </div>
-          </FadeIn>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <footer id="contact" className="border-t border-black/5 bg-white px-8 py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <FadeIn>
-            <p className="mb-16 text-sm font-light tracking-widest text-[#4a4a4a]">
-              静かな対話から、新しい価値を始めましょう。
-            </p>
+        <footer id="contact" className="section footer">
+          <div className="narrow">
+            <p className="footer-sub">静かな対話から、新しい価値を始めましょう。</p>
 
-            <div className="mb-24 flex justify-center gap-8 md:gap-12">
-              <a
-                href="mailto:your-email@example.com"
-                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
-              >
-                <Mail
-                  size={20}
-                  strokeWidth={1}
-                  className="transition-transform group-hover:scale-110"
-                />
-                <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 transition-opacity group-hover:opacity-100">
-                  Email
-                </span>
-              </a>
-
-              <a
-                href="https://daphnemeria-blog.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
-              >
-                <MessageSquare
-                  size={20}
-                  strokeWidth={1}
-                  className="transition-transform group-hover:scale-110"
-                />
-                <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 transition-opacity group-hover:opacity-100">
-                  Blog
-                </span>
-              </a>
-
-              <a
-                href="https://note.com/daphnemeria"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
-              >
-                <PenLine
-                  size={20}
-                  strokeWidth={1}
-                  className="transition-transform group-hover:scale-110"
-                />
-                <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 transition-opacity group-hover:opacity-100">
-                  Note
-                </span>
-              </a>
-
-              <a
-                href="https://x.com/daphnebuyer"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 text-[#4a4a4a] transition-colors hover:text-[#d4a5a5]"
-              >
-                <Twitter
-                  size={20}
-                  strokeWidth={1}
-                  className="transition-transform group-hover:scale-110"
-                />
-                <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 transition-opacity group-hover:opacity-100">
-                  X
-                </span>
-              </a>
+            <div className="socials">
+              <a href="mailto:your-email@example.com">Email</a>
+              <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer">Blog</a>
+              <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer">Note</a>
+              <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer">X</a>
             </div>
 
-            <div className="text-[10px] font-light uppercase tracking-[0.4em] text-[#4a4a4a]/40">
+            <div className="copyright">
               © {new Date().getFullYear()} All Rights Reserved.
             </div>
-          </FadeIn>
-        </div>
-      </footer>
-    </div>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
