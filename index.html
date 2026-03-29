@@ -10,575 +10,157 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #4a4a4a;
       font-family: "Noto Serif JP", serif;
-      -webkit-font-smoothing: antialiased;
+      background: #fff;
+      color: #4a4a4a;
       line-height: 1.8;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
     .container {
-      width: min(1100px, calc(100% - 48px));
-      margin: 0 auto;
+      width: min(1000px, 90%);
+      margin: auto;
     }
 
-    .narrow {
-      width: min(820px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .nav {
+    nav {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      z-index: 1000;
-      transition: 0.3s ease;
-      padding: 22px 0;
-      background: transparent;
+      top: 0;
+      padding: 20px 0;
+      transition: 0.3s;
     }
 
-    .nav.scrolled {
-      background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 16px 0;
+    nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .nav-inner {
-      width: min(1200px, calc(100% - 48px));
-      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
     }
 
     .brand {
-      font-family: "Noto Serif JP", serif;
+      letter-spacing: 0.3em;
       font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      color: #ffffff;
-      white-space: nowrap;
+      color: white;
     }
 
-    .nav.scrolled .brand {
+    nav.scrolled .brand {
       color: #4a4a4a;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
+    .links a {
+      margin-left: 20px;
+      font-size: 12px;
+      color: white;
+      text-decoration: none;
     }
 
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      color: #ffffff;
-      transition: color 0.3s ease;
-    }
-
-    .nav.scrolled .nav-links a {
+    nav.scrolled .links a {
       color: #4a4a4a;
-    }
-
-    .nav-links a:hover {
-      color: #d4a5a5 !important;
     }
 
     .hero {
-      position: relative;
-      min-height: 100vh;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop') center/cover;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background: #000000;
-      overflow: hidden;
+      align-items: center;
       text-align: center;
-      padding: 0 24px;
+      color: white;
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.4;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.25),
-        rgba(0, 0, 0, 0.72)
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-title {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.94);
-      font-family: "Noto Serif JP", serif;
-      font-size: clamp(28px, 5vw, 44px);
+    .hero h1 {
+      letter-spacing: 0.4em;
       font-weight: 300;
-      letter-spacing: 0.45em;
-    }
-
-    .hero-subtitle {
-      margin-top: 26px;
-      color: #d4a5a5;
-      font-size: 12px;
-      letter-spacing: 0.45em;
-    }
-
-    .scroll-mark {
-      position: absolute;
-      left: 50%;
-      bottom: 26px;
-      transform: translateX(-50%);
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 18px;
-      z-index: 1;
     }
 
     section {
-      padding: 110px 0;
-    }
-
-    .section-label {
-      margin: 0 0 28px 0;
-      padding-left: 16px;
-      border-left: 1px solid #d4a5a5;
-      color: #d4a5a5;
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-    }
-
-    .name {
-      color: #d4a5a5;
-      font-size: 14px;
-      letter-spacing: 0.2em;
-      margin-bottom: 18px;
-    }
-
-    .lead {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 300;
-      line-height: 2;
-      margin: 0 0 42px 0;
-    }
-
-    .profile-grid {
-      display: grid;
-      gap: 16px;
-      margin: 0 0 36px 0;
-    }
-
-    .profile-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 18px;
-    }
-
-    .profile-year {
-      color: rgba(212, 165, 165, 0.95);
-    }
-
-    .expertise-title {
-      margin: 18px 0 16px 0;
-      color: rgba(212, 165, 165, 0.85);
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-    }
-
-    .expertise-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .expertise-list li {
-      margin: 0 0 12px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .expertise-list li::before {
-      content: "/";
-      position: absolute;
-      left: 0;
-      color: #d4a5a5;
-    }
-
-    .body-copy p {
-      margin: 0 0 20px 0;
-      font-size: 16px;
+      padding: 100px 0;
     }
 
     .philosophy {
-      background: #000000;
-      color: #ffffff;
+      background: black;
+      color: white;
     }
 
-    .philosophy-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
-    }
-
-    .card-number {
-      font-size: 54px;
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(212, 165, 165, 0.35);
-      margin-bottom: 22px;
-    }
-
-    .card-title {
-      font-size: 22px;
-      margin: 0 0 18px 0;
-      letter-spacing: 0.15em;
-    }
-
-    .card-text {
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 15px;
-      line-height: 2;
-      margin: 0;
-    }
-
-    .partnership {
-      background: #000000;
-      color: #ffffff;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .partnership-wrap {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 54px;
-    }
-
-    .muted {
-      color: rgba(255, 255, 255, 0.56);
-    }
-
-    .service {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0 0 34px 0;
-      margin: 0 0 34px 0;
-    }
-
-    .service h3 {
-      margin: 0 0 12px 0;
-      font-size: 30px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-    }
-
-    .service p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.45);
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
     }
 
     .footer {
       text-align: center;
-      background: #ffffff;
+      padding: 80px 0;
     }
 
-    .footer-title {
-      margin: 0 0 28px 0;
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      line-height: 1.9;
-    }
-
-    .footer-sub {
-      margin: 0 0 54px 0;
-      color: rgba(74, 74, 74, 0.65);
-      letter-spacing: 0.15em;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 64px;
-    }
-
-    .socials a {
-      color: #4a4a4a;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 4px;
-      transition: 0.3s ease;
-    }
-
-    .socials a:hover {
-      color: #d4a5a5;
-      border-color: #d4a5a5;
-    }
-
-    .copyright {
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      color: rgba(74, 74, 74, 0.35);
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 900px) {
-      .philosophy-grid,
-      .partnership-wrap {
+    @media(max-width:768px){
+      .grid {
         grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 16px;
-      }
-
-      .profile-row {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      section {
-        padding: 90px 0;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <div class="brand">AMAMI SOUDA</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#partnership">Partnership</a>
-        <a href="#contact">Contact</a>
-      </div>
+<nav id="nav">
+  <div class="container nav-inner">
+    <div class="brand">AMAMI SOUDA</div>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#contact">Contact</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <section class="hero">
-    <img
-      class="hero-bg"
-      src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop"
-      alt="Background visual"
-    >
-    <div class="hero-overlay"></div>
+<section class="hero">
+  <div>
+    <h1>AMAMI SOUDA</h1>
+    <p>Buyer / Director</p>
+  </div>
+</section>
 
-    <div class="hero-content">
-      <h1 class="hero-title">AMAMI SOUDA</h1>
-      <div class="hero-subtitle">Buyer / Director</div>
+<section id="about">
+  <div class="container">
+    <p>2002年から様々な商材に向き合い、積み上げてきた経験は単なるキャリアではなく技術そのものです。</p>
+  </div>
+</section>
+
+<section id="philosophy" class="philosophy">
+  <div class="container grid">
+    <div>
+      <h3>見抜く。</h3>
+      <p>本質を見抜く力。</p>
     </div>
-
-    <div class="scroll-mark">↓</div>
-  </section>
-
-  <section id="about">
-    <div class="narrow">
-      <div class="name">早田天美</div>
-
-      <p class="lead">
-        2002年からジュエリー、伝統工芸、そして高級皮革etc...。<br>
-        上質な商材やユニークな商材など、さまざまな商材に向き合い、
-        積み上げてきた23年の歳月は、単なるキャリアではなく、
-        私の「技術」そのものになりました。
-      </p>
-
-      <h2 class="section-label">Profile</h2>
-
-      <div class="profile-grid">
-        <div class="profile-row">
-          <div class="profile-year">2002年</div>
-          <div>ネットショップにてコスチュームジュエリーをECにて販売</div>
-        </div>
-        <div class="profile-row">
-          <div class="profile-year">2008年–2026年</div>
-          <div>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</div>
-        </div>
-      </div>
-
-      <div class="expertise-title">Expertise since 2002</div>
-      <ul class="expertise-list">
-        <li>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）5年</li>
-        <li>ジュエリー（主に真珠）5年</li>
-        <li>日用品 5年</li>
-        <li>バッグを中心とした服飾雑貨 5年</li>
-      </ul>
-
-      <div class="body-copy" style="margin-top: 40px;">
-        <p>
-          かつてテレビ通販の舞台で、1時間で1,500万円、1日で1商品3億円前後の実績。
-          それは、市場の熱狂を冷静に分析し、商品の「真価」を見抜く視点があったからこそ成し得た実績です。
-        </p>
-
-        <p>
-          複雑に絡み合う商品情報を解きほぐし、ひとり一人の人の心に届く
-          「研ぎ澄まされた言葉」へと整えるための礎。
-        </p>
-
-        <p>
-          真珠の買い付けを行うときは、真珠検定ジュニアアドバイザー資格を結果的に取得するほど、
-          商材を勉強し専門性を磨き上げました。<br>
-          その商材に向き合い、その商材や商品の専門性が高いほど、その業界内の暗黙知が伝わりにくいもの。
-          それを見つけ、一般の方にわかるよう、興味を持たれるよう、そして買っていただけるように
-          噛み砕いて翻訳していく。その作業が一番大切なことだと考えます。
-        </p>
-
-        <p>
-          「あなた（ブランド・メーカー）にとっての当たり前は、まったく当たり前ではない」ということ。<br>
-          そして、それが一番大切なブランドの個性かもしれないということ。
-        </p>
-
-        <p>一緒に見つけてみませんか。</p>
-      </div>
+    <div>
+      <h3>整える。</h3>
+      <p>価値を再構築する。</p>
     </div>
-  </section>
-
-  <section id="philosophy" class="philosophy">
-    <div class="container">
-      <h2 class="section-label">Core Philosophy</h2>
-
-      <div class="philosophy-grid">
-        <div>
-          <div class="card-number">01</div>
-          <h3 class="card-title">見抜く。</h3>
-          <p class="card-text">
-            溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。
-            冷静な自他分析こそが、本質を捉える唯一の道。
-          </p>
-        </div>
-
-        <div>
-          <div class="card-number">02</div>
-          <h3 class="card-title">整える。</h3>
-          <p class="card-text">
-            価値があるのに、まだ届いていない。
-            その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。
-          </p>
-        </div>
-
-        <div>
-          <div class="card-number">03</div>
-          <h3 class="card-title">届ける。</h3>
-          <p class="card-text">
-            「わからない」を「わかった」へ。
-            一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。
-          </p>
-        </div>
-      </div>
+    <div>
+      <h3>届ける。</h3>
+      <p>価値を伝える。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="partnership" class="partnership">
-    <div class="container">
-      <div class="partnership-wrap">
-        <div>
-          <h2 class="section-label">Partnership</h2>
-          <p class="muted">
-            伝え方に悩むブランド、<br>
-            価値を再定義したい営業担当者へ。
-          </p>
-        </div>
+<footer id="contact" class="footer">
+  <div class="container">
+    <p>静かな対話から、新しい価値を始めましょう。</p>
+    <p>Email / Note / Instagram</p>
+  </div>
+</footer>
 
-        <div>
-          <div class="service">
-            <h3>Value Definition</h3>
-            <p>
-              商材の強みを抽出し、市場での立ち位置を明確にします。
-              「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
-            </p>
-          </div>
+<script>
+window.addEventListener("scroll", function(){
+  document.getElementById("nav").classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
 
-          <div class="service">
-            <h3>Direction &amp; Story</h3>
-            <p>
-              ビジュアルとテキストの両面から、商材の魅力を最大化。
-              顧客の心に深く沈み込む、静かなストーリーを構築します。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="footer">
-    <div class="narrow">
-      <h2 class="footer-title">
-        答えは、あなたの商品の中に。<br>
-        それを共に、磨き上げるために。
-      </h2>
-
-      <p class="footer-sub">静かな対話から、新しい価値を始めましょう。</p>
-
-      <div class="socials">
-        <a href="mailto:your-email@example.com">Email</a>
-        <a href="https://note.com/" target="_blank" rel="noopener noreferrer">Note</a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-
-      <div class="copyright">© 2026 All Rights Reserved.</div>
-    </div>
-  </footer>
-
-  <script>
-    const nav = document.getElementById("nav");
-
-    function handleScroll() {
-      if (window.scrollY > 30) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-  </script>
 </body>
 </html>
