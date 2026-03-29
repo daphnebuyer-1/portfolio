@@ -1,68 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMAMI SOUDA | BUYER / DIRECTOR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+    <title>The Essence - Portfolio of a Senior Buyer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;500&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; background-color: #000; color: #fff; font-family: 'Noto Serif JP', serif; }
-        
-        /* 最初の画面 */
+        /* AI Studioのデザインを再現したスタイル */
+        :root { --bg: #0a0a0a; --text: #f0f0f0; --accent: #d4af37; }
+        body, html { 
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--text);
+            font-family: 'Noto Serif JP', serif; overflow-x: hidden;
+        }
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: sticky;
-            top: 0;
+            height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
-        .name { font-size: 3rem; letter-spacing: 0.5em; margin-bottom: 20px; font-weight: 300; }
-        .title { font-size: 0.9rem; letter-spacing: 0.8em; color: #ccc; }
+        .name-main { font-size: 3.5rem; letter-spacing: 0.4em; margin-bottom: 1rem; font-weight: 200; opacity: 0; transform: translateY(20px); animation: fadeInUp 1.5s forwards; }
+        .sub-title { font-size: 0.8rem; letter-spacing: 0.6em; color: var(--accent); opacity: 0; animation: fadeIn 2s 1s forwards; }
+        
+        .section { padding: 150px 10%; max-width: 900px; margin: 0 auto; line-height: 2.2; }
+        .vision-text { font-size: 1.25rem; letter-spacing: 0.1em; margin-bottom: 4rem; text-align: justify; }
+        .experience-tag { border-left: 1px solid var(--accent); padding-left: 20px; margin-bottom: 3rem; font-size: 0.9rem; color: #888; }
 
-        /* スクロールした後のコンテンツエリア */
-        .content {
-            position: relative;
-            background-color: #000;
-            padding: 150px 20px;
-            text-align: center;
-            z-index: 10;
-        }
-        .text-block {
-            max-width: 700px;
-            margin: 0 auto 100px;
-            line-height: 2.5;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-        }
-        .highlight { color: #e5e4e2; font-weight: 600; margin-bottom: 30px; display: block; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* スクロールに応じたふわっとした表示 */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.5s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
     <div class="hero">
-        <div class="name">AMAMI SOUDA</div>
-        <div class="title">BUYER / DIRECTOR</div>
+        <div class="name-main">AMAMI SOUDA</div>
+        <div class="sub-title">SENIOR BUYER & DIRECTOR</div>
     </div>
 
-    <div class="content">
-        <div class="text-block">
-            <span class="highlight">価値を磨き、光を当てる。</span>
-            23年のキャリアで培った、リテールの真髄。<br>
-            テレビショッピング、Eコマース、そしてリアル店舗。<br>
-            常に販売の最前線で、モノと人の幸福な出会いを作ってきました。
+    <div class="section">
+        <div class="experience-tag">23 YEARS OF EXPERIENCE IN RETAIL STRATEGY</div>
+        
+        <div class="reveal vision-text">
+            価値を磨き、光を当てる。<br>
+            テレビショッピング、Eコマース、そして実店舗。<br>
+            2002年から常に販売の最前線に立ち、モノが持つ真実の物語を編集してきました。
         </div>
 
-        <div class="text-block">
-            <span class="highlight">「本物」だけが持つ、言葉なき説得力。</span>
-            素材のルーツから、職人のこだわりまで。<br>
-            ストーリーを汲み取り、独自の視点で編集する。<br>
-            それが、私の考える「バイヤー」の仕事です。
+        <div class="reveal vision-text" style="color: #aaa;">
+            単なる仕入れではない。その素材が、その職人が、なぜ特別なのか。<br>
+            静かな熱量を言語化し、お客様の元へ届ける。<br>
+            それが私の貫いてきたリテールの本質です。
+        </div>
+
+        <div class="reveal" style="margin-top: 100px; text-align: center; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.3em;">
+            EST. 2002 - SAITAMA / MISATO
         </div>
     </div>
 
+    <script>
+        // スクロールで文字を出す仕組み
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
