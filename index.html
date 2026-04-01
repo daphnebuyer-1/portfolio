@@ -20,9 +20,6 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Shippori Mincho"', 'serif'],
-                    },
                     colors: {
                         'plum-pink': '#DDA0DD',
                         'deep-gray': '#2F2F2F',
@@ -40,9 +37,14 @@
     </script>
 
     <style>
+        /* Global Font Override as requested */
+        * { 
+            font-family: 'Shippori Mincho', serif !important; 
+        }
+
         @layer base {
             body {
-                @apply bg-white text-deep-gray font-serif antialiased;
+                @apply bg-white text-deep-gray antialiased;
             }
             /* Custom selection color */
             ::selection {
@@ -450,4 +452,3 @@
     </script>
 </body>
 </html>
-
