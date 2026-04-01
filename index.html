@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAMI SOUDA | Buyer / Director</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Noto Serif JP -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500&family=Inter:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +22,6 @@
                 extend: {
                     fontFamily: {
                         serif: ['"Noto Serif JP"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
                         'plum-pink': '#DDA0DD',
@@ -32,21 +31,8 @@
                     },
                     letterSpacing: {
                         'widest-extra': '0.8em',
-                        'widest-max': '1.6em',
-                    },
-                    animation: {
-                        'hero-zoom': 'heroZoom 15s ease-in-out infinite',
-                        'scroll-bounce': 'scrollBounce 5s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        heroZoom: {
-                            '0%, 100%': { transform: 'scale(1.05)', opacity: '0.3' },
-                            '50%': { transform: 'scale(1.1)', opacity: '0.4' },
-                        },
-                        scrollBounce: {
-                            '0%, 100%': { transform: 'translateY(0)', opacity: '0.2' },
-                            '50%': { transform: 'translateY(8px)', opacity: '0.4' },
-                        }
+                        'widest-max': '1.2em',
+                        'editorial': '0.4em'
                     }
                 }
             }
@@ -56,35 +42,75 @@
     <style>
         @layer base {
             body {
-                @apply bg-white text-black font-serif antialiased;
+                @apply bg-white text-deep-gray font-serif antialiased;
             }
-            .selection-pink::selection {
+            /* Custom selection color */
+            ::selection {
                 background-color: #DDA0DD;
                 color: black;
             }
+        }
+
+        /* Hero Image Zoom Animation */
+        @keyframes heroZoom {
+            0%, 100% { transform: scale(1.05); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+        }
+        .animate-hero-zoom {
+            animation: heroZoom 15s ease-in-out infinite;
+        }
+
+        /* Scroll Indicator Bounce */
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.2; }
+            50% { transform: translateY(8px); opacity: 0.4; }
+        }
+        .animate-scroll-bounce {
+            animation: scrollBounce 5s ease-in-out infinite;
         }
 
         /* Fade In Animation Styles */
         .fade-in-element {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98), transform 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+            transition: opacity 1.2s cubic-bezier(0.21, 0.47, 0.32, 0.98), transform 1.2s cubic-bezier(0.21, 0.47, 0.32, 0.98);
         }
-
         .fade-in-element.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Editorial Heading Style */
+        .heading-line {
+            position: relative;
+            display: inline-block;
+            padding-left: 1.5rem;
+        }
+        .heading-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 1px;
+            height: 1.5rem;
+            background-color: #DDA0DD;
+            transform: translateY(-50%);
+        }
     </style>
 </head>
-<body class="selection-pink">
+<body>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-8 py-6 flex justify-between items-center">
-        <div id="nav-logo" class="text-sm tracking-[0.4em] font-light uppercase text-white mix-blend-difference">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-700 px-8 py-8 flex justify-between items-center">
+        <div id="nav-logo" class="text-sm tracking-[0.5em] font-light uppercase text-white mix-blend-difference">
             AMAMI SOUDA
         </div>
-        <div id="nav-links" class="flex gap-8 text-[10px] tracking-[0.3em] uppercase font-light text-white mix-blend-difference">
+        <div id="nav-links" class="flex gap-10 text-[10px] tracking-[0.3em] uppercase font-light text-white mix-blend-difference">
             <a href="#about" class="hover:text-plum-pink transition-colors">About</a>
             <a href="#philosophy" class="hover:text-plum-pink transition-colors">Philosophy</a>
             <a href="#partnership" class="hover:text-plum-pink transition-colors">Partnership</a>
@@ -99,6 +125,7 @@
                 src="https://images.unsplash.com/photo-1516589174184-c685266e48fc?q=80&w=2070&auto=format&fit=crop" 
                 alt="Hero Background"
                 class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 animate-hero-zoom"
+                referrerpolicy="no-referrer"
             >
             <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
             <div class="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
@@ -106,28 +133,28 @@
         
         <div class="relative z-10 text-center max-w-4xl">
             <div class="fade-in-element">
-                <h1 class="text-2xl md:text-4xl font-light tracking-widest-extra leading-tight uppercase text-white/90">
+                <h1 class="text-3xl md:text-5xl font-extralight tracking-widest-extra leading-tight uppercase text-white/90">
                     AMAMI SOUDA
                 </h1>
             </div>
-            <div class="fade-in-element" style="transition-delay: 0.4s;">
-                <p class="mt-8 text-[9px] md:text-[11px] tracking-widest-max text-plum-pink font-light uppercase opacity-90">
+            <div class="fade-in-element" style="transition-delay: 0.5s;">
+                <p class="mt-10 text-[10px] md:text-[12px] tracking-widest-max text-plum-pink font-light uppercase opacity-80">
                     Buyer / Director
                 </p>
             </div>
         </div>
 
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/40 animate-scroll-bounce">
-            <i data-lucide="chevron-down" stroke-width="1" size="16"></i>
+            <i data-lucide="chevron-down" stroke-width="1" size="18"></i>
         </div>
     </section>
 
     <!-- Introduction -->
-    <section id="about" class="py-32 px-8 max-w-4xl mx-auto">
-        <div class="pt-12 md:pt-24 fade-in-element" style="transition-delay: 0.2s;">
-            <div class="mb-12">
-                <span class="text-sm tracking-[0.3em] text-plum-pink font-medium block mb-4">早田天美</span>
-                <p class="text-lg md:text-xl leading-loose tracking-wider font-light">
+    <section id="about" class="py-40 px-8 max-w-4xl mx-auto">
+        <div class="fade-in-element" style="transition-delay: 0.2s;">
+            <div class="mb-20">
+                <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6">早田天美</span>
+                <p class="text-lg md:text-xl leading-[2.4] tracking-wider font-light text-deep-gray/90">
                     ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br />
                     全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br />
                     ここで私が獲得したのは、未知の商材であっても短期間でその商材やブランド、業界について学習し、的確にセールスポイントを掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br />
@@ -135,35 +162,35 @@
                 </p>
             </div>
 
-            <div class="mb-16 space-y-8">
-                <h3 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium border-l border-plum-pink pl-4">Profile</h3>
-                <div class="space-y-4 text-sm md:text-base leading-relaxed text-deep-gray font-light">
-                    <div class="grid grid-cols-[120px_1fr] gap-4">
-                        <span class="text-plum-pink/80">2002年</span>
+            <div class="mb-24 space-y-12">
+                <h3 class="text-[11px] tracking-editorial text-plum-pink uppercase font-semibold heading-line">Profile</h3>
+                <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                    <div class="grid grid-cols-[140px_1fr] gap-4">
+                        <span class="text-plum-pink/80 tracking-widest">2002年</span>
                         <span>ネットショップにてコスチュームジュエリーを販売</span>
                     </div>
-                    <div class="grid grid-cols-[120px_1fr] gap-4">
-                        <span class="text-plum-pink/80">2008年ー2026年</span>
+                    <div class="grid grid-cols-[140px_1fr] gap-4">
+                        <span class="text-plum-pink/80 tracking-widest">2008年ー2026年</span>
                         <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
                     </div>
                 </div>
                 
-                <div class="pt-4 text-sm md:text-base leading-relaxed text-deep-gray font-light opacity-80">
-                    <p class="mb-4 tracking-widest text-[10px] uppercase text-plum-pink/80">Expertise since 2002</p>
-                    <ul class="space-y-3 list-none">
-                        <li class="flex gap-3">
+                <div class="pt-8 text-sm md:text-base leading-relaxed text-deep-gray font-light opacity-80">
+                    <p class="mb-6 tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold">Expertise since 2002</p>
+                    <ul class="space-y-4 list-none">
+                        <li class="flex gap-4">
                             <span class="text-plum-pink font-bold">/</span>
                             <span>コレクタブル（伝統的工芸品、開運、作家もの、コレクションアイテムなどニッチ商材）５年</span>
                         </li>
-                        <li class="flex gap-3">
+                        <li class="flex gap-4">
                             <span class="text-plum-pink font-bold">/</span>
                             <span>ジュエリー（主に真珠５年）</span>
                         </li>
-                        <li class="flex gap-3">
+                        <li class="flex gap-4">
                             <span class="text-plum-pink font-bold">/</span>
                             <span>日用品５年</span>
                         </li>
-                        <li class="flex gap-3">
+                        <li class="flex gap-4">
                             <span class="text-plum-pink font-bold">/</span>
                             <span>バッグを中心とした服飾雑貨５年</span>
                         </li>
@@ -171,7 +198,7 @@
                 </div>
             </div>
 
-            <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+            <div class="space-y-10 text-sm md:text-base leading-[2.2] text-deep-gray/80 font-light">
                 <p>
                     かつてテレビ通販の最前線で、1時間に1,500万円、1日で1商品3億円前後の売上を記録しました。この結果は、市場の熱狂にただ乗るのではなく、冷静な分析によって商品の「真価」を見抜く視点があったからこそ成し得たものです。
                 </p>
@@ -193,39 +220,39 @@
     </section>
 
     <!-- Core Philosophy -->
-    <section id="philosophy" class="py-32 bg-black text-white px-8 overflow-hidden relative">
+    <section id="philosophy" class="py-40 bg-black text-white px-8 overflow-hidden relative">
         <div class="absolute inset-0 opacity-10 pointer-events-none">
             <div class="w-full h-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         </div>
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="fade-in-element">
-                <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-24 border-l border-plum-pink pl-4">Core Philosophy</h2>
+                <h2 class="text-[11px] tracking-editorial text-plum-pink uppercase font-semibold mb-32 heading-line">Core Philosophy</h2>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-16 md:gap-8">
-                <div class="fade-in-element space-y-8 group" style="transition-delay: 0.1s;">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">01</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">見抜く。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">
+            <div class="grid md:grid-cols-3 gap-20 md:gap-12">
+                <div class="fade-in-element space-y-10 group" style="transition-delay: 0.1s;">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">01</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">見抜く。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">
                         溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。
                         冷静な自他分析こそが、本質を捉える唯一の道。
                     </p>
                 </div>
                 
-                <div class="fade-in-element space-y-8 group" style="transition-delay: 0.3s;">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">02</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">整える。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">
+                <div class="fade-in-element space-y-10 group" style="transition-delay: 0.3s;">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">02</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">整える。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">
                         価値があるのに、まだ届いていない。
                         その乖離を、論理的な見せ方と言葉の力で埋め、
                         あるべき姿へと再構築する。
                     </p>
                 </div>
                 
-                <div class="fade-in-element space-y-8 group" style="transition-delay: 0.5s;">
-                    <span class="text-5xl font-light text-plum-pink/30 italic group-hover:text-plum-pink/50 transition-colors duration-700">03</span>
-                    <h3 class="text-lg tracking-[0.3em] font-medium">届ける。</h3>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-wider">
+                <div class="fade-in-element space-y-10 group" style="transition-delay: 0.5s;">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">03</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">届ける。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">
                         「わからない」を「わかった」へ。
                         一過性のコンサルティングではなく、
                         誠実な対話を通じて、市場との幸福な出会いを創出する。
@@ -236,49 +263,49 @@
     </section>
 
     <!-- Service / Partnership -->
-    <section id="partnership" class="py-32 px-8 bg-black text-white overflow-hidden relative">
+    <section id="partnership" class="py-40 px-8 bg-black text-white overflow-hidden relative">
         <div class="absolute inset-0 opacity-5 pointer-events-none">
             <div class="w-full h-full bg-[radial-gradient(circle_at_center,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px]"></div>
         </div>
         <div class="max-w-5xl mx-auto relative z-10">
-            <div class="flex flex-col md:flex-row gap-16">
+            <div class="flex flex-col md:flex-row gap-20">
                 <div class="md:w-1/3 fade-in-element">
-                    <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium mb-12 border-l border-plum-pink pl-4">Partnership</h2>
-                    <p class="text-sm leading-loose text-white/50 font-light tracking-widest">
+                    <h2 class="text-[11px] tracking-editorial text-plum-pink uppercase font-semibold mb-12 heading-line">Partnership</h2>
+                    <p class="text-sm leading-[2.4] text-white/50 font-light tracking-widest">
                         伝え方に悩むブランド、<br />
                         価値を再定義したい営業担当者へ。
                     </p>
                 </div>
                 <div class="md:w-2/3 fade-in-element" style="transition-delay: 0.2s;">
-                    <div class="space-y-16">
-                        <div class="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
-                            <div class="flex justify-between items-end mb-6">
+                    <div class="space-y-20">
+                        <div class="border-b border-white/10 pb-14 group hover:border-plum-pink transition-colors duration-700">
+                            <div class="flex justify-between items-end mb-8">
                                 <h3 class="text-2xl font-light tracking-[0.2em]">Value Definition</h3>
-                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" size="16"></i>
+                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i>
                             </div>
-                            <p class="text-sm leading-relaxed text-white/40 font-light">
+                            <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">
                                 商材の強みを抽出し、市場での立ち位置を明確にします。
                                 「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
                             </p>
                         </div>
 
-                        <div class="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
-                            <div class="flex justify-between items-end mb-6">
+                        <div class="border-b border-white/10 pb-14 group hover:border-plum-pink transition-colors duration-700">
+                            <div class="flex justify-between items-end mb-8">
                                 <h3 class="text-2xl font-light tracking-[0.2em]">Direction & Story</h3>
-                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" size="16"></i>
+                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i>
                             </div>
-                            <p class="text-sm leading-relaxed text-white/40 font-light">
+                            <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">
                                 ビジュアルとテキストの両面から、商材の魅力を最大化。
                                 顧客の心に深く沈み込む、静かなストーリーを構築します。
                             </p>
                         </div>
 
-                        <div class="border-b border-white/10 pb-12 group hover:border-plum-pink transition-colors duration-500">
-                            <div class="flex justify-between items-end mb-6">
+                        <div class="border-b border-white/10 pb-14 group hover:border-plum-pink transition-colors duration-700">
+                            <div class="flex justify-between items-end mb-8">
                                 <h3 class="text-2xl font-light tracking-[0.2em]">Hands-on Support</h3>
-                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" size="16"></i>
+                                <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i>
                             </div>
-                            <p class="text-sm leading-relaxed text-white/40 font-light">
+                            <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">
                                 単なる助言に留まらず、現場の「わからない」に寄り添い、
                                 共に手を動かし、解決の糸口を見出すまで伴走します。
                             </p>
@@ -290,16 +317,16 @@
     </section>
 
     <!-- Journal Section -->
-    <section class="py-32 px-8 bg-white border-t border-black/5">
+    <section class="py-40 px-8 bg-white border-t border-black/5">
         <div class="max-w-5xl mx-auto">
             <div class="fade-in-element">
-                <div class="max-w-3xl mx-auto text-center space-y-12">
-                    <div class="space-y-6">
-                        <h2 class="text-[10px] tracking-[0.5em] text-plum-pink uppercase font-medium">Journal</h2>
-                        <h3 class="text-3xl md:text-4xl font-light tracking-[0.1em] leading-tight text-deep-gray text-balance">
+                <div class="max-w-3xl mx-auto text-center space-y-16">
+                    <div class="space-y-8">
+                        <h2 class="text-[11px] tracking-editorial text-plum-pink uppercase font-semibold heading-line">Journal</h2>
+                        <h3 class="text-3xl md:text-4xl font-light tracking-[0.15em] leading-tight text-deep-gray">
                             お買い物は<br>お仕事です
                         </h3>
-                        <p class="text-sm text-deep-gray/60 font-light leading-loose max-w-xl mx-auto">
+                        <p class="text-sm text-deep-gray/60 font-light leading-[2.4] max-w-xl mx-auto tracking-wider">
                             出会った”良い商品”だけを備忘録としてまとめました。<br />
                             訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
                         </p>
@@ -308,13 +335,13 @@
                         href="https://daphnemeria-blog.com/" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        class="group relative inline-flex items-center gap-8 text-[10px] tracking-[0.4em] uppercase font-medium text-plum-pink py-4"
+                        class="group relative inline-flex items-center gap-10 text-[11px] tracking-editorial uppercase font-medium text-plum-pink py-4"
                     >
                         <span class="relative">
                             Visit Blog
-                            <span class="absolute -bottom-2 left-0 w-full h-[1px] bg-plum-pink/30 group-hover:bg-plum-pink transition-colors"></span>
+                            <span class="absolute -bottom-3 left-0 w-full h-[1px] bg-plum-pink/20 group-hover:bg-plum-pink transition-colors duration-500"></span>
                         </span>
-                        <i data-lucide="arrow-right" class="group-hover:translate-x-4 transition-transform duration-500" size="14"></i>
+                        <i data-lucide="arrow-right" class="group-hover:translate-x-6 transition-transform duration-700" size="16"></i>
                     </a>
                 </div>
             </div>
@@ -322,34 +349,34 @@
     </section>
 
     <!-- Footer / CTA -->
-    <footer id="contact" class="py-32 px-8 bg-white border-t border-black/5">
+    <footer id="contact" class="py-40 px-8 bg-white border-t border-black/5">
         <div class="max-w-3xl mx-auto text-center">
             <div class="fade-in-element">
-                <h2 class="text-2xl md:text-3xl font-light tracking-[0.2em] mb-12">
+                <h2 class="text-2xl md:text-3xl font-light tracking-[0.25em] leading-relaxed mb-20 text-deep-gray/90">
                     「当たり前」を、売れる言葉へ。<br />
                     商品の真価を、共に「翻訳」しましょう。
                 </h2>
-                <div class="flex justify-center gap-8 md:gap-12 mb-16">
-                    <a href="mailto:daphnebuyer@gmail.com" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                        <i data-lucide="mail" stroke-width="1" size="20" class="group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] tracking-[0.1em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">daphnebuyer@Gmail</span>
+                <div class="flex flex-wrap justify-center gap-10 md:gap-16 mb-24">
+                    <a href="mailto:daphnebuyer@gmail.com" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-5 group">
+                        <i data-lucide="mail" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                        <span class="text-[10px] tracking-editorial uppercase opacity-60 group-hover:opacity-100 transition-opacity">daphnebuyer@Gmail</span>
                     </a>
-                    <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                        <i data-lucide="message-square" stroke-width="1" size="20" class="group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Blog</span>
+                    <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-5 group">
+                        <i data-lucide="message-square" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                        <span class="text-[10px] tracking-editorial uppercase opacity-60 group-hover:opacity-100 transition-opacity">Blog</span>
                     </a>
-                    <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                        <i data-lucide="pen-line" stroke-width="1" size="20" class="group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Note</span>
+                    <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-5 group">
+                        <i data-lucide="pen-line" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                        <span class="text-[10px] tracking-editorial uppercase opacity-60 group-hover:opacity-100 transition-opacity">Note</span>
                     </a>
-                    <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer" class="text-deep-gray hover:text-plum-pink transition-colors flex flex-col items-center gap-4 group">
-                        <i data-lucide="twitter" stroke-width="1" size="20" class="group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">X (Twitter)</span>
+                    <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-5 group">
+                        <i data-lucide="twitter" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                        <span class="text-[10px] tracking-editorial uppercase opacity-60 group-hover:opacity-100 transition-opacity">X (Twitter)</span>
                     </a>
                 </div>
 
-                <div class="text-[10px] tracking-[0.4em] text-deep-gray/40 uppercase font-light">
-                    © <span id="current-year"></span> All Rights Reserved.
+                <div class="text-[10px] tracking-widest text-deep-gray/30 uppercase font-light">
+                    © <span id="year"></span> All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -360,7 +387,7 @@
         lucide.createIcons();
 
         // Set Current Year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
         // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
@@ -369,15 +396,15 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
-                navbar.classList.remove('py-6');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'py-6', 'border-b', 'border-black/5', 'shadow-sm');
+                navbar.classList.remove('py-8');
                 navLogo.classList.remove('text-white', 'mix-blend-difference');
                 navLogo.classList.add('text-deep-gray');
                 navLinks.classList.remove('text-white', 'mix-blend-difference');
                 navLinks.classList.add('text-deep-gray');
             } else {
-                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-black/5');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'py-6', 'border-b', 'border-black/5', 'shadow-sm');
+                navbar.classList.add('py-8');
                 navLogo.classList.add('text-white', 'mix-blend-difference');
                 navLogo.classList.remove('text-deep-gray');
                 navLinks.classList.add('text-white', 'mix-blend-difference');
@@ -385,16 +412,17 @@
             }
         });
 
-        // Fade In Animation using Intersection Observer
+        // Fade In Animation with Intersection Observer
         const observerOptions = {
-            threshold: 0.1
+            threshold: 0.05,
+            rootMargin: "0px 0px -50px 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -407,10 +435,13 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 80; // Adjust for navbar height
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({
-                        top: target.offsetTop,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
