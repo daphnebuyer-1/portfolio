@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AMAMI SOUDA - Portfolio</title>
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- アイコン (Lucide) -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Tailwindの設定 -->
   <script>
     tailwind.config = {
       theme: {
@@ -26,8 +20,6 @@
       }
     }
   </script>
-  
-  <!-- カスタムスタイル・アニメーション -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&display=swap');
 
@@ -45,16 +37,13 @@
     .fade-in-element.visible { opacity: 1; transform: translateY(0); }
 
     html { scroll-behavior: smooth; }
-    
     .heading-line { position: relative; display: inline-block; padding-left: 1.5rem; }
     .heading-line::before { content: ''; position: absolute; left: 0; top: 50%; width: 1px; height: 1.5rem; background-color: #DDA0DD; transform: translateY(-50%); }
-    
     .nav-glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
   </style>
 </head>
 <body>
 
-  <!-- ナビゲーション -->
   <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 nav-glass border-b border-black/5 py-3 md:py-5">
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
       <div id="nav-logo" class="text-sm md:text-base tracking-[0.3em] md:tracking-[0.5em] font-bold uppercase text-deep-gray whitespace-nowrap">
@@ -69,7 +58,6 @@
     </div>
   </nav>
 
-  <!-- ヒーローセクション -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden px-8 bg-[#0a0a0a]">
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="w-full h-full object-cover grayscale brightness-[0.2] contrast-125 animate-hero-zoom" style="filter: grayscale(100%) brightness(0.25) contrast(1.1)" referrerpolicy="no-referrer">
@@ -92,45 +80,116 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about" class="py-32 md:py-40 px-8 max-w-4xl mx-auto">
     <div class="fade-in-element" style="transition-delay: 0.2s">
-      <div class="mb-20">
-        <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6">早田天美</span>
-        <p class="text-lg md:text-xl leading-[2.4] tracking-wider font-light text-deep-gray/90">
-          ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
-          全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br>
-          ここで私が獲得したのは、未知の商材であっても短期間でその商材やブランド、業界について学習し、的確にセールスポイントを掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br>
-          商材の枠を超え、いかなる価値も最速で見極め「最定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
-        </p>
+      <div class="mb-20 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+        <!-- Profile Image -->
+        <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-full shadow-sm grayscale hover:grayscale-0 transition-all duration-1000 border-2 border-black/5">
+          <img 
+            src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330" 
+            alt="早田天美" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+
+        <div>
+          <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6 md:mt-2">早田天美</span>
+          <p class="text-lg md:text-xl leading-[2.4] tracking-wider font-light text-deep-gray/90">
+            ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
+            全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br>
+            ここで私が獲得したのは、未知の商材であっても短期間でその商材やブランド、業界について学習し、的確にセールスポイントを掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br>
+            商材の枠を超え、いかなる価値も最速で見極め「最定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
+          </p>
+        </div>
       </div>
 
-      <div class="mb-24 space-y-12">
-        <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile</h3>
+      <div class="mb-24 space-y-16">
+        <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile & Identity</h3>
         <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
           <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
+            <span class="text-plum-pink/80 tracking-widest">2001年</span>
+            <span>インポーターアシスタント、貿易事務</span>
+          </div>
+          <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
             <span class="text-plum-pink/80 tracking-widest">2002年</span>
-            <span>ネットショップにてコスチュームジュエリーを販売</span>
+            <span>ネットショップにてコスチュームジュエリーを販売開始</span>
           </div>
           <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
             <span class="text-plum-pink/80 tracking-widest whitespace-nowrap">2008年ー2026年</span>
-            <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤー</span>
+            <span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤーとして16年従事</span>
+          </div>
+          <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
+            <span class="text-plum-pink/80 tracking-widest">2026年</span>
+            <span>社会構想大学院大学 実務家教員養成課程履修中（第18期）</span>
           </div>
         </div>
         
-        <div class="pt-8 text-sm md:text-base leading-relaxed text-deep-gray font-light opacity-80">
-          <p class="mb-6 tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold">Expertise since 2002</p>
-          <ul class="space-y-4 list-none">
-            <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コレクタブル（伝統的工芸品、作家ものなどニッチ商材）５年</span></li>
-            <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>ジュエリー（主に真珠５年）</span></li>
-            <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>日用品５年</span></li>
-            <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>バッグを中心とした服飾雑貨５年</span></li>
-          </ul>
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 pt-8 border-t border-black/5">
+          <div class="space-y-8">
+            <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Numbers & Expertise</p>
+            <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+              <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
+                <span class="text-2xl font-light tracking-wide text-plum-pink">10,000<span class="text-sm"> hours</span></span>
+                <span class="opacity-80">各商材ジャンルへの投下時間（5年ごと）</span>
+              </div>
+              <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
+                <span class="text-2xl font-light tracking-wide text-plum-pink">3億<span class="text-sm"> 円</span></span>
+                <span class="opacity-80">1商品の1日あたりの最高売上高</span>
+              </div>
+              <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
+                <span class="text-2xl font-light tracking-wide text-plum-pink">16<span class="text-sm"> years</span></span>
+                <span class="opacity-80">TV通販専門チャンネル MD・バイヤー歴</span>
+              </div>
+              <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
+                <span class="text-2xl font-light tracking-wide text-plum-pink">23<span class="text-sm"> years</span></span>
+                <span class="opacity-80">バイヤー歴</span>
+              </div>
+            </div>
+
+            <div class="pt-2 text-sm leading-relaxed text-deep-gray font-light opacity-80">
+              <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-3 border-b border-deep-gray/10 pb-2">担当領域の変遷</span>
+              <ul class="space-y-2 list-none">
+                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コレクタブル（伝統的工芸品、作家ものなどニッチ商材）５年</span></li>
+                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>ジュエリー（主に真珠）５年</span></li>
+                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>日用品５年</span></li>
+                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>バッグを中心とした服飾雑貨５年</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Behind the Scenes</p>
+            <div class="space-y-6 text-sm md:text-base leading-[2.2] text-deep-gray font-light">
+              <div class="border-b border-black/5 pb-4">
+                <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Roots</span>
+                <span class="opacity-80">1978年生まれ / 東京・世田谷区出身<br><span class="text-[12px] opacity-70">（身長: 148cm）</span></span>
+              </div>
+              
+              <div class="border-b border-black/5 pb-4">
+                <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Hobbies</span>
+                <span class="opacity-80">日記を書くこと / 考え事</span>
+              </div>
+              
+              <div class="border-b border-black/5 pb-4">
+                <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Treasured Items</span>
+                <span class="opacity-80">現代では作られていないもの<br>
+                父から譲り受けた祖父のIWC時計、義母からのランプなど。</span>
+              </div>
+
+              <div class="pb-4">
+                <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Inspirations</span>
+                <span class="opacity-80">
+                  美術全般（庭園美術館、ダリのジュエリー）、ダンスチームDAZZLE<br>
+                  原田マハ「楽園のカンヴァス」、西加奈子「さくら」、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="space-y-10 text-sm md:text-base leading-[2.2] text-deep-gray/80 font-light">
-        <p>かつてテレビ通販の最前線で、1時間に1,500万円、1日で1商品3億円前後の売上を記録しました。この結果は、市場の熱狂にただ乗るのではなく、冷静な分析によって商品の「真価」を見抜く視点があったからこそ成し得たものです。</p>
+        <p>かつてテレビ通販の最前線で、1時間に2,000万円前後、1日で1商品3億円前後の売上を記録しました。この結果は、市場の熱狂にただ乗るのではなく、冷静な分析によって商品の「真価」を見抜く視点があったからこそ成し得たものです。</p>
         <p>バイヤーとして長年ものづくりと向き合う中で、私が常に大切にしてきたのは「複雑に絡み合う商品情報を解きほぐし、一人ひとりの心に届く『研ぎ澄まされた言葉』へと変換すること」です。</p>
         <p>その過程で直面したのは、専門性を高めれば高めるほど、かえって知識のない方には真価が伝わりにくくなるという壁です。業界に根付く高度な「暗黙知」こそが、実はお客様を遠ざけ、「売れにくい理由」を作っていました。</p>
         <p>この壁を越えるには、あえて商材を学ぶ前の「素人の目線」に立ち返る視点が必要です。作り手側の「当たり前」を疑い、プロの知識をあえて解きほぐして翻訳し直す。そこに隠された価値の糸口を見つけ出し、お客様に届く言葉へと再構築していくプロセスにこそ、私は深い面白さを見出しています。</p>
@@ -139,7 +198,6 @@
     </div>
   </section>
 
-  <!-- Philosophy -->
   <section id="philosophy" class="py-32 md:py-40 bg-black text-white px-8 relative">
     <div class="absolute inset-0 opacity-10 pointer-events-none">
       <div class="w-full h-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
@@ -159,7 +217,7 @@
         <div class="fade-in-element space-y-8 md:space-y-10 group" style="transition-delay: 0.3s">
           <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">02</span>
           <h3 class="text-xl tracking-[0.3em] font-medium">整える。</h3>
-          <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。</p>
+          <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言言葉の力で埋め、あるべき姿へと再構築する。</p>
         </div>
         
         <div class="fade-in-element space-y-8 md:space-y-10 group" style="transition-delay: 0.5s">
@@ -171,7 +229,6 @@
     </div>
   </section>
 
-  <!-- Partnership -->
   <section id="partnership" class="py-32 md:py-40 px-8 bg-black text-white relative">
     <div class="absolute inset-0 opacity-5 pointer-events-none">
       <div class="w-full h-full bg-[radial-gradient(circle_at_center,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px]"></div>
@@ -211,7 +268,6 @@
     </div>
   </section>
 
-  <!-- Journal (Blog) -->
   <section class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
     <div class="max-w-5xl mx-auto">
       <div class="fade-in-element">
@@ -230,7 +286,6 @@
     </div>
   </section>
 
-  <!-- Note API -->
   <section class="py-32 md:py-40 px-8 bg-[#FAFAFA] border-t border-black/5">
     <div class="max-w-5xl mx-auto">
       <div class="fade-in-element">
@@ -256,7 +311,6 @@
     </div>
   </section>
 
-  <!-- Footer / Contact -->
   <footer id="contact" class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
     <div class="max-w-3xl mx-auto text-center">
       <div class="fade-in-element">
@@ -284,13 +338,10 @@
     </div>
   </footer>
 
-  <!-- スクリプト -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // アイコン描画
       lucide.createIcons();
       
-      // ナビゲーションのスクロールエフェクト
       const navbar = document.getElementById("navbar");
       window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -304,7 +355,6 @@
         }
       });
 
-      // スクロールフェードイン
       const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -317,7 +367,6 @@
 
       document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
 
-      // スムーススクロール
       document.querySelectorAll('#nav-links a').forEach(a => {
         a.addEventListener('click', function(e) {
           e.preventDefault();
@@ -333,7 +382,6 @@
         });
       });
 
-      // note APIの呼び出し（最新5記事）
       const notesContainer = document.getElementById('notes-container');
       fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
         .then(res => res.json())
