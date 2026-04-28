@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AMAMI SOUDA - Portfolio</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
       theme: {
@@ -41,31 +44,21 @@
     .heading-line::before { content: ''; position: absolute; left: 0; top: 50%; width: 1px; height: 1.5rem; background-color: #DDA0DD; transform: translateY(-50%); }
     .nav-glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 
-    /* Sparkle Animation */
-    @keyframes sparkleText {
-        0% {
-            color: #DDA0DD;
-            text-shadow: 0 0 4px rgba(221,160,221,0.3);
-            transform: translateY(-4px);
-        }
-        50% {
-            color: #ffffff;
-            text-shadow: 0 0 12px #fff, 0 0 20px #DDA0DD;
-            transform: translateY(-4px) scale(1.03);
-        }
-        100% {
-            color: #DDA0DD;
-            text-shadow: 0 0 4px rgba(221,160,221,0.3);
-            transform: translateY(-4px);
-        }
+    /* 文字アニメーション用 */
+    .char-span {
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.9);
+        transition: all 0.5s ease;
     }
-    .group:hover .animate-sparkle-char {
-        animation: sparkleText 2s ease-in-out infinite forwards;
+    .contact-link-group:hover .char-span {
+        transform: translateY(-4px);
+        color: #DDA0DD;
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 nav-glass border-b border-black/5 py-3 md:py-5">
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
       <div id="nav-logo" class="text-sm md:text-base tracking-[0.3em] md:tracking-[0.5em] font-bold uppercase text-deep-gray whitespace-nowrap">
@@ -80,6 +73,7 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden px-8 bg-[#0a0a0a]">
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="w-full h-full object-cover grayscale brightness-[0.2] contrast-125 animate-hero-zoom" style="filter: grayscale(100%) brightness(0.25) contrast(1.1)" referrerpolicy="no-referrer">
@@ -102,6 +96,7 @@
     </div>
   </section>
 
+  <!-- About Section -->
   <section id="about" class="py-32 md:py-40 px-8 max-w-4xl mx-auto">
     <div class="fade-in-element" style="transition-delay: 0.2s">
       <div class="mb-20 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
@@ -192,10 +187,7 @@
               </div>
               <div class="pb-4">
                 <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Inspirations</span>
-                <span class="opacity-80">
-                  美術全般（庭園美術館、ダリのジュエリー）、ダンスチームDAZZLE<br>
-                  原田マハ「楽園のカンヴァス」、西加奈子「さくら」、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな
-                </span>
+                <span class="opacity-80">美術全般（庭園美術館、ダリのジュエリー）、ダンスチームDAZZLE<br>原田マハ「楽園のカンヴァス」、西加奈子「さくら」、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな</span>
               </div>
             </div>
           </div>
@@ -212,6 +204,7 @@
     </div>
   </section>
 
+  <!-- Philosophy Section -->
   <section id="philosophy" class="py-32 md:py-40 bg-black text-white px-8 relative">
     <div class="absolute inset-0 opacity-10 pointer-events-none">
       <div class="w-full h-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
@@ -220,17 +213,20 @@
       <div class="fade-in-element">
         <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 md:mb-32 heading-line">Core Philosophy</h2>
       </div>
+      
       <div class="grid md:grid-cols-3 gap-16 md:gap-12">
         <div class="fade-in-element space-y-8 md:space-y-10 group" style="transition-delay: 0.1s">
           <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">01</span>
           <h3 class="text-xl tracking-[0.3em] font-medium">見抜く。</h3>
           <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。冷静な自他分析こそが、本質を捉える唯一の道。</p>
         </div>
+        
         <div class="fade-in-element space-y-8 md:space-y-10 group" style="transition-delay: 0.3s">
           <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">02</span>
           <h3 class="text-xl tracking-[0.3em] font-medium">整える。</h3>
           <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。</p>
         </div>
+        
         <div class="fade-in-element space-y-8 md:space-y-10 group" style="transition-delay: 0.5s">
           <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">03</span>
           <h3 class="text-xl tracking-[0.3em] font-medium">届ける。</h3>
@@ -240,6 +236,7 @@
     </div>
   </section>
 
+  <!-- Partnership Section -->
   <section id="partnership" class="py-32 md:py-40 px-8 bg-black text-white relative">
     <div class="absolute inset-0 opacity-5 pointer-events-none">
       <div class="w-full h-full bg-[radial-gradient(circle_at_center,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px]"></div>
@@ -321,29 +318,202 @@
                 <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span class="leading-relaxed">「バイヤー目線」が知りたい方</span></li>
                 <li class="flex gap-4 items-start pt-2"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px] opacity-0">/</span><span class="text-white/40 leading-relaxed">などなど、、、</span></li>
               </ul>
-              <a href="mailto:daphnebuyer@gmail.com" class="block mt-12 p-6 md:p-8 bg-white/5 border border-white/10 relative overflow-hidden group hover:border-plum-pink/50 transition-colors duration-500">
+              
+              <a href="mailto:daphnebuyer@gmail.com" class="contact-link-group block mt-12 p-6 md:p-8 bg-white/5 border border-white/10 relative overflow-hidden transition-colors duration-500 hover:border-plum-pink/50">
                 <div class="absolute top-0 left-0 w-1 h-full bg-plum-pink"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-plum-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-plum-pink/10 to-transparent opacity-0 transition-opacity duration-700 pointer-events-none group-hover:opacity-100"></div>
 
                 <div class="flex items-center justify-between relative z-10">
-                  <div class="text-base md:text-lg font-medium tracking-widest leading-relaxed">
-                    <span class="block">
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 0ms; animation-delay: 0ms">現</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 30ms; animation-delay: 120ms">在</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 60ms; animation-delay: 240ms">の</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 90ms; animation-delay: 360ms">御</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 120ms; animation-delay: 480ms">社</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 150ms; animation-delay: 600ms">が</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 180ms; animation-delay: 720ms">「</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 210ms; animation-delay: 840ms">探</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 240ms; animation-delay: 960ms">し</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 270ms; animation-delay: 1080ms">て</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 300ms; animation-delay: 1200ms">い</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 330ms; animation-delay: 1320ms">る</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 360ms; animation-delay: 1440ms">こ</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 390ms; animation-delay: 1560ms">と</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 420ms; animation-delay: 1680ms">」</span>
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-delay: 450ms; animation-delay: 1800ms">、</span>
-                    </span>
-                    <span class="block mt-1 sm:mt-2">
-                      <span class="inline-block text-white/90 transition-all duration-500 group-hover:-translate-y-1 group-hover:text-plum-pink animate-sparkle-char" style="transition-
+                  <div class="text-base md:text-lg font-medium tracking-widest leading-relaxed" id="animated-text-container">
+                    <!-- JavaScriptで文字を生成します -->
+                  </div>
+                  <i data-lucide="mail" class="text-plum-pink opacity-50 transition-all duration-500 transform group-hover:opacity-100 group-hover:scale-110 group-hover:-translate-y-1" width="28" height="28"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journal Section -->
+  <section class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-in-element">
+        <div class="max-w-3xl mx-auto text-center space-y-12 md:space-y-16">
+          <div class="space-y-8">
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Journal</h2>
+            <h3 class="text-3xl md:text-4xl font-light tracking-[0.15em] leading-tight text-deep-gray">お買い物は<br>お仕事です</h3>
+            <p class="text-sm text-deep-gray/60 font-light leading-[2.4] max-w-xl mx-auto tracking-wider">出会った”良い商品”だけを備忘録としてまとめました。<br>訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。</p>
+          </div>
+          <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center gap-8 md:gap-10 text-[11px] tracking-[0.4em] uppercase font-medium text-plum-pink py-4">
+            <span class="relative">Visit Blog<span class="absolute -bottom-3 left-0 w-full h-[1px] bg-plum-pink/20 transition-colors duration-500 group-hover:bg-plum-pink"></span></span>
+            <i data-lucide="arrow-right" class="transition-transform duration-700 group-hover:translate-x-6" width="16" height="16"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Note Section -->
+  <section class="py-32 md:py-40 px-8 bg-[#FAFAFA] border-t border-black/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="fade-in-element">
+        <div class="max-w-3xl mx-auto text-center space-y-12 md:space-y-16">
+          <div class="space-y-8">
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Note</h2>
+            <h3 class="text-3xl md:text-4xl font-light tracking-[0.15em] leading-tight text-deep-gray">MDの頭の中</h3>
+            <p class="text-sm text-deep-gray/60 font-light leading-[2.4] max-w-xl mx-auto tracking-wider">日々の気づきや、バイヤーならではの視点で読み解くトレンド、<br>小売・流通業界のニュース解説などを発信しています。</p>
+          </div>
+          
+          <div id="notes-container" class="w-full max-w-3xl mx-auto mt-16 text-left">
+            <div class="text-center text-deep-gray/40 text-sm tracking-widest animate-pulse">Loading latest notes...</div>
+          </div>
+
+          <div class="pt-12 text-center">
+            <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center gap-8 md:gap-10 text-[11px] tracking-[0.4em] uppercase font-medium text-plum-pink py-4">
+              <span class="relative">View on Note<span class="absolute -bottom-3 left-0 w-full h-[1px] bg-plum-pink/20 transition-colors duration-500 group-hover:bg-plum-pink"></span></span>
+              <i data-lucide="external-link" class="transition-transform duration-700 group-hover:translate-x-6" width="16" height="16"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="fade-in-element">
+        <h2 class="text-xl md:text-3xl font-light tracking-[0.2em] md:tracking-[0.25em] leading-relaxed mb-16 md:mb-20 text-deep-gray/90">「当たり前」を、売れる言葉へ。<br>商品の真価を、共に「翻訳」しましょう。</h2>
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 md:mb-24">
+          <a href="mailto:daphnebuyer@gmail.com" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+            <i data-lucide="mail" stroke-width="1" width="22" height="22" class="transition-transform duration-500 group-hover:scale-110"></i>
+            <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 transition-opacity group-hover:opacity-100">daphnebuyer@Gmail</span>
+          </a>
+          <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+            <i data-lucide="message-square" stroke-width="1" width="22" height="22" class="transition-transform duration-500 group-hover:scale-110"></i>
+            <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 transition-opacity group-hover:opacity-100">Blog</span>
+          </a>
+          <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+            <i data-lucide="pen-line" stroke-width="1" width="22" height="22" class="transition-transform duration-500 group-hover:scale-110"></i>
+            <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 transition-opacity group-hover:opacity-100">Note</span>
+          </a>
+          <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+            <i data-lucide="twitter" stroke-width="1" width="22" height="22" class="transition-transform duration-500 group-hover:scale-110"></i>
+            <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 transition-opacity group-hover:opacity-100">X (Twitter)</span>
+          </a>
+        </div>
+        <div class="text-[10px] tracking-widest text-deep-gray/30 uppercase font-light">© 2026 All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // アイコンの初期化
+      lucide.createIcons();
+      
+      // ナビゲーションバーのスクロール制御
+      const navbar = document.getElementById("navbar");
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('py-2', 'md:py-3', 'shadow-md');
+          navbar.classList.remove('py-3', 'md:py-5');
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+        } else {
+          navbar.classList.add('py-3', 'md:py-5');
+          navbar.classList.remove('py-2', 'md:py-3', 'shadow-md');
+          navbar.style.background = "rgba(255, 255, 255, 0.85)";
+        }
+      });
+
+      // スクロール時のフェードイン制御
+      const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+
+      // スムーズスクロール
+      document.querySelectorAll('#nav-links a').forEach(a => {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId.startsWith('#')) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const offset = 100;
+              const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+      // メールリンクのアニメーション文字生成
+      const textContainer = document.getElementById('animated-text-container');
+      if (textContainer) {
+        const line1 = "現在の御社が「探していること」、";
+        const line2 = "ぜひご相談ください。";
+        let html = '<span class="block">';
+        
+        let globalIndex = 0;
+        
+        // 1行目
+        for (let i = 0; i < line1.length; i++) {
+          html += `<span class="char-span" style="transition-delay: ${globalIndex * 30}ms">${line1[i]}</span>`;
+          globalIndex++;
+        }
+        html += '</span><span class="block mt-1 sm:mt-2">';
+        
+        // 2行目
+        for (let i = 0; i < line2.length; i++) {
+          html += `<span class="char-span" style="transition-delay: ${globalIndex * 30}ms">${line2[i]}</span>`;
+          globalIndex++;
+        }
+        html += '</span>';
+        textContainer.innerHTML = html;
+      }
+
+      // noteのRSSフィード取得
+      const notesContainer = document.getElementById('notes-container');
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
+        .then(res => res.json())
+        .then(data => {
+          if (data.items) {
+            const posts = data.items.slice(0, 5);
+            let html = '<div class="space-y-4 md:space-y-6 pt-4">';
+            posts.forEach(post => {
+              const date = new Date(post.pubDate.replace(' ', 'T')).toLocaleDateString('ja-JP');
+              html += `
+                <a href="${post.link}" target="_blank" rel="noopener noreferrer"
+                   class="group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 hover:bg-black/5 p-4 md:px-8 rounded-md transition-colors border border-transparent hover:border-black/5">
+                  <span class="text-[10px] tracking-[0.2em] text-plum-pink shrink-0">${date}</span>
+                  <h4 class="text-sm md:text-base font-medium leading-relaxed transition-colors group-hover:text-plum-pink">
+                    ${post.title}
+                  </h4>
+                </a>
+              `;
+            });
+            html += '</div>';
+            notesContainer.innerHTML = html;
+          } else {
+            notesContainer.innerHTML = '<div class="text-center text-deep-gray/40 text-sm tracking-widest">記事が取得できませんでした。</div>';
+          }
+        })
+        .catch(err => {
+          console.error('Error fetching note RSS:', err);
+          notesContainer.innerHTML = '<div class="text-center text-deep-gray/40 text-sm tracking-widest">記事が取得できませんでした。</div>';
+        });
+    });
+  </script>
+</body>
+</html>
