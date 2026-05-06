@@ -28,12 +28,23 @@
         .nav-glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.85); }
         .fade-in-element { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .fade-in-element.visible { opacity: 1; transform: translateY(0); }
+        
         @keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
         .animate-hero-zoom { animation: hero-zoom 20s ease-out forwards; }
+        
         @keyframes scroll-bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-10px) translateX(-50%); } }
         .animate-scroll-bounce { animation: scroll-bounce 2s infinite; }
+        
         .heading-line { display: flex; align-items: center; gap: 1.5rem; }
         .heading-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, #DDA0DD, transparent); }
+
+        /* 波のアニメーション */
+        @keyframes wave {
+            0%, 40%, 100% { transform: translateY(0); color: inherit; }
+            20% { transform: translateY(-8px); color: #DDA0DD; }
+        }
+        .char { display: inline-block; transition: color 0.3s; }
+        .wave-active .char { animation: wave 2.5s infinite; }
     </style>
 </head>
 <body class="bg-white">
@@ -55,12 +66,11 @@
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 animate-hero-zoom">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(221,160,221,0.05)_0%,transparent_70%)]"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
         </div>
         <div class="relative z-10 text-center max-w-4xl px-8">
             <div class="fade-in-element visible">
-                <h1 class="text-3xl md:text-5xl font-extralight tracking-[0.4em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
+                <h1 class="text-3xl md:text-6xl font-extralight tracking-[0.6em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
                 <p class="mt-10 text-[10px] md:text-[12px] tracking-[0.6em] md:tracking-[1.2em] text-plum-pink font-light uppercase opacity-80">Buyer / Director</p>
             </div>
         </div>
@@ -80,7 +90,6 @@
                 <p class="text-lg md:text-xl leading-[2.6] tracking-wider font-light text-deep-gray/90">
                     ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
                     全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br>
-                    ここで私が獲得したのは、未知の商材であっても短期間で本質を掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br>
                     商材の枠を超え、いかなる価値も最速で見極め「最定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
                 </p>
             </div>
@@ -99,11 +108,11 @@
               </div>
               <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span class="text-plum-pink/80 tracking-widest whitespace-nowrap">2008年ー2026年</span>
-                <span>ジュピターショップチャンネルにてMD・バイヤーとして16年従事</span>
+                <span>ショップチャンネル MD・バイヤーとして16年従事</span>
               </div>
               <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
                 <span class="text-plum-pink/80 tracking-widest">2026年</span>
-                <span>社会構想大学院大学 実務家教員養成課程履修中（第18期）</span>
+                <span>社会構想大学院大学 実務家教員養成課程履修中</span>
               </div>
             </div>
 
@@ -113,51 +122,32 @@
                 <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
                   <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
                     <span class="text-2xl font-light tracking-wide text-plum-pink">10,000<span class="text-sm"> hours</span></span>
-                    <span class="opacity-80">各商材ジャンルへの投下時間（5年ごと）</span>
+                    <span class="opacity-80">各商材ジャンルへの投下時間</span>
                   </div>
                   <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
                     <span class="text-2xl font-light tracking-wide text-plum-pink">3億<span class="text-sm"> 円</span></span>
                     <span class="opacity-80">1商品の1日あたりの最高売上高</span>
                   </div>
                   <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
-                    <span class="text-2xl font-light tracking-wide text-plum-pink">16<span class="text-sm"> years</span></span>
-                    <span class="opacity-80">ショップチャンネル MD・バイヤー歴</span>
-                  </div>
-                  <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
                     <span class="text-2xl font-light tracking-wide text-plum-pink">23<span class="text-sm"> years</span></span>
                     <span class="opacity-80">バイヤー歴</span>
                   </div>
                 </div>
-
-                <div class="pt-2 text-sm leading-relaxed text-deep-gray font-light opacity-80">
-                  <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-3 border-b border-deep-gray/10 pb-2">担当領域の変遷</span>
-                  <ul class="space-y-2 list-none">
-                    <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コレクタブル（伝統的工芸品、作家もの等）５年</span></li>
-                    <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>ハイジュエリー（主に真珠）３年</span></li>
-                    <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コスチュームジュエリー５年</span></li>
-                    <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>日用品５年</span></li>
-                    <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>バッグを中心とした服飾雑貨５年</span></li>
-                  </ul>
-                </div>
               </div>
 
-              <div class="space-y-8 relative text-sm md:text-base leading-[2.2] text-deep-gray font-light">
+              <div class="space-y-8 text-sm md:text-base leading-[2.2] text-deep-gray font-light">
                 <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Behind the Scenes</p>
                 <div class="border-b border-black/5 pb-4">
                     <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Roots</span>
-                    <span class="opacity-80">1978年生まれ / 東京・世田谷区出身<br><span class="text-[12px] opacity-70">（身長: 148cm）</span></span>
+                    <span class="opacity-80">1978年生まれ / 東京・世田谷区出身 (身長: 148cm)</span>
                 </div>
                 <div class="border-b border-black/5 pb-4">
                     <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Hobbies</span>
-                    <span class="opacity-80">日記を書くこと / 考え事</span>
-                </div>
-                <div class="border-b border-black/5 pb-4">
-                    <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Treasured Items</span>
-                    <span class="opacity-80">現代では作られていないもの<br>父から譲り受けた祖父のIWC時計、義母からのランプなど。</span>
+                    <span class="opacity-80">日記を書くこと / 資産運用</span>
                 </div>
                 <div class="pb-4">
                     <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Inspirations</span>
-                    <span class="opacity-80">美術全般、ダンスチームDAZZLE<br>原田マハ、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな</span>
+                    <span class="opacity-80">美術全般、King Gnu、ちゃんみな、ダンスチームDAZZLE</span>
                 </div>
               </div>
             </div>
@@ -166,23 +156,23 @@
 
     <!-- Philosophy -->
     <section id="philosophy" class="py-32 md:py-48 bg-black text-white px-8">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-5xl mx-auto text-left">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 heading-line">Core Philosophy</h2>
             <div class="grid md:grid-cols-3 gap-16">
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">01</span>
                     <h3 class="text-xl tracking-widest font-medium">見抜く。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">溢れる情報の中から、商材が持つ唯一無二の「核」を見つけ出す。冷静な自他分析こそが、本質を捉える唯一の道。</p>
+                    <p class="text-sm opacity-50 font-light leading-relaxed">唯一無二の「核」を見つけ出し、本質を捉える。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">02</span>
                     <h3 class="text-xl tracking-widest font-medium">整える。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">価値があるのに、まだ届いていない。その乖離を、論理と言葉の力で埋め、あるべき姿へ再構築する。</p>
+                    <p class="text-sm opacity-50 font-light leading-relaxed">価値の乖離を、論理と言葉で埋め再構築する。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">03</span>
                     <h3 class="text-xl tracking-widest font-medium">届ける。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">「わからない」を「わかった」へ。誠実な対話を通じて、市場との幸福な出会いを創出する。</p>
+                    <p class="text-sm opacity-50 font-light leading-relaxed">市場との幸福な出会いを創出する。</p>
                 </div>
             </div>
         </div>
@@ -190,67 +180,19 @@
 
     <!-- Partnership & Seeking -->
     <section id="partnership" class="py-32 md:py-48 bg-black text-white px-8 border-t border-white/5">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-16 md:gap-20 mb-32 text-left">
-                <div class="md:w-1/3 fade-in-element">
-                    <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Partnership</h2>
-                    <p class="text-sm leading-[2.4] text-white/50 font-light tracking-widest">伝え方に悩むブランド、価値を再定義したい営業担当者へ。</p>
-                </div>
-                <div class="md:w-2/3 space-y-16 fade-in-element">
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Value Definition</h3>
-                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
-                        </div>
-                        <p class="text-sm opacity-40 font-light">商品の真価を抽出し、市場での立ち位置を明確にします。「なぜ選ばれるのか」を、揺るぎない言葉で定義します。</p>
-                    </div>
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Direction & Story</h3>
-                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
-                        </div>
-                        <p class="text-sm opacity-40 font-light">ビジュアルとテキストの両面から魅力を最大化。顧客の心に深く沈み込むストーリーを構築します。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- What I Can Do -->
-            <div class="pt-24 border-t border-white/10 fade-in-element">
-                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">What I Can Do / できること</h3>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm text-white/70 font-light tracking-wider">
-                    <li>/ 売場の最適化</li><li>/ 売場に即したブランド選定</li>
-                    <li>/ ファッション雑貨商品企画</li><li>/ ブランディング</li>
-                    <li>/ 価格決定</li><li>/ 売上データによる分析</li>
-                    <li>/ 在庫処分・MD提案</li><li>/ ECサイト企画・ディレクション</li>
-                </ul>
-            </div>
-
-            <!-- Seeking (ご要望の箇所) -->
-            <div class="mt-24 pt-24 border-t border-white/10 fade-in-element">
-                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Seeking / 募集中</h3>
-                <ul class="space-y-6 text-sm text-white/70 font-light tracking-wider">
-                    <li>/ 販路が欲しいブランド</li>
-                    <li>/ テレビ通販に関する相談に乗って欲しい人</li>
-                    <li>/ 爬虫類のバッグの縫製工場を探している人</li>
-                    <li>/ ブランドの訴求ポイントに自信が持てない人</li>
-                    <li>/ 「バイヤー目線」が知りたい方</li>
-                    <li class="pt-4 text-white/40 border-t border-white/5 leading-loose">
-                        などなど、、、<br>
-                        お気軽にお探しの商材やブランドがあれば、<br class="md:hidden">
-                        ぜひお気軽に<a href="mailto:daphnebuyer@gmail.com" class="text-plum-pink underline hover:text-white transition-colors">お問い合わせください</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Journal -->
-    <section class="py-32 px-8 bg-white text-center">
-        <div class="fade-in-element max-w-3xl mx-auto space-y-12">
-            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Journal</h2>
-            <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">お買い物はお仕事です</h3>
-            <p class="text-sm opacity-60 leading-loose max-w-xl mx-auto tracking-wider">出会った”良い商品”だけを備忘録としてまとめました。<br>ブランドの訴求整理の見本としてご覧ください。</p>
-            <a href="https://daphnemeria-blog.com/" target="_blank" class="inline-flex items-center gap-6 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">Visit Blog <i data-lucide="arrow-right" size="16"></i></a>
+        <div class="max-w-5xl mx-auto text-left">
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Seeking / 募集中</h2>
+            <ul class="space-y-6 text-sm text-white/70 font-light tracking-wider mb-20">
+                <li class="flex gap-4">/ 販路が欲しいブランド</li>
+                <li class="flex gap-4">/ テレビ通販に関する相談に乗って欲しい人</li>
+                <li class="flex gap-4">/ 「バイヤー目線」が知りたい方</li>
+                <li class="pt-8 text-white/40 border-t border-white/5 text-lg leading-loose">
+                    などなど、、、<br class="md:hidden">
+                    <span id="wave-trigger" class="wave-active">
+                        <!-- ここにアニメーションされるテキストが入ります -->
+                    </span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -258,7 +200,7 @@
     <section class="py-32 md:py-48 px-8 bg-[#FAFAFA] border-t border-black/5 text-center">
         <div class="fade-in-element max-w-3xl mx-auto space-y-12">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Note</h2>
-            <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">MDの頭の中</h3>
+            <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray uppercase">MDの頭の中</h3>
             <div id="note-posts" class="w-full text-left mt-16 space-y-2">
                 <div class="text-center py-10 opacity-30 text-sm animate-pulse">Loading latest notes...</div>
             </div>
@@ -269,19 +211,54 @@
     <footer id="contact" class="py-32 px-8 text-center bg-white border-t border-black/5">
         <div class="fade-in-element max-w-2xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20 text-deep-gray/90">
-                「当たり前」を、売れる言葉へ。<br>商品の真価を、共に「翻訳」しましょう。
+                商品の真価を、共に「翻訳」しましょう。
             </h2>
             <div class="flex justify-center gap-10 text-black/40">
                 <a href="mailto:daphnebuyer@gmail.com" class="hover:text-plum-pink transition-all"><i data-lucide="mail" stroke-width="1"></i></a>
                 <a href="https://x.com/daphnebuyer" target="_blank" class="hover:text-plum-pink transition-all"><i data-lucide="twitter" stroke-width="1"></i></a>
                 <a href="https://note.com/daphnemeria" target="_blank" class="hover:text-plum-pink transition-all"><i data-lucide="pen-line" stroke-width="1"></i></a>
             </div>
-            <p class="mt-20 text-[10px] tracking-widest opacity-20 uppercase font-light">© 2026 AMAMI SOUDA. All Rights Reserved.</p>
+            <p class="mt-24 text-[10px] tracking-widest opacity-20 uppercase font-light">© 2026 AMAMI SOUDA. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+        
+        // 波打ちアニメーションのスクリプト
+        const targetText = "お探しの商材やブランドがあれば、ぜひお気軽にご相談ください";
+        const emailLinkText = "ご相談ください";
+        const emailAddress = "daphnebuyer@gmail.com";
+        const waveContainer = document.getElementById('wave-trigger');
+
+        // 文字を分割してspanタグで囲む
+        const createWaveText = () => {
+            let html = "";
+            let charIndex = 0;
+            
+            // リンク以外の部分とリンク部分を分けて処理
+            const baseText = "お探しの商材やブランドがあれば、ぜひお気軽に";
+            
+            // 普通のテキスト部分
+            [...baseText].forEach((c) => {
+                html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
+                charIndex++;
+            });
+
+            // メールリンク部分
+            html += `<a href="mailto:${emailAddress}" class="text-plum-pink underline hover:text-white transition-colors">`;
+            [...emailLinkText].forEach((c) => {
+                html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
+                charIndex++;
+            });
+            html += `</a>`;
+
+            waveContainer.innerHTML = html;
+        };
+
+        createWaveText();
+
+        // フェードインの監視
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
