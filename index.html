@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAMI SOUDA - Buyer / Director</title>
     
-    <!-- 必要なライブラリの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
@@ -181,8 +180,39 @@
     <!-- Partnership & Seeking -->
     <section id="partnership" class="py-32 md:py-48 bg-black text-white px-8 border-t border-white/5">
         <div class="max-w-5xl mx-auto text-left">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-20 mb-32">
+                <div class="md:w-1/3 fade-in-element">
+                    <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Partnership</h2>
+                    <p class="text-sm leading-[2.4] text-white/50 font-light tracking-widest">伝え方に悩むブランド、価値を再定義したい営業担当者へ。</p>
+                </div>
+                <div class="md:w-2/3 space-y-16 fade-in-element">
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
+                        <div class="flex justify-between items-end mb-6">
+                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Value Definition</h3>
+                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </div>
+                        <p class="text-sm opacity-40 font-light">商品の真価を抽出し、「なぜ選ばれるのか」を、揺るぎない言葉で定義します。</p>
+                    </div>
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
+                        <div class="flex justify-between items-end mb-6">
+                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Direction & Story</h3>
+                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </div>
+                        <p class="text-sm opacity-40 font-light">ビジュアルとテキストの両面から、魅力を最大化するストーリーを構築します。</p>
+                    </div>
+                    <!-- 追加: Data Analysis -->
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
+                        <div class="flex justify-between items-end mb-6">
+                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Data Analysis</h3>
+                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </div>
+                        <p class="text-sm opacity-40 font-light">売り上げデータによる振り返りと分析を行い、次なる一手を導き出します。</p>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Seeking / 募集中</h2>
-            <ul class="space-y-6 text-sm text-white/70 font-light tracking-wider mb-20">
+            <ul class="space-y-6 text-sm text-white/70 font-light tracking-wider">
                 <li class="flex gap-4">/ 販路が欲しいブランド</li>
                 <li class="flex gap-4">/ テレビ通販に関する相談に乗って欲しい人</li>
                 <li class="flex gap-4">/ 「バイヤー目線」が知りたい方</li>
@@ -211,7 +241,7 @@
     <footer id="contact" class="py-32 px-8 text-center bg-white border-t border-black/5">
         <div class="fade-in-element max-w-2xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20 text-deep-gray/90">
-                商品の真価を、共に「翻訳」しましょう。
+                真価を、共に「翻訳」しましょう。
             </h2>
             <div class="flex justify-center gap-10 text-black/40">
                 <a href="mailto:daphnebuyer@gmail.com" class="hover:text-plum-pink transition-all"><i data-lucide="mail" stroke-width="1"></i></a>
@@ -225,46 +255,35 @@
     <script>
         lucide.createIcons();
         
-        // 波打ちアニメーションのスクリプト
-        const targetText = "お探しの商材やブランドがあれば、ぜひお気軽にご相談ください";
-        const emailLinkText = "ご相談ください";
+        // 波打ちアニメーション
+        const baseText = "お探しの商材やブランドがあれば、ぜひお気軽に";
+        const emailLinkText = "お問い合わせください";
         const emailAddress = "daphnebuyer@gmail.com";
         const waveContainer = document.getElementById('wave-trigger');
 
-        // 文字を分割してspanタグで囲む
         const createWaveText = () => {
             let html = "";
             let charIndex = 0;
-            
-            // リンク以外の部分とリンク部分を分けて処理
-            const baseText = "お探しの商材やブランドがあれば、ぜひお気軽に";
-            
-            // 普通のテキスト部分
             [...baseText].forEach((c) => {
                 html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
                 charIndex++;
             });
-
-            // メールリンク部分
             html += `<a href="mailto:${emailAddress}" class="text-plum-pink underline hover:text-white transition-colors">`;
             [...emailLinkText].forEach((c) => {
                 html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
                 charIndex++;
             });
             html += `</a>`;
-
             waveContainer.innerHTML = html;
         };
 
         createWaveText();
 
-        // フェードインの監視
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
 
-        // Note RSS取得
         fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
             .then(res => res.json())
             .then(data => {
