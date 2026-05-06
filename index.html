@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAMI SOUDA - Buyer / Director</title>
     
-    <!-- 必要なライブラリの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
@@ -34,8 +33,6 @@
         .animate-scroll-bounce { animation: scroll-bounce 2s infinite; }
         .heading-line { display: flex; align-items: center; gap: 1.5rem; }
         .heading-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, #DDA0DD, transparent); }
-        @keyframes sparkle-char { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(-4px); } }
-        .sparkle-char { display: inline-block; animation: sparkle-char 3s infinite; }
     </style>
 </head>
 <body class="bg-white">
@@ -57,7 +54,6 @@
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] animate-hero-zoom">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(221,160,221,0.05)_0%,transparent:70%)]"></div>
         </div>
         <div class="relative z-10 text-center max-w-4xl px-8">
             <div class="fade-in-element visible">
@@ -108,119 +104,51 @@
                         <p class="text-[10px] opacity-40 uppercase tracking-widest mt-1">バイヤー歴</p>
                     </div>
                 </div>
-                <div class="pt-4 border-t border-black/5">
-                    <span class="block text-[10px] uppercase tracking-widest text-deep-gray/40 mb-4">担当領域の変遷</span>
-                    <ul class="text-sm font-light space-y-2 opacity-80">
-                        <li>/ コレクタブル（伝統工芸品等）5年</li>
-                        <li>/ ハイジュエリー（真珠等）3年</li>
-                        <li>/ コスチュームジュエリー 5年</li>
-                        <li>/ 日用品 5年</li>
-                        <li>/ バッグを中心とした服飾雑貨 5年</li>
-                    </ul>
-                </div>
             </div>
             
             <div class="space-y-12">
-                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Behind the Scenes</h3>
-                <div class="space-y-8 text-sm font-light leading-relaxed text-deep-gray/80">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest opacity-40 block mb-1">Roots</span>
-                        1978年生まれ / 東京・世田谷区出身 (148cm)
-                    </div>
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest opacity-40 block mb-1">Hobbies</span>
-                        日記を書くこと / 考え事
-                    </div>
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest opacity-40 block mb-1">Inspirations</span>
-                        美術全般、DAZZLE、原田マハ「楽園のカンヴァス」、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな
-                    </div>
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest opacity-40 block mb-1">Treasured Items</span>
-                        父から譲り受けた祖父のIWC時計、義母からのランプ
-                    </div>
+                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile</h3>
+                <div class="text-sm space-y-4 font-light text-deep-gray/80 leading-relaxed">
+                    <p>1978年9月生まれ / 東京・世田谷区出身 (身長: 148cm)</p>
+                    <p>ジュピターショップチャンネルにてMD・バイヤーとして16年従事</p>
+                    <p>社会構想大学院大学 実務家教員養成課程 在籍中</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Philosophy -->
-    <section id="philosophy" class="py-32 md:py-48 bg-black text-white px-8 relative">
+    <section id="philosophy" class="py-32 md:py-48 bg-black text-white px-8">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 heading-line">Core Philosophy</h2>
             <div class="grid md:grid-cols-3 gap-16">
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">01</span>
                     <h3 class="text-xl tracking-widest">見抜く。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">唯一無二の「核」を見つけ出し、本質を捉える。</p>
+                    <p class="text-sm opacity-50 leading-relaxed font-light">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">02</span>
                     <h3 class="text-xl tracking-widest">整える。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">価値の乖離を、論理的な見せ方と言葉で埋める。</p>
+                    <p class="text-sm opacity-50 leading-relaxed font-light">価値の乖離を、論理的な見せ方と言葉で埋め、あるべき姿へ再構築する。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">03</span>
                     <h3 class="text-xl tracking-widest">届ける。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">「わからない」を「わかった」へ。市場との幸福な出会い。</p>
+                    <p class="text-sm opacity-50 leading-relaxed font-light">「わからない」を「わかった」へ。市場との幸福な出会いを創出する。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partnership & Capabilities -->
-    <section id="partnership" class="py-32 md:py-48 bg-black text-white px-8">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 heading-line">What I Can Do</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm font-light opacity-70">
-                <p>/ 売場の最適化</p><p>/ 売場に即したブランド選定</p>
-                <p>/ ファッション雑貨商品企画</p><p>/ ブランディング</p>
-                <p>/ 価格決定</p><p>/ 売上データによる分析</p>
-                <p>/ 財務諸表からの商品強化提案</p><p>/ 在庫処分</p>
-                <p>/ テレビ通販に関するご相談</p><p>/ ECサイト企画・ディレクション</p>
-                <p>/ ECサイトブラッシュアップ</p>
-            </div>
-
-            <!-- Seeking / 募集中 -->
-            <div class="mt-32 pt-24 border-t border-white/10">
-                <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Seeking / 募集中</h2>
-                <div class="grid md:grid-cols-2 gap-12 text-sm opacity-70 font-light">
-                    <ul class="space-y-4">
-                        <li>/ 販路が欲しいブランド</li>
-                        <li>/ テレビ通販の相談に乗って欲しい人</li>
-                        <li>/ 爬虫類バッグの縫製工場を探している人</li>
-                        <li>/ 高級バッグブランドを探している人</li>
-                    </ul>
-                    <ul class="space-y-4">
-                        <li>/ ポップアップを開催したい人</li>
-                        <li>/ ブランドの商品展開に迷いのある方</li>
-                        <li>/ 訴求ポイントに自信が持てない人</li>
-                        <li>/ 「バイヤー目線」が知りたい方</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Contact Button -->
-            <a href="mailto:daphnebuyer@gmail.com" class="block mt-20 p-8 bg-white/5 border border-white/10 relative overflow-hidden group hover:border-plum-pink transition-all">
-                <div class="flex items-center justify-between relative z-10">
-                    <div class="text-base md:text-lg tracking-widest leading-loose">
-                        現在の御社が「探していること」、<br>
-                        ぜひご相談ください。
-                    </div>
-                    <i data-lucide="mail" class="text-plum-pink opacity-50 group-hover:opacity-100 transition-all" size="32"></i>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Journal & Footer -->
+    <!-- Journal (Blog) -->
     <section class="py-32 px-8 bg-white text-center">
         <div class="fade-in-element max-w-3xl mx-auto space-y-12">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Journal</h2>
             <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">お買い物はお仕事です</h3>
             <p class="text-sm opacity-60 leading-loose max-w-xl mx-auto">
                 出会った”良い商品”だけを備忘録としてまとめました。<br>
-                ブランドの訴求整理の見本としてご覧ください。
+                訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
             </p>
             <a href="https://daphnemeria-blog.com/" target="_blank" class="inline-flex items-center gap-4 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">
                 Visit Blog <i data-lucide="arrow-right" size="16"></i>
@@ -228,9 +156,34 @@
         </div>
     </section>
 
+    <!-- Note Section (追加した部分) -->
+    <section class="py-32 px-8 bg-[#FAFAFA] text-center border-t border-black/5">
+        <div class="fade-in-element max-w-3xl mx-auto space-y-12">
+            <div class="space-y-8">
+                <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Note</h2>
+                <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">MDの頭の中</h3>
+                <p class="text-sm opacity-60 leading-loose max-w-xl mx-auto">
+                    日々の気づきや、バイヤーならではの視点で読み解くトレンド、<br>
+                    小売・流通業界のニュース解説などを発信しています。
+                </p>
+            </div>
+
+            <!-- RSS記事表示エリア -->
+            <div id="note-posts" class="w-full max-w-3xl mx-auto mt-16 text-left space-y-4">
+                <div class="text-center text-deep-gray/40 text-sm tracking-widest animate-pulse">Loading latest notes...</div>
+            </div>
+
+            <div class="pt-12">
+                <a href="https://note.com/daphnemeria" target="_blank" class="inline-flex items-center gap-4 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">
+                    View on Note <i data-lucide="external-link" size="16"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact" class="py-32 px-8 text-center bg-white border-t border-black/5">
         <div class="fade-in-element max-w-2xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20">真価を、共に「翻訳」しましょう。</h2>
+            <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20 text-deep-gray/90">真価を、共に「翻訳」しましょう。</h2>
             <div class="flex justify-center gap-10 text-black/40">
                 <a href="mailto:daphnebuyer@gmail.com" class="hover:text-plum-pink transition-colors"><i data-lucide="mail"></i></a>
                 <a href="https://x.com/daphnebuyer" target="_blank" class="hover:text-plum-pink transition-colors"><i data-lucide="twitter"></i></a>
@@ -242,10 +195,34 @@
 
     <script>
         lucide.createIcons();
+        
+        // フェードインの監視
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+
+        // NoteのRSS取得
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('note-posts');
+                if (data.items && data.items.length > 0) {
+                    container.innerHTML = '';
+                    data.items.slice(0, 5).forEach(post => {
+                        const date = new Date(post.pubDate.replace(' ', 'T')).toLocaleDateString('ja-JP');
+                        container.innerHTML += `
+                            <a href="${post.link}" target="_blank" class="group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 hover:bg-black/5 p-4 rounded-md transition-colors border border-transparent hover:border-black/5">
+                                <span class="text-[10px] tracking-[0.2em] text-plum-pink shrink-0">${date}</span>
+                                <h4 class="text-sm md:text-base font-medium leading-relaxed group-hover:text-plum-pink transition-colors">${post.title}</h4>
+                            </a>
+                        `;
+                    });
+                }
+            })
+            .catch(err => {
+                document.getElementById('note-posts').innerHTML = '<div class="text-center text-xs opacity-30">Failed to load Note posts.</div>';
+            });
     </script>
 </body>
 </html>
