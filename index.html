@@ -27,278 +27,350 @@
         .nav-glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.85); }
         .fade-in-element { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .fade-in-element.visible { opacity: 1; transform: translateY(0); }
-        
         @keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
         .animate-hero-zoom { animation: hero-zoom 20s ease-out forwards; }
-        
         @keyframes scroll-bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-10px) translateX(-50%); } }
         .animate-scroll-bounce { animation: scroll-bounce 2s infinite; }
-        
         .heading-line { display: flex; align-items: center; gap: 1.5rem; }
         .heading-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, #DDA0DD, transparent); }
-
-        /* 波のアニメーション */
-        @keyframes wave {
-            0%, 40%, 100% { transform: translateY(0); color: inherit; }
-            20% { transform: translateY(-8px); color: #DDA0DD; }
-        }
-        .char { display: inline-block; transition: color 0.3s; }
-        .wave-active .char { animation: wave 2.5s infinite; }
+        
+        /* 波打つアニメーションの設定 */
+        @keyframes sparkle-char { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(-4px); } }
+        .animate-sparkle-char { display: inline-block; animation: sparkle-char 3s infinite; }
     </style>
 </head>
 <body class="bg-white">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-[100] nav-glass border-b border-black/5 py-4 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
-            <div class="text-sm md:text-base tracking-[0.5em] font-bold uppercase text-deep-gray whitespace-nowrap">AMAMI SOUDA</div>
-            <div class="flex gap-6 md:gap-10 text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.2em] uppercase font-medium text-deep-gray/70">
-                <a href="#about" class="hover:text-plum-pink transition-colors">About</a>
-                <a href="#philosophy" class="hover:text-plum-pink transition-colors">Philosophy</a>
-                <a href="#partnership" class="hover:text-plum-pink transition-colors">Partnership</a>
-                <a href="#contact" class="hover:text-plum-pink transition-colors">Contact</a>
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] transition-all duration-500 nav-glass border-b border-black/5 py-3 md:py-5">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+            <div class="text-sm md:text-base tracking-[0.3em] md:tracking-[0.5em] font-bold uppercase text-deep-gray whitespace-nowrap">AMAMI SOUDA</div>
+            <div class="flex flex-wrap justify-center gap-5 md:gap-10 text-[10px] md:text-[11px] tracking-[0.1em] md:tracking-[0.2em] uppercase font-medium text-deep-gray/70">
+                <a href="#about" class="hover:text-plum-pink transition-colors py-1">About</a>
+                <a href="#philosophy" class="hover:text-plum-pink transition-colors py-1">Philosophy</a>
+                <a href="#partnership" class="hover:text-plum-pink transition-colors py-1">Partnership</a>
+                <a href="#contact" class="hover:text-plum-pink transition-colors py-1">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <section class="relative h-screen flex items-center justify-center overflow-hidden px-8 bg-[#0a0a0a]">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 animate-hero-zoom">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 animate-hero-zoom" style="filter: grayscale(100%) brightness(0.25) contrast(1.1);">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(221,160,221,0.05)_0%,transparent_70%)]"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(#ffffff03_0.5px,transparent_0.5px)] bg-[size:20px_20px] opacity-40"></div>
         </div>
-        <div class="relative z-10 text-center max-w-4xl px-8">
+        <div class="relative z-10 text-center max-w-4xl">
             <div class="fade-in-element visible">
-                <h1 class="text-3xl md:text-6xl font-extralight tracking-[0.6em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
+                <h1 class="text-3xl md:text-5xl font-extralight tracking-[0.4em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
                 <p class="mt-10 text-[10px] md:text-[12px] tracking-[0.6em] md:tracking-[1.2em] text-plum-pink font-light uppercase opacity-80">Buyer / Director</p>
             </div>
         </div>
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/30 animate-scroll-bounce">
-            <i data-lucide="chevron-down" stroke-width="1"></i>
+            <i data-lucide="chevron-down" stroke-width="1" size="18"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-32 md:py-48 px-8 max-w-5xl mx-auto">
-        <div class="fade-in-element flex flex-col md:flex-row gap-12 md:gap-16 items-start mb-24">
-            <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-full shadow-sm grayscale border-2 border-black/5">
-                <img src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330" alt="早田天美" class="w-full h-full object-cover">
-            </div>
-            <div>
-                <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6 md:mt-2">早田天美</span>
-                <p class="text-lg md:text-xl leading-[2.6] tracking-wider font-light text-deep-gray/90">
-                    ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
-                    全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br>
-                    商材の枠を超え、いかなる価値も最速で見極め「最定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
-                </p>
-            </div>
-        </div>
-
-        <div class="mb-24 space-y-16 fade-in-element">
-            <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile & Identity</h3>
-            <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
-              <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
-                <span class="text-plum-pink/80 tracking-widest">2001年</span>
-                <span>インポーターアシスタント、貿易事務</span>
-              </div>
-              <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
-                <span class="text-plum-pink/80 tracking-widest">2002年</span>
-                <span>ネットショップにてコスチュームジュエリーを販売開始</span>
-              </div>
-              <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
-                <span class="text-plum-pink/80 tracking-widest whitespace-nowrap">2008年ー2026年</span>
-                <span>ショップチャンネル MD・バイヤーとして16年従事</span>
-              </div>
-              <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4">
-                <span class="text-plum-pink/80 tracking-widest">2026年</span>
-                <span>社会構想大学院大学 実務家教員養成課程履修中</span>
-              </div>
+    <section id="about" class="py-32 md:py-40 px-8 max-w-4xl mx-auto">
+        <div class="fade-in-element">
+            <div class="mb-20 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+                <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-full shadow-sm grayscale hover:grayscale-0 transition-all duration-1000 border-2 border-black/5">
+                    <img src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330" alt="早田天美" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6 md:mt-2">早田天美</span>
+                    <p class="text-lg md:text-xl leading-[2.4] tracking-wider font-light text-deep-gray/90">
+                        ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br />
+                        全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br />
+                        ここで私が獲得したのは、未知の商材であっても短期間でその商材やブランド、業界について学習し、的確にセールスポイントを掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br />
+                        商材の枠を超え、いかなる価値も最速で見極め「最定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
+                    </p>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 md:gap-16 pt-8 border-t border-black/5">
-              <div class="space-y-8">
-                <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Numbers & Expertise</p>
+            <div class="mb-24 space-y-16">
+                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile & Identity</h3>
                 <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
-                  <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
-                    <span class="text-2xl font-light tracking-wide text-plum-pink">10,000<span class="text-sm"> hours</span></span>
-                    <span class="opacity-80">各商材ジャンルへの投下時間</span>
-                  </div>
-                  <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
-                    <span class="text-2xl font-light tracking-wide text-plum-pink">3億<span class="text-sm"> 円</span></span>
-                    <span class="opacity-80">1商品の1日あたりの最高売上高</span>
-                  </div>
-                  <div class="flex flex-col gap-1 border-b border-black/5 pb-4">
-                    <span class="text-2xl font-light tracking-wide text-plum-pink">23<span class="text-sm"> years</span></span>
-                    <span class="opacity-80">バイヤー歴</span>
-                  </div>
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4"><span class="text-plum-pink/80 tracking-widest">2001年</span><span>インポーターアシスタント、貿易事務</span></div>
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4"><span class="text-plum-pink/80 tracking-widest">2002年</span><span>ネットショップにてコスチュームジュエリーを販売開始</span></div>
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4"><span class="text-plum-pink/80 tracking-widest whitespace-nowrap">2008年ー2026年</span><span>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤーとして16年従事</span></div>
+                    <div class="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4"><span class="text-plum-pink/80 tracking-widest">2026年</span><span>社会構想大学院大学 実務家教員養成課程履修中（第18期）</span></div>
                 </div>
-              </div>
 
-              <div class="space-y-8 text-sm md:text-base leading-[2.2] text-deep-gray font-light">
-                <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Behind the Scenes</p>
-                <div class="border-b border-black/5 pb-4">
-                    <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Roots</span>
-                    <span class="opacity-80">1978年生まれ / 東京・世田谷区出身 (身長: 148cm)</span>
+                <div class="grid md:grid-cols-2 gap-12 md:gap-16 pt-8 border-t border-black/5">
+                    <div class="space-y-8">
+                        <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Numbers & Expertise</p>
+                        <div class="space-y-6 text-sm md:text-base leading-relaxed text-deep-gray font-light">
+                            <div class="flex flex-col gap-1 border-b border-black/5 pb-4"><span class="text-2xl font-light tracking-wide text-plum-pink">10,000<span class="text-sm"> hours</span></span><span class="opacity-80">各商材ジャンルへの投下時間（5年ごと）</span></div>
+                            <div class="flex flex-col gap-1 border-b border-black/5 pb-4"><span class="text-2xl font-light tracking-wide text-plum-pink">3億<span class="text-sm"> 円</span></span><span class="opacity-80">1商品の1日あたりの最高売上高</span></div>
+                            <div class="flex flex-col gap-1 border-b border-black/5 pb-4"><span class="text-2xl font-light tracking-wide text-plum-pink">16<span class="text-sm"> years</span></span><span class="opacity-80">TV通販専門チャンネル MD・バイヤー歴</span></div>
+                            <div class="flex flex-col gap-1 border-b border-black/5 pb-4"><span class="text-2xl font-light tracking-wide text-plum-pink">23<span class="text-sm"> years</span></span><span class="opacity-80">バイヤー歴</span></div>
+                        </div>
+                        <div class="pt-2 text-sm leading-relaxed text-deep-gray font-light opacity-80">
+                            <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-3 border-b border-deep-gray/10 pb-2">担当領域の変遷</span>
+                            <ul class="space-y-2 list-none">
+                                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コレクタブル（伝統的工芸品、作家ものなどニッチ商材）５年</span></li>
+                                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>ハイジュエリー（主に真珠）３年</span></li>
+                                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>コスチュームジュエリー５年</span></li>
+                                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>日用品５年</span></li>
+                                <li class="flex gap-4"><span class="text-plum-pink font-bold">/</span><span>バッグを中心とした服飾雑貨５年</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 relative">
+                        <p class="tracking-[0.3em] text-[10px] uppercase text-plum-pink/80 font-semibold mb-6">Behind the Scenes</p>
+                        <div class="space-y-6 text-sm md:text-base leading-[2.2] text-deep-gray font-light">
+                            <div class="border-b border-black/5 pb-4"><span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Roots</span><span class="opacity-80">1978年生まれ / 東京・世田谷区出身<br/><span class="text-[12px] opacity-70">（身長: 148cm）</span></span></div>
+                            <div class="border-b border-black/5 pb-4"><span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Hobbies</span><span class="opacity-80">日記を書くこと / 考え事</span></div>
+                            <div class="border-b border-black/5 pb-4"><span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Treasured Items</span><span class="opacity-80">現代では作られていないもの<br/>父から譲り受けた祖父のIWC時計、義母からのランプなど。</span></div>
+                            <div class="pb-4"><span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Inspirations</span><span class="opacity-80">美術全般（庭園美術館、ダリのジュエリー）、ダンスチームDAZZLE<br/>原田マハ「楽園のカンヴァス」、西加奈子「さくら」、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="border-b border-black/5 pb-4">
-                    <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Hobbies</span>
-                    <span class="opacity-80">日記を書くこと / 資産運用</span>
-                </div>
-                <div class="pb-4">
-                    <span class="block text-[10px] uppercase tracking-widest text-deep-gray/50 mb-1">Inspirations</span>
-                    <span class="opacity-80">美術全般、King Gnu、ちゃんみな、ダンスチームDAZZLE</span>
-                </div>
-              </div>
+            </div>
+
+            <div class="space-y-10 text-sm md:text-base leading-[2.2] text-deep-gray/80 font-light">
+                <p>かつてテレビ通販の最前線で、1時間に2,000万円前後、1日で1商品3億円前後の売上を記録しました。この結果は、市場の熱狂にただ乗るのではなく、冷静な分析によって商品の「真価」を見抜く視点があったからこそ成し得たものです。</p>
+                <p>バイヤーとして長年ものづくりと向き合う中で、私が常に大切にしてきたのは「複雑に絡み合う商品情報を解きほぐし、一人ひとりの心に届く『研ぎ澄まされた言葉』へと変換すること」です。</p>
+                <p>その過程で直面したのは、専門性を高めれば高めるほど、かえって知識のない方には真価が伝わりにくくなるという壁です。業界に根付く高度な「暗黙知」こそが、実はお客様を遠ざけ、「売れにくい理由」を作っていました。</p>
+                <p>この壁を越えるには、あえて商材を学ぶ前の「素人の目線」に立ち返る視点が必要です。作り手側の「当たり前」を疑い、プロの知識をあえて解きほぐして翻訳し直す。そこに隠された価値の糸口を見つけ出し、お客様に届く言葉へと再構築していくプロセスにこそ、私は深い面白さを見出しています。</p>
+                <p>あなたのブランドの「売れる訴求点」を整理し、世の中に届ける言葉を、共に見つけてみませんか。</p>
             </div>
         </div>
     </section>
 
     <!-- Philosophy -->
-    <section id="philosophy" class="py-32 md:py-48 bg-black text-white px-8">
-        <div class="max-w-5xl mx-auto text-left">
-            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 heading-line">Core Philosophy</h2>
-            <div class="grid md:grid-cols-3 gap-16">
-                <div class="fade-in-element space-y-6">
-                    <span class="text-6xl font-extralight text-plum-pink/20 italic">01</span>
-                    <h3 class="text-xl tracking-widest font-medium">見抜く。</h3>
-                    <p class="text-sm opacity-50 font-light leading-relaxed">唯一無二の「核」を見つけ出し、本質を捉える。</p>
+    <section id="philosophy" class="py-32 md:py-40 bg-black text-white px-8 relative">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="w-full h-full bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="fade-in-element"><h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 md:mb-32 heading-line">Core Philosophy</h2></div>
+            <div class="grid md:grid-cols-3 gap-16 md:gap-12">
+                <div class="fade-in-element space-y-8 md:space-y-10 group">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">01</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">見抜く。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。冷静な自他分析こそが、本質を捉える唯一の道。</p>
                 </div>
-                <div class="fade-in-element space-y-6">
-                    <span class="text-6xl font-extralight text-plum-pink/20 italic">02</span>
-                    <h3 class="text-xl tracking-widest font-medium">整える。</h3>
-                    <p class="text-sm opacity-50 font-light leading-relaxed">価値の乖離を、論理と言葉で埋め再構築する。</p>
+                <div class="fade-in-element space-y-8 md:space-y-10 group">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">02</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">整える。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。</p>
                 </div>
-                <div class="fade-in-element space-y-6">
-                    <span class="text-6xl font-extralight text-plum-pink/20 italic">03</span>
-                    <h3 class="text-xl tracking-widest font-medium">届ける。</h3>
-                    <p class="text-sm opacity-50 font-light leading-relaxed">市場との幸福な出会いを創出する。</p>
+                <div class="fade-in-element space-y-8 md:space-y-10 group">
+                    <span class="text-6xl font-extralight text-plum-pink/20 italic group-hover:text-plum-pink/40 transition-colors duration-1000">03</span>
+                    <h3 class="text-xl tracking-[0.3em] font-medium">届ける。</h3>
+                    <p class="text-sm leading-[2.2] text-white/50 font-light tracking-wider">「わからない」を「わかった」へ。一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partnership & Seeking -->
-    <section id="partnership" class="py-32 md:py-48 bg-black text-white px-8 border-t border-white/5">
-        <div class="max-w-5xl mx-auto text-left">
-            <div class="flex flex-col md:flex-row gap-16 md:gap-20 mb-32">
+    <!-- Partnership -->
+    <section id="partnership" class="py-32 md:py-40 px-8 bg-black text-white relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-20">
                 <div class="md:w-1/3 fade-in-element">
                     <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Partnership</h2>
                     <p class="text-sm leading-[2.4] text-white/50 font-light tracking-widest">伝え方に悩むブランド、価値を再定義したい営業担当者へ。</p>
                 </div>
-                <div class="md:w-2/3 space-y-16 fade-in-element">
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Value Definition</h3>
-                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
-                        </div>
-                        <p class="text-sm opacity-40 font-light">商品の真価を抽出し、「なぜ選ばれるのか」を、揺るぎない言葉で定義します。</p>
+                <div class="md:w-2/3 fade-in-element space-y-12 md:space-y-20">
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors duration-700">
+                        <div class="flex justify-between items-end mb-6"><h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Value Definition</h3><i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i></div>
+                        <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">商材の強みを抽出し、市場での立ち位置を明確にします。「なぜ選ばれるのか」を、揺るぎない言葉で定義します。</p>
                     </div>
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Direction & Story</h3>
-                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
-                        </div>
-                        <p class="text-sm opacity-40 font-light">ビジュアルとテキストの両面から、魅力を最大化するストーリーを構築します。</p>
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors duration-700">
+                        <div class="flex justify-between items-end mb-6"><h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Direction & Story</h3><i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i></div>
+                        <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">ビジュアルとテキストの両面から、商材の魅力を最大化。顧客の心に深く沈み込む、静かなストーリーを構築します。</p>
                     </div>
-                    <!-- 追加: Data Analysis -->
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-all">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Data Analysis</h3>
-                            <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i>
-                        </div>
-                        <p class="text-sm opacity-40 font-light">売り上げデータによる振り返りと分析を行い、次なる一手を導き出します。</p>
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors duration-700">
+                        <div class="flex justify-between items-end mb-6"><h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Hands-on Support</h3><i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i></div>
+                        <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">単なる助言に留まらず、現場の「わからない」に寄り添い、共に手を動かし、解決の糸口を見出すまで伴走します。</p>
+                    </div>
+                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors duration-700">
+                        <div class="flex justify-between items-end mb-6"><h3 class="text-xl md:text-2xl font-light tracking-[0.2em]">Data Analysis</h3><i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 transition-all duration-700" size="18"></i></div>
+                        <p class="text-sm leading-[2.2] text-white/40 font-light tracking-wider">売り上げデータによる振り返りと分析</p>
                     </div>
                 </div>
             </div>
 
-            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Seeking / 募集中</h2>
-            <ul class="space-y-6 text-sm text-white/70 font-light tracking-wider">
-                <li class="flex gap-4">/ 販路が欲しいブランド</li>
-                <li class="flex gap-4">/ テレビ通販に関する相談に乗って欲しい人</li>
-                <li class="flex gap-4">/ 「バイヤー目線」が知りたい方</li>
-                <li class="pt-8 text-white/40 border-t border-white/5 text-lg leading-loose">
-                    などなど、、、<br class="md:hidden">
-                    <span id="wave-trigger" class="wave-active">
-                        <!-- ここにアニメーションされるテキストが入ります -->
-                    </span>
-                </li>
-            </ul>
+            <!-- What I Can Do -->
+            <div class="mt-24 md:mt-32 pt-16 md:pt-24 border-t border-white/10 fade-in-element">
+                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">What I Can Do / できること</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-white/70 font-light tracking-wider list-none">
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>売場の最適化</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>売場に即したブランド選定</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>ファッション雑貨商品企画</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>ブランディング</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>価格決定</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>売上データによる分析</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>財務諸表からの売り上げ・商品強化のご提案</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>在庫処分</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>テレビ通販に関するご相談全般</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>ECサイトの企画・ディレクション</span></li>
+                    <li class="flex gap-4"><span class="text-plum-pink font-bold shrink-0">/</span><span>ECサイトブラッシュアップのご提案全般</span></li>
+                </ul>
+            </div>
+
+            <!-- Seeking / Wave Animation Footer -->
+            <div class="mt-20 md:mt-24 pt-16 md:pt-20 border-t border-white/5 fade-in-element">
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                    <div class="lg:w-1/3 shrink-0">
+                        <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-6 flex items-center gap-4 before:content-[''] before:block before:w-6 before:h-[1px] before:bg-plum-pink">Seeking / 募集中</h3>
+                        <p class="text-sm text-white/50 leading-[2.2] tracking-wider font-light mt-8">販路とブランド、ブランドと作り手など、人と人とを繋ぐお手伝いもできます。</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <ul class="space-y-5 lg:space-y-6 text-sm text-white/70 font-light tracking-wider list-none mb-12">
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>販路が欲しいブランド</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>テレビ通販（出演・販路・営業支援・出演者練習etc）に関する相談に乗って欲しい人</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>爬虫類のバッグの縫製工場を探している人</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>高級バッグブランドを探している人</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>ポップアップイベントを開催したい人（店頭に立てる方限定）</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>ブランドの商品展開に迷いのある方</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>自社商品、自社ブランドの訴求ポイントに自信が持てない人</span></li>
+                            <li class="flex gap-4 items-start"><span class="text-plum-pink font-bold shrink-0 translate-y-[2px]">/</span><span>「バイヤー目線」が知りたい方</span></li>
+                            <li class="flex gap-4 items-start pt-2 opacity-40"><span></span><span>などなど、、、</span></li>
+                        </ul>
+                        
+                        <a href="mailto:daphnebuyer@gmail.com" class="block p-6 md:p-8 bg-white/5 border border-white/10 relative overflow-hidden group hover:border-plum-pink/50 transition-colors duration-500">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-plum-pink"></div>
+                            <div class="flex items-center justify-between relative z-10">
+                                <div class="text-base md:text-lg font-medium tracking-widest leading-relaxed">
+                                    <span id="sparkle-line-1" class="block"></span>
+                                    <span id="sparkle-line-2" class="block mt-1 sm:mt-2"></span>
+                                </div>
+                                <i data-lucide="mail" class="text-plum-pink opacity-50 group-hover:opacity-100 group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500" size="28"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
+        <div class="max-w-5xl mx-auto text-center fade-in-element">
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center mb-12">Journal</h2>
+            <h3 class="text-3xl md:text-4xl font-light tracking-[0.15em] leading-tight text-deep-gray mb-8">お買い物は<br />お仕事です</h3>
+            <p class="text-sm text-deep-gray/60 font-light leading-[2.4] max-w-xl mx-auto tracking-wider mb-12">
+                出会った”良い商品”だけを備忘録としてまとめました。<br />訴求の整理は、このように掘り下げてまとめていく「訴求のまとめ見本」です。
+            </p>
+            <a href="https://daphnemeria-blog.com/" target="_blank" class="group relative inline-flex items-center gap-8 md:gap-10 text-[11px] tracking-[0.4em] uppercase font-medium text-plum-pink py-4">
+                <span>Visit Blog<span class="absolute -bottom-3 left-0 w-full h-[1px] bg-plum-pink/20 group-hover:bg-plum-pink transition-colors duration-500"></span></span>
+                <i data-lucide="arrow-right" class="group-hover:translate-x-6 transition-transform duration-700" size="16"></i>
+            </a>
         </div>
     </section>
 
     <!-- Note Section -->
-    <section class="py-32 md:py-48 px-8 bg-[#FAFAFA] border-t border-black/5 text-center">
-        <div class="fade-in-element max-w-3xl mx-auto space-y-12">
-            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Note</h2>
-            <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray uppercase">MDの頭の中</h3>
-            <div id="note-posts" class="w-full text-left mt-16 space-y-2">
-                <div class="text-center py-10 opacity-30 text-sm animate-pulse">Loading latest notes...</div>
+    <section class="py-32 md:py-40 px-8 bg-[#FAFAFA] border-t border-black/5">
+        <div class="max-w-5xl mx-auto text-center fade-in-element">
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center mb-12">Note</h2>
+            <h3 class="text-3xl md:text-4xl font-light tracking-[0.15em] leading-tight text-deep-gray mb-8">MDの頭の中</h3>
+            <p class="text-sm text-deep-gray/60 font-light leading-[2.4] max-w-xl mx-auto tracking-wider mb-16">
+                日々の気づきや、バイヤーならではの視点で読み解くトレンド、<br />小売・流通業界のニュース解説などを発信しています。
+            </p>
+            <div id="note-list" class="w-full max-w-3xl mx-auto text-left space-y-4 md:space-y-6">
+                <div class="text-center text-deep-gray/40 text-sm tracking-widest animate-pulse">Loading latest notes...</div>
             </div>
-            <a href="https://note.com/daphnemeria" target="_blank" class="inline-flex items-center gap-6 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">View on Note <i data-lucide="external-link" size="16"></i></a>
+            <div class="pt-12">
+                <a href="https://note.com/daphnemeria" target="_blank" class="group relative inline-flex items-center gap-8 md:gap-10 text-[11px] tracking-[0.4em] uppercase font-medium text-plum-pink py-4">
+                    <span>View on Note<span class="absolute -bottom-3 left-0 w-full h-[1px] bg-plum-pink/20 group-hover:bg-plum-pink transition-colors duration-500"></span></span>
+                    <i data-lucide="external-link" class="group-hover:translate-x-6 transition-transform duration-700" size="16"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-32 px-8 text-center bg-white border-t border-black/5">
-        <div class="fade-in-element max-w-2xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20 text-deep-gray/90">
-                真価を、共に「翻訳」しましょう。
-            </h2>
-            <div class="flex justify-center gap-10 text-black/40">
-                <a href="mailto:daphnebuyer@gmail.com" class="hover:text-plum-pink transition-all"><i data-lucide="mail" stroke-width="1"></i></a>
-                <a href="https://x.com/daphnebuyer" target="_blank" class="hover:text-plum-pink transition-all"><i data-lucide="twitter" stroke-width="1"></i></a>
-                <a href="https://note.com/daphnemeria" target="_blank" class="hover:text-plum-pink transition-all"><i data-lucide="pen-line" stroke-width="1"></i></a>
+    <!-- Footer -->
+    <footer id="contact" class="py-32 md:py-40 px-8 bg-white border-t border-black/5">
+        <div class="max-w-3xl mx-auto text-center fade-in-element">
+            <h2 class="text-xl md:text-3xl font-light tracking-[0.2em] md:tracking-[0.25em] leading-relaxed mb-16 md:mb-20 text-deep-gray/90">「当たり前」を、売れる言葉へ。<br />商品の真価を、共に「翻訳」しましょう。</h2>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 md:mb-24">
+                <a href="mailto:daphnebuyer@gmail.com" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+                    <i data-lucide="mail" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">daphnebuyer@Gmail</span>
+                </a>
+                <a href="https://daphnemeria-blog.com/" target="_blank" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+                    <i data-lucide="message-square" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">Blog</span>
+                </a>
+                <a href="https://note.com/daphnemeria" target="_blank" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+                    <i data-lucide="pen-line" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">Note</span>
+                </a>
+                <a href="https://x.com/daphnebuyer" target="_blank" class="text-deep-gray/60 hover:text-plum-pink transition-colors flex flex-col items-center gap-4 md:gap-5 group">
+                    <i data-lucide="twitter" stroke-width="1" size="22" class="group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="text-[9px] md:text-[10px] tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">X (Twitter)</span>
+                </a>
             </div>
-            <p class="mt-24 text-[10px] tracking-widest opacity-20 uppercase font-light">© 2026 AMAMI SOUDA. All Rights Reserved.</p>
+            <div class="text-[10px] tracking-widest text-deep-gray/30 uppercase font-light">© 2026 AMAMI SOUDA All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
+        // Lucide Icons
         lucide.createIcons();
-        
-        // 波打ちアニメーション
-        const baseText = "お探しの商材やブランドがあれば、ぜひお気軽に";
-        const emailLinkText = "お問い合わせください";
-        const emailAddress = "daphnebuyer@gmail.com";
-        const waveContainer = document.getElementById('wave-trigger');
 
-        const createWaveText = () => {
-            let html = "";
-            let charIndex = 0;
-            [...baseText].forEach((c) => {
-                html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
-                charIndex++;
-            });
-            html += `<a href="mailto:${emailAddress}" class="text-plum-pink underline hover:text-white transition-colors">`;
-            [...emailLinkText].forEach((c) => {
-                html += `<span class="char" style="animation-delay: ${charIndex * 0.1}s">${c}</span>`;
-                charIndex++;
-            });
-            html += `</a>`;
-            waveContainer.innerHTML = html;
-        };
+        // Navbar scrolled state
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.style.padding = '10px 0';
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.style.padding = '20px 0';
+                nav.style.background = 'rgba(255, 255, 255, 0.85)';
+            }
+        });
 
-        createWaveText();
-
+        // Fade-in animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+
         document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
 
+        // Note RSS Fetch
         fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
             .then(res => res.json())
             .then(data => {
-                const list = document.getElementById('note-posts');
+                const list = document.getElementById('note-list');
                 if (data.items) {
-                    list.innerHTML = '';
-                    data.items.slice(0, 5).forEach(item => {
-                        const date = new Date(item.pubDate.replace(' ', 'T')).toLocaleDateString('ja-JP');
-                        list.innerHTML += `<a href="${item.link}" target="_blank" class="group flex flex-col md:flex-row md:items-center gap-3 p-4 hover:bg-black/5 rounded-md transition-all">
-                            <span class="text-[10px] tracking-widest text-plum-pink shrink-0 opacity-70">${date}</span>
-                            <h4 class="text-sm font-medium group-hover:text-plum-pink transition-colors line-clamp-1">${item.title}</h4>
-                        </a>`;
-                    });
+                    list.innerHTML = data.items.slice(0, 5).map(post => {
+                        const date = new Date(post.pubDate.replace(' ', 'T')).toLocaleDateString('ja-JP');
+                        return `
+                            <a href="${post.link}" target="_blank" class="group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 hover:bg-black/5 p-4 md:px-8 rounded-md transition-colors border border-transparent hover:border-black/5">
+                                <span class="text-[10px] tracking-[0.2em] text-plum-pink shrink-0">${date}</span>
+                                <h4 class="text-sm md:text-base font-medium leading-relaxed group-hover:text-plum-pink transition-colors">${post.title}</h4>
+                            </a>`;
+                    }).join('');
                 }
-            }).catch(() => { document.getElementById('note-posts').innerHTML = '<div class="text-center opacity-30 text-xs">Failed to load Note.</div>'; });
+            }).catch(() => {
+                document.getElementById('note-list').innerHTML = '<div class="text-center opacity-30 text-xs">Failed to load Note.</div>';
+            });
+
+        // Wave/Sparkle Animation JS (Exactly as in React code)
+        const line1 = "現在の御社が「探していること」、";
+        const line2 = "ぜひご相談ください。";
+        document.getElementById('sparkle-line-1').innerHTML = [...line1].map((char, i) => 
+            `<span class="animate-sparkle-char" style="transition-delay: ${i * 30}ms; animation-delay: ${i * 120}ms;">${char}</span>`
+        ).join('');
+        document.getElementById('sparkle-line-2').innerHTML = [...line2].map((char, i) => 
+            `<span class="animate-sparkle-char" style="transition-delay: ${(i + 16) * 30}ms; animation-delay: ${(i + 16) * 120}ms;">${char}</span>`
+        ).join('');
     </script>
 </body>
 </html>
