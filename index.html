@@ -33,15 +33,13 @@
         .animate-scroll-bounce { animation: scroll-bounce 2s infinite; }
         .heading-line { display: flex; align-items: center; gap: 1.5rem; }
         .heading-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, #DDA0DD, transparent); }
-        @keyframes sparkle-char { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(-4px); } }
-        .sparkle-char { display: inline-block; animation: sparkle-char 3s infinite; }
     </style>
 </head>
 <body class="bg-white">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-[100] nav-glass border-b border-black/5 py-4 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+    <nav class="fixed top-0 left-0 w-full z-[100] nav-glass border-b border-black/5 py-4">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-3">
             <div class="text-sm md:text-base tracking-[0.5em] font-bold uppercase text-deep-gray whitespace-nowrap">AMAMI SOUDA</div>
             <div class="flex gap-6 md:gap-10 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-medium text-deep-gray/70">
                 <a href="#about" class="hover:text-plum-pink transition-colors">About</a>
@@ -54,119 +52,101 @@
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] contrast-125 animate-hero-zoom">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(221,160,221,0.05)_0%,transparent_70%)]"></div>
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale brightness-[0.25] animate-hero-zoom">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
         </div>
         <div class="relative z-10 text-center max-w-4xl px-8">
             <div class="fade-in-element visible">
-                <h1 class="text-3xl md:text-5xl font-extralight tracking-[0.4em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
+                <h1 class="text-3xl md:text-6xl font-extralight tracking-[0.6em] md:tracking-[0.8em] leading-tight uppercase text-white/90">AMAMI SOUDA</h1>
                 <p class="mt-10 text-[10px] md:text-[12px] tracking-[0.6em] md:tracking-[1.2em] text-plum-pink font-light uppercase opacity-80">Buyer / Director</p>
             </div>
         </div>
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/30 animate-scroll-bounce">
-            <i data-lucide="chevron-down" stroke-width="1" size="18"></i>
+            <i data-lucide="chevron-down" stroke-width="1"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-32 md:py-40 px-8 max-w-4xl mx-auto">
-        <div class="fade-in-element flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-20">
+    <section id="about" class="py-32 md:py-48 px-8 max-w-5xl mx-auto">
+        <div class="fade-in-element flex flex-col md:flex-row gap-12 md:gap-16 items-start mb-24">
             <div class="w-32 h-32 md:w-40 md:h-40 shrink-0 overflow-hidden rounded-full shadow-sm grayscale border-2 border-black/5">
-                <img src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330" alt="早田天美" class="w-full h-full object-cover">
+                <img src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330" class="w-full h-full object-cover">
             </div>
             <div>
                 <span class="text-sm tracking-[0.4em] text-plum-pink font-medium block mb-6">早田天美</span>
-                <p class="text-lg md:text-xl leading-[2.4] tracking-wider font-light text-deep-gray/90">
-                    23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
-                    未知の商材であっても短期間で本質を掴み、あなたのブランドの「売れる訴求点」を構造化する「再現性のある学習・分析メソッド」こそが私の最大の武器です。
+                <p class="text-lg md:text-xl leading-[2.6] tracking-wider font-light text-deep-gray/90">
+                    23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。未知の商材であっても短期間で本質を掴み、ブランドの「売れる訴求点」を構造化する「再現性のある学習・分析メソッド」が私の武器です。
                 </p>
             </div>
         </div>
 
-        <!-- Numbers & Identity -->
-        <div class="grid md:grid-cols-2 gap-12 md:gap-16 border-t border-black/5 pt-16 fade-in-element">
+        <div class="grid md:grid-cols-2 gap-16 border-t border-black/5 pt-16 fade-in-element">
             <div class="space-y-12">
                 <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Numbers & Expertise</h3>
-                <div class="space-y-6">
-                    <div class="flex flex-col border-b border-black/5 pb-4">
-                        <span class="text-2xl font-light text-plum-pink">10,000<span class="text-sm text-deep-gray"> hours</span></span>
-                        <span class="text-[10px] opacity-50 uppercase mt-1 tracking-widest">各商材ジャンルへの投下時間</span>
-                    </div>
-                    <div class="flex flex-col border-b border-black/5 pb-4">
-                        <span class="text-2xl font-light text-plum-pink">3億<span class="text-sm text-deep-gray"> 円</span></span>
-                        <span class="text-[10px] opacity-50 uppercase mt-1 tracking-widest">1商品の1日あたり最高売上</span>
-                    </div>
-                    <div class="flex flex-col border-b border-black/5 pb-4">
-                        <span class="text-2xl font-light text-plum-pink">23<span class="text-sm text-deep-gray"> years</span></span>
-                        <span class="text-[10px] opacity-50 uppercase mt-1 tracking-widest">バイヤー歴</span>
-                    </div>
+                <div class="grid grid-cols-2 gap-10">
+                    <div><span class="text-2xl text-plum-pink">10,000<span class="text-xs text-deep-gray">h</span></span><p class="text-[10px] opacity-40 uppercase tracking-widest mt-1">投下時間</p></div>
+                    <div><span class="text-2xl text-plum-pink">3億<span class="text-xs text-deep-gray">円</span></span><p class="text-[10px] opacity-40 uppercase tracking-widest mt-1">最高日商</p></div>
+                    <div><span class="text-2xl text-plum-pink">16<span class="text-xs text-deep-gray">y</span></span><p class="text-[10px] opacity-40 uppercase tracking-widest mt-1">TV通販歴</p></div>
+                    <div><span class="text-2xl text-plum-pink">23<span class="text-xs text-deep-gray">y</span></span><p class="text-[10px] opacity-40 uppercase tracking-widest mt-1">バイヤー歴</p></div>
                 </div>
             </div>
-            <div class="space-y-12">
-                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Behind the Scenes</h3>
-                <div class="text-sm font-light space-y-6 leading-relaxed text-deep-gray/80">
-                    <p><span class="text-[10px] uppercase tracking-widest opacity-40 block">Roots</span>1978年生まれ / 世田谷区出身 (身長: 148cm)</p>
-                    <p><span class="text-[10px] uppercase tracking-widest opacity-40 block">Inspirations</span>美術全般、原田マハ、King Gnu、ちゃんみな、DAZZLE</p>
-                    <p><span class="text-[10px] uppercase tracking-widest opacity-40 block">Career</span>ショップチャンネル MD・バイヤー16年従事</p>
-                </div>
+            <div class="space-y-8 text-sm font-light leading-relaxed opacity-70">
+                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line">Profile</h3>
+                <p>1978年9月生まれ / 世田谷区出身 (148cm)</p>
+                <p>ショップチャンネル MD・バイヤー16年</p>
+                <p>美術、DAZZLE、原田マハ、King Gnu、ちゃんみな</p>
             </div>
         </div>
     </section>
 
     <!-- Philosophy -->
-    <section id="philosophy" class="py-32 md:py-40 bg-black text-white px-8">
+    <section id="philosophy" class="py-32 bg-black text-white px-8">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-24 heading-line">Core Philosophy</h2>
             <div class="grid md:grid-cols-3 gap-16">
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">01</span>
-                    <h3 class="text-xl tracking-widest font-medium">見抜く。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">商材が持つ唯一無二の「核」を見つけ出す。</p>
+                    <h3 class="text-xl tracking-widest">見抜く。</h3>
+                    <p class="text-sm opacity-50 font-light">商材が持つ唯一無二の「核」を見つけ出す。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">02</span>
-                    <h3 class="text-xl tracking-widest font-medium">整える。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">価値の乖離を、論理と言葉の力で再構築する。</p>
+                    <h3 class="text-xl tracking-widest">整える。</h3>
+                    <p class="text-sm opacity-50 font-light">価値の乖離を、論理と言葉で埋め再構築する。</p>
                 </div>
                 <div class="fade-in-element space-y-6">
                     <span class="text-6xl font-extralight text-plum-pink/20 italic">03</span>
-                    <h3 class="text-xl tracking-widest font-medium">届ける。</h3>
-                    <p class="text-sm opacity-50 leading-relaxed font-light">市場との幸福な出会いを創出する。</p>
+                    <h3 class="text-xl tracking-widest">届ける。</h3>
+                    <p class="text-sm opacity-50 font-light">市場との幸福な出会いを創出する。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partnership (ここが抜けていた部分です) -->
-    <section id="partnership" class="py-32 md:py-40 px-8 bg-black text-white">
+    <!-- Partnership / What I Can Do / Seeking -->
+    <section id="partnership" class="py-32 md:py-48 bg-black text-white px-8">
         <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-20">
-                <div class="md:w-1/3 fade-in-element">
-                    <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">Partnership</h2>
-                    <p class="text-sm leading-[2.4] opacity-50 font-light tracking-widest">伝え方に悩むブランドへ。</p>
-                </div>
-                <div class="md:w-2/3 space-y-16 fade-in-element">
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors">
-                        <h3 class="text-xl font-light tracking-widest mb-4 flex justify-between items-center">Value Definition <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i></h3>
-                        <p class="text-sm opacity-40 font-light">「なぜ選ばれるのか」を、揺るぎない言葉で定義します。</p>
-                    </div>
-                    <div class="border-b border-white/10 pb-10 group hover:border-plum-pink transition-colors">
-                        <h3 class="text-xl font-light tracking-widest mb-4 flex justify-between items-center">Direction & Story <i data-lucide="arrow-right" class="text-plum-pink opacity-0 group-hover:opacity-100 transition-all"></i></h3>
-                        <p class="text-sm opacity-40 font-light">ビジュアルとテキストで、心に沈み込むストーリーを構築します。</p>
-                    </div>
-                </div>
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-20 heading-line">What I Can Do</h2>
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-6 text-sm font-light opacity-60 mb-32">
+                <p>/ 売場の最適化</p><p>/ 売場に即したブランド選定</p>
+                <p>/ ファッション雑貨商品企画</p><p>/ ブランディング</p>
+                <p>/ 価格決定</p><p>/ 売上データによる分析</p>
+                <p>/ テレビ通販に関するご相談</p><p>/ 在庫処分・MD提案</p>
             </div>
 
-            <!-- What I Can Do / Seeking -->
-            <div class="mt-32 pt-20 border-t border-white/10">
-                <h3 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-12 heading-line">What I Can Do / Seeking</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm opacity-60 font-light tracking-wider">
-                    <p>/ 売場の最適化</p><p>/ ブランディング</p>
-                    <p>/ テレビ通販に関するご相談</p><p>/ 販路が欲しいブランド</p>
-                    <p>/ 「バイヤー目線」を知りたい方</p><p>...などなど</p>
-                </div>
+            <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold mb-20 heading-line">Seeking / 募集中</h2>
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-6 text-sm font-light opacity-60">
+                <ul class="space-y-4">
+                    <li>/ 販路が欲しいブランド</li>
+                    <li>/ テレビ通販の相談にのって欲しい人</li>
+                    <li>/ 爬虫類バッグの縫製工場を探している人</li>
+                </ul>
+                <ul class="space-y-4">
+                    <li>/ ブランドの商品展開に迷いのある方</li>
+                    <li>/ 訴求ポイントに自信が持てない人</li>
+                    <li>/ 「バイヤー目線」が知りたい方</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -175,17 +155,17 @@
     <section class="py-32 px-8 bg-white text-center">
         <div class="fade-in-element max-w-3xl mx-auto space-y-12">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Journal</h2>
-            <h3 class="text-3xl md:text-4xl font-light tracking-widest">お買い物はお仕事です</h3>
+            <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">お買い物はお仕事です</h3>
             <a href="https://daphnemeria-blog.com/" target="_blank" class="inline-flex items-center gap-4 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">Visit Blog <i data-lucide="arrow-right" size="16"></i></a>
         </div>
     </section>
 
-    <!-- Note Section (最新記事読み込み) -->
+    <!-- Note Section (最新タイトル読み込み) -->
     <section class="py-32 px-8 bg-[#FAFAFA] border-t border-black/5 text-center">
         <div class="fade-in-element max-w-3xl mx-auto space-y-12">
             <h2 class="text-[11px] tracking-[0.4em] text-plum-pink uppercase font-semibold heading-line justify-center">Note</h2>
             <h3 class="text-3xl md:text-4xl font-light tracking-widest text-deep-gray">MDの頭の中</h3>
-            <div id="note-list" class="w-full text-left mt-16 space-y-4">
+            <div id="note-list" class="w-full text-left mt-16 space-y-2">
                 <div class="text-center py-10 opacity-30 text-sm animate-pulse">Loading latest notes...</div>
             </div>
             <a href="https://note.com/daphnemeria" target="_blank" class="inline-flex items-center gap-4 text-plum-pink tracking-widest text-xs font-bold py-4 border-b border-plum-pink/20 hover:border-plum-pink transition-all">View on Note <i data-lucide="external-link" size="16"></i></a>
@@ -194,7 +174,7 @@
 
     <footer id="contact" class="py-32 px-8 text-center bg-white border-t border-black/5">
         <div class="fade-in-element max-w-2xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20">真価を、共に「翻訳」しましょう。</h2>
+            <h2 class="text-2xl md:text-3xl font-light tracking-widest leading-loose mb-20 text-deep-gray/90">真価を、共に「翻訳」しましょう。</h2>
             <div class="flex justify-center gap-10 text-black/40">
                 <a href="mailto:daphnebuyer@gmail.com" class="hover:text-plum-pink transition-colors"><i data-lucide="mail"></i></a>
                 <a href="https://x.com/daphnebuyer" target="_blank" class="hover:text-plum-pink transition-colors"><i data-lucide="twitter"></i></a>
@@ -211,7 +191,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
 
-        // Note RSS Fetch
         fetch('https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss')
             .then(res => res.json())
             .then(data => {
@@ -220,9 +199,9 @@
                     list.innerHTML = '';
                     data.items.slice(0, 5).forEach(item => {
                         const date = new Date(item.pubDate.replace(' ', 'T')).toLocaleDateString('ja-JP');
-                        list.innerHTML += `<a href="${item.link}" target="_blank" class="group flex flex-col md:flex-row md:items-center gap-3 p-4 hover:bg-black/5 rounded-md transition-all border border-transparent hover:border-black/5">
+                        list.innerHTML += `<a href="${item.link}" target="_blank" class="group flex flex-col md:flex-row md:items-center gap-3 p-4 hover:bg-black/5 rounded-md transition-all">
                             <span class="text-[10px] tracking-widest text-plum-pink shrink-0 opacity-70">${date}</span>
-                            <h4 class="text-sm md:text-base font-medium group-hover:text-plum-pink transition-colors line-clamp-1">${item.title}</h4>
+                            <h4 class="text-sm font-medium group-hover:text-plum-pink transition-colors line-clamp-1">${item.title}</h4>
                         </a>`;
                     });
                 }
