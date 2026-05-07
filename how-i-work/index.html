@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOW I WORK | AMAMI SOUDA</title>
 
+<style>
+:root {
+  --plum-pink: #b86b8b;
+  --deep-gray: #1f1f1f;
+  --soft-bg: #f8f7f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: #1f1f1f;
+  background: #ffffff;
+  letter-spacing: 0.06em;
+  line-height: 2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  z-index: 100;
+  padding: 18px 32px;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+.nav-links a:hover {
+  color: var(--plum-pink);
+}
+
+.hero {
+  padding: 190px 32px 100px;
+  background: var(--soft-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.hero-inner,
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.eyebrow,
+.section-title {
+  color: var(--plum-pink);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin: 0 0 36px;
+  color: #111111;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 0 0 32px;
+  color: #111111;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 0 0 18px;
+}
+
+p {
+  font-size: 16px;
+  color: #222222;
+  margin: 0 0 26px;
+}
+
+.lead {
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 2.35;
+}
+
+.section {
+  padding: 86px 32px;
+  background: #ffffff;
+}
+
+.dark {
+  background: #080808;
+  color: #eeeeee;
+}
+
+.dark h2,
+.dark h3,
+.dark p,
+.dark li {
+  color: #eeeeee;
+}
+
+.dark .section-title {
+  color: var(--plum-pink);
+}
+
+.grid {
+  display: grid;
+  gap: 28px;
+}
+
+.card {
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 34px;
+  background: #ffffff;
+}
+
+.dark .card {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+}
+
+.card-label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--plum-pink);
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 15px;
+  color: #222222;
+}
+
+.dark .list li {
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+  color: #eeeeee;
+}
+
+.list li::before {
+  content: "/";
+  color: var(--plum-pink);
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.price {
+  font-size: 28px;
+  color: var(--plum-pink);
+  margin: 18px 0;
+  letter-spacing: 0.06em;
+}
+
+.small {
+  font-size: 13px;
+  color: #555555;
+}
+
+.cta {
+  background: var(--soft-bg);
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 24px;
+  border-bottom: 1px solid rgba(184,107,139,0.5);
+  padding-bottom: 10px;
+  color: var(--plum-pink);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+footer {
+  padding: 70px 32px;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 10px;
+  color: #555555;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .hero {
+    padding: 165px 24px 75px;
+  }
+
+  .section {
+    padding: 68px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://work.amamisouda.site/" class="logo">AMAMI SOUDA</a>
+
+    <div class="nav-links">
+      <a href="https://work.amamisouda.site/">Top</a>
+      <a href="https://work.amamisouda.site/case-study/">Case Study</a>
+      <a href="https://work.amamisouda.site/how-i-work/">How I Work</a>
+      <a href="mailto:daphnebuyer@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">HOW I WORK</div>
+
+    <h1>
+      何でも屋ではなく、<br>
+      伝わり方を整える人。
+    </h1>
+
+    <p class="lead">
+      私が行うのは、単なるSNS運用やデザイン修正ではありません。
+      商品・売場・EC・ブランドの間にある「伝わらなさ」を見つけ、
+      顧客が理解できる言葉と導線へ整理することです。
+    </p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-title">What I Don't Do</div>
+
+    <h2>
+      やらないことを、<br>
+      先に明確にします。
+    </h2>
+
+    <ul class="list">
+      <li>SNS投稿の量産代行は行いません</li>
+      <li>バズ目的の施策は行いません</li>
+      <li>広告運用だけの改善は行いません</li>
+      <li>“なんとなくおしゃれにする”だけのディレクションは行いません</li>
+      <li>安売り前提の販促設計は行いません</li>
+      <li>商品理解のない表面的なコピー作成は行いません</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">What I See</div>
+
+    <h2>
+      私が見るのは、<br>
+      作業ではなく、構造です。
+    </h2>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-label">01</div>
+        <h3>商品が悪いのではなく、伝わり方が崩れているケース</h3>
+        <p>
+          作り手側では当たり前になっている魅力が、
+          顧客には理解できる言葉になっていない。
+          そのズレを整理します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">02</div>
+        <h3>高級商材なのに、スペック競争に落ちているケース</h3>
+        <p>
+          素材・サイズ・機能だけを並べても、
+          高単価商品の購入理由にはなりません。
+          「なぜ持つのか」まで翻訳します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">03</div>
+        <h3>ブランドの思想が、EC上で消えているケース</h3>
+        <p>
+          実店舗や作り手には空気感があるのに、
+          ECではただの商品一覧になっている。
+          世界観と言葉の順番を整えます。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">04</div>
+        <h3>商品数が多すぎて、顧客が判断疲れしているケース</h3>
+        <p>
+          選択肢が多いことは、必ずしも親切ではありません。
+          顧客が選べる構造へ、商品と導線を整理します。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-title">Intervention Points</div>
+
+    <h2>
+      介入できる領域
+    </h2>
+
+    <ul class="list">
+      <li>商品訴求の整理</li>
+      <li>高単価商品の購入理由の言語化</li>
+      <li>ECサイトの見せ方・導線改善</li>
+      <li>ブランド世界観の再定義</li>
+      <li>売場・POPUPにおける見せ方設計</li>
+      <li>テレビ通販向けの商品整理・訴求設計</li>
+      <li>在庫や商品構成の見直し</li>
+      <li>バイヤー視点での提案資料整理</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Consultation Menu</div>
+
+    <h2>
+      相談メニュー
+    </h2>
+
+    <div class="menu-grid">
+      <div class="card">
+        <div class="card-label">Spot Session</div>
+        <h3>スポット相談</h3>
+        <div class="price">90分 / ¥30,000</div>
+        <p>
+          ブランド・商品・EC・売場の課題を整理する単発相談です。
+          まず何から直すべきかを明確にします。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">EC Reframing</div>
+        <h3>EC訴求改善</h3>
+        <div class="price">¥100,000〜</div>
+        <p>
+          商品説明・導線・世界観・見せ方を整理し、
+          EC上で購入理由が伝わる状態へ再設計します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Brand Redefinition</div>
+        <h3>ブランド再定義</h3>
+        <div class="price">¥150,000〜</div>
+        <p>
+          何を強みとして打ち出すべきか、
+          顧客にどう見せるべきかを整理します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">TV Shopping Strategy</div>
+        <h3>テレビ通販向け商品整理</h3>
+        <div class="price">¥150,000〜</div>
+        <p>
+          テレビ通販で伝わる商品構成・訴求・見せ方を、
+          バイヤー視点で整理します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Popup Strategy</div>
+        <h3>POPUP戦略設計</h3>
+        <div class="price">¥100,000〜</div>
+        <p>
+          売場で何を見せ、どう接客し、どの商品へ導くか。
+          店頭導線と訴求を整理します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Ongoing Support</div>
+        <h3>継続伴走</h3>
+        <div class="price">月額 ¥100,000〜</div>
+        <p>
+          商品・EC・SNS・売場の改善を、月次で整理しながら進めます。
+          作業代行ではなく、判断と改善の伴走です。
+        </p>
+      </div>
+    </div>
+
+    <p class="small">
+      ※ 金額は内容・範囲により変動します。正式なお見積りはご相談内容を確認したうえでご提示します。
+    </p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-title">For Whom</div>
+
+    <h2>
+      このような方へ
+    </h2>
+
+    <ul class="list">
+      <li>良い商品なのに、価値が伝わっていないと感じる方</li>
+      <li>高単価商品の説明がスペック中心になっている方</li>
+      <li>EC上でブランドの世界観が崩れている方</li>
+      <li>商品数が多く、何を推せばいいかわからない方</li>
+      <li>バイヤー視点で商品や売場を整理したい方</li>
+      <li>SNSやECをやっているが、売上につながる構造が見えない方</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="container">
+    <div class="section-title">Contact</div>
+
+    <h2>
+      まずは、<br>
+      伝わらない理由を整理しましょう。
+    </h2>
+
+    <p>
+      商品・EC・売場・ブランド訴求に関するご相談は、
+      メールよりお問い合わせください。
+    </p>
+
+    <a href="mailto:daphnebuyer@gmail.com" class="button">Contact</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 AMAMI SOUDA
+</footer>
+
+</body>
+</html>
