@@ -33,11 +33,6 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .navbar {
       position: fixed;
       top: 0;
@@ -139,6 +134,10 @@
       margin: 0 auto;
     }
 
+    .center {
+      text-align: center;
+    }
+
     .section-title {
       font-size: 11px;
       letter-spacing: 0.4em;
@@ -146,21 +145,6 @@
       text-transform: uppercase;
       margin-bottom: 56px;
       font-weight: bold;
-    }
-
-    .center {
-      text-align: center;
-    }
-
-    .case-study-preview {
-      background: #ffffff;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .how-preview {
-      background: var(--light-bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
     .big-heading {
@@ -186,6 +170,97 @@
       text-transform: uppercase;
       border-bottom: 1px solid rgba(184,107,139,0.4);
       padding-bottom: 12px;
+    }
+
+    .case-study-preview {
+      background: #ffffff;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .how-preview {
+      background: var(--light-bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .explore-section {
+      background: #f8f7f5;
+      padding: 110px 32px;
+    }
+
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .explore-card {
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 42px;
+      transition: 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
+    }
+
+    .explore-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(184,107,139,0.35);
+    }
+
+    .explore-card .card-label {
+      color: var(--plum-pink);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-weight: bold;
+    }
+
+    .explore-card h3 {
+      font-size: 28px;
+      line-height: 1.8;
+      font-weight: 300;
+      margin: 0 0 20px;
+      color: #1f1f1f;
+    }
+
+    .explore-card p {
+      font-size: 14px;
+      line-height: 2.1;
+      color: rgba(47,47,47,0.72);
+      margin: 0 0 28px;
+    }
+
+    .explore-card span {
+      color: var(--plum-pink);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .latest-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      font-size: 12px;
+      line-height: 1.9;
+      color: #2f2f2f;
+    }
+
+    .latest-note a {
+      color: #2f2f2f;
+    }
+
+    .latest-note strong {
+      color: var(--plum-pink);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
     }
 
     footer {
@@ -266,82 +341,20 @@
       section {
         padding: 88px 24px;
       }
+
+      .explore-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .explore-card {
+        min-height: auto;
+        padding: 34px;
+      }
+
+      .explore-card h3 {
+        font-size: 24px;
+      }
     }
-
-.explore-section {
-  background: #f8f7f5;
-  padding: 110px 32px;
-}
-
-.explore-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-}
-
-.explore-card {
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.08);
-  padding: 42px;
-  transition: 0.35s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 280px;
-}
-
-.explore-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(184,107,139,0.35);
-}
-
-.explore-card .card-label {
-  color: var(--plum-pink);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  font-weight: bold;
-}
-
-.explore-card h3 {
-  font-size: 28px;
-  line-height: 1.8;
-  font-weight: 300;
-  margin-bottom: 20px;
-  color: #1f1f1f;
-}
-
-.explore-card p {
-  font-size: 14px;
-  line-height: 2.1;
-  color: rgba(47,47,47,0.72);
-  margin-bottom: 36px;
-}
-
-.explore-card span {
-  color: var(--plum-pink);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
-
-  .explore-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .explore-card {
-    min-height: auto;
-    padding: 34px;
-  }
-
-  .explore-card h3 {
-    font-size: 24px;
-  }
-
-}    
   </style>
 </head>
 
@@ -386,204 +399,86 @@
     </div>
   </section>
 
-  <section class="case-study-preview center">
-    <div class="container fade-in-element">
-      <h2 class="section-title">Case Study</h2>
+  <section class="explore-section">
+    <div class="container">
+      <div class="explore-grid">
 
-      <h3 class="big-heading">
-        高級バッグブランドEC再構築
-      </h3>
+        <a
+          class="explore-card"
+          href="https://work.amamisouda.site/case-study/luxury-bag-ec/"
+        >
+          <div>
+            <div class="card-label">CASE STUDY</div>
+            <h3>高級バッグブランドEC再構築</h3>
+            <p>
+              年間EC売上
+              100万 → 300万。
+            </p>
+          </div>
+          <span>View Case →</span>
+        </a>
 
-      <p class="description">
-        年間EC売上100万円まで低下していた
-        高級バッグブランドECを再設計。<br><br>
+        <a
+          class="explore-card"
+          href="https://work.amamisouda.site/how-i-work/"
+        >
+          <div>
+            <div class="card-label">HOW I WORK</div>
+            <h3>
+              何でも屋ではなく、<br>
+              伝わり方を整える。
+            </h3>
+            <p>
+              問題定義と、
+              構造整理について。
+            </p>
+          </div>
+          <span>View Service →</span>
+        </a>
 
-        “価値翻訳”を軸に、
-        訴求・導線・世界観を整理し、
-        前年比300%まで改善。
-      </p>
+        <a
+          class="explore-card"
+          href="https://daphnemeria-blog.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div>
+            <div class="card-label">BLOG</div>
+            <h3>商品分析アーカイブ</h3>
+            <p>
+              商品価値を、
+              どこまで分解できるか。
+            </p>
+          </div>
+          <span>View Blog →</span>
+        </a>
 
-      <a
-        class="button-link"
-        href="https://work.amamisouda.site/case-study/luxury-bag-ec/"
-      >
-        View Case
-      </a>
+        <a
+          class="explore-card"
+          href="https://note.com/daphnemeria"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div>
+            <div class="card-label">NOTE</div>
+            <h3>MDの頭の中</h3>
+            <p>
+              実務家としての
+              観測と思考。
+            </p>
+
+            <div id="latest-note" class="latest-note">
+              Loading latest note...
+            </div>
+          </div>
+
+          <span>View Note →</span>
+        </a>
+
+      </div>
     </div>
   </section>
 
-  <section class="how-preview center">
-    <div class="container fade-in-element">
-      <h2 class="section-title">How I Work</h2>
-
-      <h3 class="big-heading">
-        何でも屋ではなく、<br>
-        伝わり方を整える人。
-      </h3>
-
-      <p class="description">
-        SNS投稿代行、バズ目的の施策、広告運用だけの改善は行いません。<br><br>
-
-        商品・EC・売場・ブランドの間にある
-        「伝わらなさ」を構造から整理し、
-        顧客が理解できる言葉と導線へ整えます。
-      </p>
-
-      <a
-        class="button-link"
-        href="https://work.amamisouda.site/how-i-work/"
-      >
-        View How I Work
-      </a>
-    </div>
-  </section>
-
- 
-
-
-<section class="note-preview center">
-  <div class="container fade-in-element">
-
-    <h2 class="section-title">
-      Latest Notes
-    </h2>
-
-    <h3 class="big-heading">
-      MDの頭の中
-    </h3>
-
-    <p class="description">
-      小売・EC・ブランド・AI・顧客心理について、
-      実務家としての観測と思考を記録しています。<br><br>
-
-      CASE STUDYでは実績を、  
-      noteではその背景にある考え方を残しています。
-    </p>
-
-    <div id="note-list" class="note-list">
-      <p class="description center">
-        Loading latest notes...
-      </p>
-    </div>
-
-    <a
-      class="button-link"
-      href="https://note.com/daphnemeria"
-  target="_blank"
-  rel="noopener noreferrer"
->"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      View Note
-    </a>
-
-  </div>
-</section>  
-
-<section class="explore-section">
-
-  <div class="container">
-
-    <div class="explore-grid">
-
-      <a
-        class="explore-card"
-        href="https://work.amamisouda.site/case-study/luxury-bag-ec/"
-      >
-        <div class="card-label">
-          CASE STUDY
-        </div>
-
-        <h3>
-          高級バッグブランドEC再構築
-        </h3>
-
-        <p>
-          年間EC売上
-          100万 → 300万。
-        </p>
-
-        <span>
-          View Case →
-        </span>
-      </a>
-
-      <a
-        class="explore-card"
-        href="https://work.amamisouda.site/how-i-work/"
-      >
-        <div class="card-label">
-          HOW I WORK
-        </div>
-
-        <h3>
-          何でも屋ではなく、
-          伝わり方を整える。
-        </h3>
-
-        <p>
-          問題定義と、
-          構造整理について。
-        </p>
-
-        <span>
-          View Service →
-        </span>
-      </a>
-
-      <a
-        class="explore-card"
-        href="https://daphnemeria-blog.com/"
-        target="_blank"
-      >
-        <div class="card-label">
-          BLOG
-        </div>
-
-        <h3>
-          商品分析アーカイブ
-        </h3>
-
-        <p>
-          商品価値を、
-          どこまで分解できるか。
-        </p>
-
-        <span>
-          View Blog →
-        </span>
-      </a>
-
-      <a
-        class="explore-card"
-        href="https://note.com/daphnemeria"
-        target="_blank"
-      >
-        <div class="card-label">
-          NOTE
-        </div>
-
-        <h3>
-          MDの頭の中
-        </h3>
-
-        <p>
-          実務家としての
-          観測と思考。
-        </p>
-
-        <span>
-          View Note →
-        </span>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-  
   <footer id="contact">
     <h2 class="footer-title">
       「当たり前」を、売れる言葉へ。<br />
@@ -633,6 +528,30 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss")
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        const latestNote = document.getElementById("latest-note");
+
+        if (!data.items || data.items.length === 0) {
+          latestNote.innerHTML = "Latest note could not be loaded.";
+          return;
+        }
+
+        const latest = data.items[0];
+
+        latestNote.innerHTML = `
+          <strong>Latest</strong>
+          ${latest.title}
+        `;
+      })
+      .catch(function() {
+        document.getElementById("latest-note").innerHTML =
+          "Latest note could not be loaded.";
+      });
   </script>
 </body>
 </html>
