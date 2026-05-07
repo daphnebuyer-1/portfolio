@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>Luxury Bag EC Rebuild | AMAMI SOUDA</title>
 
 <style>
-
 :root {
   --plum-pink: #b86b8b;
-  --deep-gray: #2f2f2f;
+  --deep-gray: #1f1f1f;
   --soft-bg: #f8f7f5;
 }
 
@@ -21,8 +19,8 @@
 body {
   margin: 0;
   font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-  color: var(--deep-gray);
-  background: #fff;
+  color: #1f1f1f;
+  background: #ffffff;
   letter-spacing: 0.05em;
   line-height: 2;
 }
@@ -36,9 +34,8 @@ a {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   z-index: 100;
   padding: 18px 32px;
 }
@@ -55,6 +52,7 @@ a {
   font-size: 13px;
   letter-spacing: 0.4em;
   font-weight: bold;
+  color: #1f1f1f;
 }
 
 .nav-links {
@@ -63,7 +61,7 @@ a {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(47,47,47,0.7);
+  color: #333333;
 }
 
 .nav-links a:hover {
@@ -75,12 +73,14 @@ a {
   background: var(--soft-bg);
 }
 
-.hero-inner {
+.hero-inner,
+.container {
   max-width: 950px;
   margin: 0 auto;
 }
 
-.eyebrow {
+.eyebrow,
+.section-title {
   color: var(--plum-pink);
   font-size: 11px;
   letter-spacing: 0.35em;
@@ -95,37 +95,7 @@ h1 {
   font-weight: 300;
   letter-spacing: 0.1em;
   margin: 0 0 36px;
-}
-
-.lead {
-  max-width: 760px;
-  font-size: 16px;
-  color: rgba(47,47,47,0.75);
-  line-height: 2.3;
-}
-
-.note {
-  margin-top: 28px;
-  font-size: 13px;
-  color: rgba(47,47,47,0.55);
-}
-
-.section {
-  padding: 70px 32px;
-}
-
-.container {
-  max-width: 950px;
-  margin: 0 auto;
-}
-
-.section-title {
-  color: var(--plum-pink);
-  font-size: 11px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-  font-weight: bold;
+  color: #111111;
 }
 
 h2 {
@@ -134,13 +104,31 @@ h2 {
   font-weight: 300;
   letter-spacing: 0.08em;
   margin: 0 0 32px;
-  color: var(--deep-gray);
+  color: #111111;
 }
 
 p {
-  font-size: 15px;
-  color: rgba(47,47,47,0.78);
-  margin-bottom: 26px;
+  font-size: 16px;
+  color: #222222;
+  margin: 0 0 26px;
+}
+
+.lead {
+  max-width: 760px;
+  font-size: 16px;
+  color: #222222;
+  line-height: 2.3;
+}
+
+.note {
+  margin-top: 28px;
+  font-size: 13px;
+  color: #555555;
+}
+
+.section {
+  padding: 70px 32px;
+  background: #ffffff;
 }
 
 .dark {
@@ -150,7 +138,11 @@ p {
 .dark h2,
 .dark p,
 .dark li {
-  color: rgba(255,255,255,0.82);
+  color: #eeeeee;
+}
+
+.dark .section-title {
+  color: var(--plum-pink);
 }
 
 .list {
@@ -161,7 +153,7 @@ p {
 
 .list li {
   padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
   font-size: 15px;
 }
 
@@ -179,8 +171,9 @@ p {
 }
 
 .result-card {
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.12);
   padding: 32px;
+  background: #ffffff;
 }
 
 .result-number {
@@ -192,7 +185,7 @@ p {
 
 .result-label {
   font-size: 13px;
-  color: rgba(47,47,47,0.65);
+  color: #333333;
 }
 
 .cta {
@@ -203,7 +196,7 @@ p {
 .button {
   display: inline-block;
   margin-top: 24px;
-  border-bottom: 1px solid rgba(184,107,139,0.4);
+  border-bottom: 1px solid rgba(184,107,139,0.5);
   padding-bottom: 10px;
   color: var(--plum-pink);
   font-size: 11px;
@@ -214,15 +207,14 @@ p {
 footer {
   padding: 70px 32px;
   text-align: center;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.08);
   font-size: 10px;
-  color: rgba(47,47,47,0.35);
+  color: #555555;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
-
   .nav-inner {
     flex-direction: column;
     gap: 14px;
@@ -244,9 +236,7 @@ footer {
   .result-grid {
     grid-template-columns: 1fr;
   }
-
 }
-
 </style>
 </head>
 
@@ -254,10 +244,7 @@ footer {
 
 <nav class="navbar">
   <div class="nav-inner">
-
-    <a href="https://work.amamisouda.site/" class="logo">
-      AMAMI SOUDA
-    </a>
+    <a href="https://work.amamisouda.site/" class="logo">AMAMI SOUDA</a>
 
     <div class="nav-links">
       <a href="https://work.amamisouda.site/">Top</a>
@@ -265,17 +252,12 @@ footer {
       <a href="https://note.com/daphnemeria">Note</a>
       <a href="mailto:daphnebuyer@gmail.com">Contact</a>
     </div>
-
   </div>
 </nav>
 
 <section class="hero">
-
   <div class="hero-inner">
-
-    <div class="eyebrow">
-      Luxury Bag / EC Rebuild
-    </div>
+    <div class="eyebrow">Luxury Bag / EC Rebuild</div>
 
     <h1>
       高級バッグブランドECの<br>
@@ -291,18 +273,12 @@ footer {
     <p class="note">
       ※ 本CASEは、クロコダイルバッグブランド「レザージュエルズ」におけるEC改善事例を元に構成しています。
     </p>
-
   </div>
-
 </section>
 
 <section class="section">
-
   <div class="container">
-
-    <div class="section-title">
-      Overview
-    </div>
+    <div class="section-title">Overview</div>
 
     <h2>
       商品力ではなく、<br>
@@ -316,85 +292,47 @@ footer {
     </p>
 
     <p>
-      特に高単価商材では、
-      「良い素材」「丁寧な作り」
-      だけでは購入理由になりません。
+      特に高単価商材では、「良い素材」「丁寧な作り」だけでは購入理由になりません。
     </p>
 
     <p>
-      顧客が知りたいのは、
-      「なぜその価格なのか」
-      「なぜ持つ価値があるのか」
-      という意味です。
+      顧客が知りたいのは、「なぜその価格なのか」「なぜ持つ価値があるのか」という意味です。
     </p>
 
     <div class="result-grid">
-
       <div class="result-card">
-        <div class="result-number">
-          100万円
-        </div>
-
-        <div class="result-label">
-          改善前の年間EC売上
-        </div>
+        <div class="result-number">100万円</div>
+        <div class="result-label">改善前の年間EC売上</div>
       </div>
 
       <div class="result-card">
-        <div class="result-number">
-          300万円
-        </div>
-
-        <div class="result-label">
-          改善後の年間EC売上
-        </div>
+        <div class="result-number">300万円</div>
+        <div class="result-label">改善後の年間EC売上</div>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
 <section class="section dark">
-
   <div class="container">
+    <div class="section-title">Before</div>
 
-    <div class="section-title">
-      Before
-    </div>
-
-    <h2>
-      改善前の課題
-    </h2>
+    <h2>改善前の課題</h2>
 
     <ul class="list">
-
       <li>年間EC売上が約100万円まで低下していた</li>
-
       <li>高単価商品の購入理由が伝わっていなかった</li>
-
       <li>商品点数が多く、ブランドの強みが埋もれていた</li>
-
       <li>商品説明がスペック中心になっていた</li>
-
       <li>SNSとECの導線が分断されていた</li>
-
       <li>ブランド全体の世界観に統一感が不足していた</li>
-
     </ul>
-
   </div>
-
 </section>
 
 <section class="section">
-
   <div class="container">
-
-    <div class="section-title">
-      Analysis
-    </div>
+    <div class="section-title">Analysis</div>
 
     <h2>
       問題の本質は、<br>
@@ -402,79 +340,45 @@ footer {
     </h2>
 
     <p>
-      このケースで最も重要だったのは、
-      商品そのものを変えることではありませんでした。
+      このケースで最も重要だったのは、商品そのものを変えることではありませんでした。
     </p>
 
     <p>
-      変えるべきだったのは、
-      「どの言葉で届けるか」
-      「どの順番で理解してもらうか」
-      「どんな空気感で見せるか」
-      という認知導線です。
+      変えるべきだったのは、「どの言葉で届けるか」「どの順番で理解してもらうか」「どんな空気感で見せるか」という認知導線です。
     </p>
 
     <p>
-      クロコダイルという素材は、
-      見せ方を誤ると、
-      “派手な高級感”
-      に寄ってしまいます。
+      クロコダイルという素材は、見せ方を誤ると、“派手な高級感”に寄ってしまいます。
     </p>
 
     <p>
-      そこで今回は、
-      誇示する高級感ではなく、
-      “静かな価値”
-      として再翻訳する方向へ整理しました。
+      そこで今回は、誇示する高級感ではなく、“静かな価値”として再翻訳する方向へ整理しました。
     </p>
-
   </div>
-
 </section>
 
 <section class="section dark">
-
   <div class="container">
+    <div class="section-title">What I Changed</div>
 
-    <div class="section-title">
-      What I Changed
-    </div>
-
-    <h2>
-      実施した改善
-    </h2>
+    <h2>実施した改善</h2>
 
     <ul class="list">
-
       <li>商品訴求の再整理</li>
-
       <li>ブランド世界観の統一</li>
-
       <li>商品説明文の改善</li>
-
       <li>写真トーンの整理</li>
-
       <li>SNSからECへの導線改善</li>
-
       <li>回遊導線の見直し</li>
-
       <li>購入理由の言語化</li>
-
       <li>“静かな高級感”として価値再定義</li>
-
     </ul>
-
   </div>
-
 </section>
 
 <section class="section">
-
   <div class="container">
-
-    <div class="section-title">
-      Result
-    </div>
+    <div class="section-title">Result</div>
 
     <h2>
       年間売上は、<br>
@@ -486,29 +390,18 @@ footer {
     </p>
 
     <p>
-      重要だったのは、
-      見た目を整えることではなく、
-      顧客が購入理由を理解できる状態へ再設計したことです。
+      重要だったのは、見た目を整えることではなく、顧客が購入理由を理解できる状態へ再設計したことです。
     </p>
 
     <p>
-      高単価商材では、
-      値下げよりも、
-      「なぜその商品を持つのか」
-      を丁寧に翻訳することが重要です。
+      高単価商材では、値下げよりも、「なぜその商品を持つのか」を丁寧に翻訳することが重要です。
     </p>
-
   </div>
-
 </section>
 
 <section class="section cta">
-
   <div class="container">
-
-    <div class="section-title">
-      Contact
-    </div>
+    <div class="section-title">Contact</div>
 
     <h2>
       良い商品なのに、<br>
@@ -520,12 +413,8 @@ footer {
       Contactよりお問い合わせください。
     </p>
 
-    <a href="mailto:daphnebuyer@gmail.com" class="button">
-      Contact
-    </a>
-
+    <a href="mailto:daphnebuyer@gmail.com" class="button">Contact</a>
   </div>
-
 </section>
 
 <footer>
