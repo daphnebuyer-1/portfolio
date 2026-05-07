@@ -1,467 +1,536 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxury Bag EC Rebuild | AMAMI SOUDA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    :root {
-      --plum-pink: #b86b8b;
-      --deep-gray: #2f2f2f;
-      --soft-bg: #f8f7f5;
-    }
+<title>Luxury Bag EC Rebuild | AMAMI SOUDA</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      color: var(--deep-gray);
-      background: #fff;
-      letter-spacing: 0.06em;
-      line-height: 2.1;
-    }
+:root {
+  --plum-pink: #b86b8b;
+  --deep-gray: #2f2f2f;
+  --soft-bg: #f8f7f5;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      z-index: 100;
-      padding: 18px 32px;
-    }
+body {
+  margin: 0;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: var(--deep-gray);
+  background: #fff;
+  letter-spacing: 0.05em;
+  line-height: 2;
+}
 
-    .nav-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    .logo {
-      font-size: 13px;
-      letter-spacing: 0.45em;
-      font-weight: bold;
-    }
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 100;
+  padding: 18px 32px;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(47,47,47,0.7);
-    }
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .nav-links a:hover {
-      color: var(--plum-pink);
-    }
+.logo {
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  font-weight: bold;
+}
 
-    .hero {
-      padding: 210px 32px 120px;
-      background: var(--soft-bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(47,47,47,0.7);
+}
 
-    .hero-inner {
-      max-width: 980px;
-      margin: 0 auto;
-    }
+.nav-links a:hover {
+  color: var(--plum-pink);
+}
 
-    .eyebrow {
-      font-size: 11px;
-      color: var(--plum-pink);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      margin-bottom: 36px;
-      font-weight: bold;
-    }
+.hero {
+  padding: 180px 32px 90px;
+  background: var(--soft-bg);
+}
 
-    h1 {
-      font-size: clamp(34px, 5.4vw, 64px);
-      line-height: 1.55;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      margin: 0 0 42px;
-    }
+.hero-inner {
+  max-width: 950px;
+  margin: 0 auto;
+}
 
-    .lead {
-      max-width: 760px;
-      font-size: 16px;
-      color: rgba(47,47,47,0.76);
-      line-height: 2.4;
-    }
+.eyebrow {
+  color: var(--plum-pink);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: bold;
+}
 
-    .note {
-      margin-top: 36px;
-      font-size: 13px;
-      color: rgba(47,47,47,0.55);
-      line-height: 2;
-    }
+h1 {
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin: 0 0 36px;
+}
 
-    .section {
-      padding: 100px 32px;
-    }
+.lead {
+  max-width: 760px;
+  font-size: 16px;
+  color: rgba(47,47,47,0.75);
+  line-height: 2.3;
+}
 
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-    }
+.note {
+  margin-top: 28px;
+  font-size: 13px;
+  color: rgba(47,47,47,0.55);
+}
 
-    .section-title {
-      font-size: 11px;
-      color: var(--plum-pink);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      margin-bottom: 40px;
-      font-weight: bold;
-    }
+.section {
+  padding: 70px 32px;
+}
 
-    h2 {
-      font-size: 30px;
-      line-height: 1.7;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      margin: 0 0 36px;
-    }
+.container {
+  max-width: 950px;
+  margin: 0 auto;
+}
 
-    p {
-      font-size: 15px;
-      color: rgba(47,47,47,0.78);
-      margin: 0 0 28px;
-    }
+.section-title {
+  color: var(--plum-pink);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: bold;
+}
 
-    .result-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 48px;
-    }
+h2 {
+  font-size: 32px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 0 0 32px;
+  color: var(--deep-gray);
+}
 
-    .result-card {
-      border: 1px solid rgba(0,0,0,0.08);
-      padding: 34px;
-      background: #fff;
-    }
+p {
+  font-size: 15px;
+  color: rgba(47,47,47,0.78);
+  margin-bottom: 26px;
+}
 
-    .result-number {
-      font-size: 38px;
-      color: var(--plum-pink);
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
+.dark {
+  background: #080808;
+}
 
-    .result-label {
-      font-size: 13px;
-      color: rgba(47,47,47,0.66);
-    }
+.dark h2,
+.dark p,
+.dark li {
+  color: rgba(255,255,255,0.82);
+}
 
-    .dark {
-      background: #050505;
-      color: white;
-    }
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .dark p {
-      color: rgba(255,255,255,0.62);
-    }
+.list li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  font-size: 15px;
+}
 
-    .dark h2 {
-      color: white;
-    }
+.list li::before {
+  content: "/";
+  color: var(--plum-pink);
+  margin-right: 12px;
+}
 
-    .list {
-      display: grid;
-      gap: 18px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
 
-    .list li {
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding-bottom: 16px;
-      font-size: 15px;
-      color: rgba(47,47,47,0.78);
-    }
+.result-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 32px;
+}
 
-    .dark .list li {
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7);
-    }
+.result-number {
+  font-size: 40px;
+  color: var(--plum-pink);
+  margin-bottom: 14px;
+  font-weight: 300;
+}
 
-    .list li::before {
-      content: "/";
-      color: var(--plum-pink);
-      margin-right: 14px;
-      font-weight: bold;
-    }
+.result-label {
+  font-size: 13px;
+  color: rgba(47,47,47,0.65);
+}
 
-    .cta {
-      background: var(--soft-bg);
-      text-align: center;
-    }
+.cta {
+  background: var(--soft-bg);
+  text-align: center;
+}
 
-    .cta h2 {
-      max-width: 760px;
-      margin: 0 auto 36px;
-    }
+.button {
+  display: inline-block;
+  margin-top: 24px;
+  border-bottom: 1px solid rgba(184,107,139,0.4);
+  padding-bottom: 10px;
+  color: var(--plum-pink);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
 
-    .button {
-      display: inline-block;
-      margin-top: 24px;
-      color: var(--plum-pink);
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(184,107,139,0.4);
-      padding-bottom: 12px;
-    }
+footer {
+  padding: 70px 32px;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  font-size: 10px;
+  color: rgba(47,47,47,0.35);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 
-    footer {
-      padding: 80px 32px;
-      text-align: center;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      font-size: 10px;
-      color: rgba(47,47,47,0.38);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
+@media (max-width: 768px) {
 
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 14px 20px;
-      }
+  .nav-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
 
-      .nav-inner {
-        flex-direction: column;
-        gap: 14px;
-      }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-      .nav-links {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+  .hero {
+    padding: 160px 24px 70px;
+  }
 
-      .hero {
-        padding: 180px 24px 90px;
-      }
+  .section {
+    padding: 60px 24px;
+  }
 
-      .section {
-        padding: 78px 24px;
-      }
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .result-box {
-        grid-template-columns: 1fr;
-      }
+}
 
-      h1 {
-        letter-spacing: 0.08em;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="https://work.amamisouda.site/" class="logo">AMAMI SOUDA</a>
-      <div class="nav-links">
-        <a href="https://work.amamisouda.site/">Top</a>
-        <a href="https://work.amamisouda.site/case-study/">Case Study</a>
-        <a href="https://note.com/daphnemeria">Note</a>
-        <a href="mailto:daphnebuyer@gmail.com">Contact</a>
-      </div>
+<nav class="navbar">
+  <div class="nav-inner">
+
+    <a href="https://work.amamisouda.site/" class="logo">
+      AMAMI SOUDA
+    </a>
+
+    <div class="nav-links">
+      <a href="https://work.amamisouda.site/">Top</a>
+      <a href="https://work.amamisouda.site/case-study/">Case Study</a>
+      <a href="https://note.com/daphnemeria">Note</a>
+      <a href="mailto:daphnebuyer@gmail.com">Contact</a>
     </div>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">Luxury Bag / EC Rebuild</div>
+  </div>
+</nav>
 
-      <h1>
-        高級バッグブランドECの<br>
-        訴求・導線・世界観を再構築
-      </h1>
+<section class="hero">
 
-      <p class="lead">
-        年間売上約100万円まで低下していた高級バッグブランドECに対し、
-        商品訴求・回遊導線・ブランドの空気感を再整理。
-        単なるデザイン変更ではなく、
-        “価値翻訳”を軸にEC全体を再構築しました。
-      </p>
+  <div class="hero-inner">
 
-      <p class="note">
-        ※ 本CASEは、クロコダイルバッグブランド「レザージュエルズ」におけるEC改善事例を元に構成しています。
-      </p>
+    <div class="eyebrow">
+      Luxury Bag / EC Rebuild
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-title">Overview</div>
+    <h1>
+      高級バッグブランドECの<br>
+      訴求・導線・世界観を再構築
+    </h1>
 
-      <h2>
-        商品力ではなく、<br>
-        伝わり方に課題があった。
-      </h2>
+    <p class="lead">
+      年間売上約100万円まで低下していた高級バッグブランドECに対し、
+      商品訴求・回遊導線・ブランド世界観を再整理。
+      “価値翻訳”を軸にEC全体を再構築しました。
+    </p>
 
-      <p>
-        対象となったのは、長年ものづくりを続けてきた高級バッグブランド。
-        素材・技術・背景には十分な魅力がある一方で、
-        ECサイト上ではその価値が顧客に伝わりきっていない状態でした。
-      </p>
+    <p class="note">
+      ※ 本CASEは、クロコダイルバッグブランド「レザージュエルズ」におけるEC改善事例を元に構成しています。
+    </p>
 
-      <p>
-        特に高単価商材では、単に「良い素材」「丁寧な作り」と説明するだけでは不十分です。
-        顧客が理解したいのは、スペックではなく、
-        「なぜその価格なのか」「なぜ自分が持つ意味があるのか」という理由です。
-      </p>
+  </div>
 
-      <div class="result-box">
-        <div class="result-card">
-          <div class="result-number">100万円</div>
-          <div class="result-label">改善前の年間EC売上</div>
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      Overview
+    </div>
+
+    <h2>
+      商品力ではなく、<br>
+      伝わり方に課題があった。
+    </h2>
+
+    <p>
+      対象となったのは、長年ものづくりを続けてきた高級バッグブランド。
+      素材・技術・背景には十分な魅力がある一方で、
+      ECサイト上ではその価値が十分に翻訳されていない状態でした。
+    </p>
+
+    <p>
+      特に高単価商材では、
+      「良い素材」「丁寧な作り」
+      だけでは購入理由になりません。
+    </p>
+
+    <p>
+      顧客が知りたいのは、
+      「なぜその価格なのか」
+      「なぜ持つ価値があるのか」
+      という意味です。
+    </p>
+
+    <div class="result-grid">
+
+      <div class="result-card">
+        <div class="result-number">
+          100万円
         </div>
 
-        <div class="result-card">
-          <div class="result-number">300万円</div>
-          <div class="result-label">改善後の年間EC売上</div>
+        <div class="result-label">
+          改善前の年間EC売上
         </div>
       </div>
+
+      <div class="result-card">
+        <div class="result-number">
+          300万円
+        </div>
+
+        <div class="result-label">
+          改善後の年間EC売上
+        </div>
+      </div>
+
     </div>
-  </section>
 
-  <section class="section dark">
-    <div class="container">
-      <div class="section-title">Before</div>
+  </div>
 
-      <h2>
-        改善前の課題
-      </h2>
+</section>
 
-      <ul class="list">
-        <li>年間EC売上が約100万円まで低下していた</li>
-        <li>高単価商品の購入理由が伝わっていなかった</li>
-        <li>商品点数が多く、ブランドの強みが埋もれていた</li>
-        <li>商品説明がスペック中心になっていた</li>
-        <li>SNSとECの導線が分断されていた</li>
-        <li>ブランド全体の世界観に統一感が不足していた</li>
-      </ul>
+<section class="section dark">
+
+  <div class="container">
+
+    <div class="section-title">
+      Before
     </div>
-  </section>
 
- <section class="section dark">
-    <div class="container">
-      <div class="section-title">Analysis</div>
+    <h2>
+      改善前の課題
+    </h2>
 
-      <h2>
-        問題の本質は、<br>
-        “価値翻訳不足”だった。
-      </h2>
+    <ul class="list">
 
-      <p>
-        このケースで最も重要だったのは、
-        商品そのものを変えることではありませんでした。
-      </p>
+      <li>年間EC売上が約100万円まで低下していた</li>
 
-      <p>
-        変えるべきだったのは、
-        「どう見せるか」
-        「どの言葉で届けるか」
-        「どの順番で理解してもらうか」
-        という、顧客側の認知導線でした。
-      </p>
+      <li>高単価商品の購入理由が伝わっていなかった</li>
 
-      <p>
-        クロコダイルという素材は、見せ方を誤ると、
-        “強い”“派手”“古い高級感”に寄ってしまいます。
-        そこで今回は、誇示する高級感ではなく、
-        “静かな価値”として再翻訳する方向へ整理しました。
-      </p>
+      <li>商品点数が多く、ブランドの強みが埋もれていた</li>
+
+      <li>商品説明がスペック中心になっていた</li>
+
+      <li>SNSとECの導線が分断されていた</li>
+
+      <li>ブランド全体の世界観に統一感が不足していた</li>
+
+    </ul>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      Analysis
     </div>
-  </section>
 
-  <section class="section dark">
-    <div class="container">
-      <div class="section-title">What I Changed</div>
+    <h2>
+      問題の本質は、<br>
+      “価値翻訳不足”だった。
+    </h2>
 
-      <h2>
-        実施した改善
-      </h2>
+    <p>
+      このケースで最も重要だったのは、
+      商品そのものを変えることではありませんでした。
+    </p>
 
-      <ul class="list">
-        <li>商品訴求の再整理</li>
-        <li>ブランド世界観の統一</li>
-        <li>商品説明文の改善</li>
-        <li>写真・見せ方のトーン整理</li>
-        <li>SNSからECへの導線改善</li>
-        <li>回遊導線の見直し</li>
-        <li>高単価商品の「買う理由」の言語化</li>
-        <li>“静かな高級感”としての価値再定義</li>
-      </ul>
+    <p>
+      変えるべきだったのは、
+      「どの言葉で届けるか」
+      「どの順番で理解してもらうか」
+      「どんな空気感で見せるか」
+      という認知導線です。
+    </p>
+
+    <p>
+      クロコダイルという素材は、
+      見せ方を誤ると、
+      “派手な高級感”
+      に寄ってしまいます。
+    </p>
+
+    <p>
+      そこで今回は、
+      誇示する高級感ではなく、
+      “静かな価値”
+      として再翻訳する方向へ整理しました。
+    </p>
+
+  </div>
+
+</section>
+
+<section class="section dark">
+
+  <div class="container">
+
+    <div class="section-title">
+      What I Changed
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-title">Result</div>
+    <h2>
+      実施した改善
+    </h2>
 
-      <h2>
-        年間売上は、<br>
-        約100万円から約300万円へ。
-      </h2>
+    <ul class="list">
 
-      <p>
-        改善後、EC売上は前年比約300%まで回復しました。
-        重要なのは、単に見た目を整えたことではなく、
-        顧客が購入理由を理解できる状態へ再設計したことです。
-      </p>
+      <li>商品訴求の再整理</li>
 
-      <p>
-        高単価商材においては、
-        値下げや派手な販促よりも、
-        「なぜこの商品を選ぶのか」を丁寧に言語化することが、
-        結果として売上改善につながります。
-      </p>
+      <li>ブランド世界観の統一</li>
+
+      <li>商品説明文の改善</li>
+
+      <li>写真トーンの整理</li>
+
+      <li>SNSからECへの導線改善</li>
+
+      <li>回遊導線の見直し</li>
+
+      <li>購入理由の言語化</li>
+
+      <li>“静かな高級感”として価値再定義</li>
+
+    </ul>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      Result
     </div>
-  </section>
 
-  <section class="section cta">
-    <div class="container">
-      <div class="section-title">Contact</div>
+    <h2>
+      年間売上は、<br>
+      約100万円から約300万円へ。
+    </h2>
 
-      <h2>
-        良い商品なのに、<br>
-        伝わっていないと感じる方へ。
-      </h2>
+    <p>
+      改善後、EC売上は前年比約300%まで回復しました。
+    </p>
 
-      <p>
-        EC改善・ブランド訴求整理・売場設計などのご相談は、
-        Contactよりお問い合わせください。
-      </p>
+    <p>
+      重要だったのは、
+      見た目を整えることではなく、
+      顧客が購入理由を理解できる状態へ再設計したことです。
+    </p>
 
-      <a class="button" href="mailto:daphnebuyer@gmail.com">Contact</a>
+    <p>
+      高単価商材では、
+      値下げよりも、
+      「なぜその商品を持つのか」
+      を丁寧に翻訳することが重要です。
+    </p>
+
+  </div>
+
+</section>
+
+<section class="section cta">
+
+  <div class="container">
+
+    <div class="section-title">
+      Contact
     </div>
-  </section>
 
-  <footer>
-    © 2026 AMAMI SOUDA
-  </footer>
+    <h2>
+      良い商品なのに、<br>
+      伝わっていないと感じる方へ。
+    </h2>
+
+    <p>
+      EC改善・ブランド訴求整理・売場設計などのご相談は、
+      Contactよりお問い合わせください。
+    </p>
+
+    <a href="mailto:daphnebuyer@gmail.com" class="button">
+      Contact
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 AMAMI SOUDA
+</footer>
 
 </body>
 </html>
