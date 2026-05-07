@@ -33,6 +33,11 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .navbar {
       position: fixed;
       top: 0;
@@ -134,10 +139,6 @@
       margin: 0 auto;
     }
 
-    .center {
-      text-align: center;
-    }
-
     .section-title {
       font-size: 11px;
       letter-spacing: 0.4em;
@@ -147,40 +148,163 @@
       font-weight: bold;
     }
 
-    .big-heading {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      line-height: 1.7;
-      margin: 0 0 32px;
+    .about-head {
+      display: flex;
+      gap: 56px;
+      align-items: flex-start;
+      margin-bottom: 80px;
     }
 
-    .description {
-      font-size: 14px;
-      color: rgba(47,47,47,0.78);
-      line-height: 2.4;
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      border: 2px solid rgba(0,0,0,0.06);
+      flex-shrink: 0;
     }
 
-    .button-link {
-      display: inline-flex;
-      margin-top: 40px;
+    .name {
       color: var(--plum-pink);
-      font-size: 11px;
+      font-size: 15px;
       letter-spacing: 0.4em;
+      margin-bottom: 24px;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 2.35;
+      font-weight: 300;
+    }
+
+    .timeline {
+      margin: 60px 0 80px;
+      display: grid;
+      gap: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+    }
+
+    .timeline-year {
+      color: var(--plum-pink);
+      letter-spacing: 0.2em;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 48px;
+      margin-bottom: 80px;
+    }
+
+    .small-label {
+      font-size: 10px;
+      color: var(--plum-pink);
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(184,107,139,0.4);
-      padding-bottom: 12px;
+      font-weight: bold;
+      margin-bottom: 28px;
     }
 
-    .case-study-preview {
-      background: #ffffff;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+    .number-item {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .how-preview {
-      background: var(--light-bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+    .number {
+      font-size: 28px;
+      color: var(--plum-pink);
+      letter-spacing: 0.08em;
+    }
+
+    .text-block {
+      font-size: 15px;
+      line-height: 2.2;
+      color: rgba(47,47,47,0.82);
+      display: grid;
+      gap: 24px;
+    }
+
+    .dark {
+      background: #050505;
+      color: white;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .philosophy-card .num {
+      font-size: 64px;
+      color: rgba(184,107,139,0.28);
+      font-style: italic;
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    .philosophy-card h3 {
+      font-size: 22px;
+      letter-spacing: 0.3em;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .philosophy-card p {
+      font-size: 14px;
+      line-height: 2.2;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .service-item {
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 36px 0;
+    }
+
+    .service-item h3 {
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+    }
+
+    .service-item p {
+      color: rgba(255,255,255,0.48);
+      line-height: 2.2;
+      font-size: 14px;
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 32px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .list-grid li::before {
+      content: "/";
+      color: var(--plum-pink);
+      font-weight: bold;
+      margin-right: 14px;
+    }
+
+    .center {
+      text-align: center;
     }
 
     .explore-section {
@@ -202,7 +326,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 300px;
+      min-height: 280px;
     }
 
     .explore-card:hover {
@@ -231,7 +355,7 @@
       font-size: 14px;
       line-height: 2.1;
       color: rgba(47,47,47,0.72);
-      margin: 0 0 28px;
+      margin: 0 0 36px;
     }
 
     .explore-card span {
@@ -239,28 +363,6 @@
       font-size: 11px;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-    }
-
-    .latest-note {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      font-size: 12px;
-      line-height: 1.9;
-      color: #2f2f2f;
-    }
-
-    .latest-note a {
-      color: #2f2f2f;
-    }
-
-    .latest-note strong {
-      color: var(--plum-pink);
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
     }
 
     footer {
@@ -342,6 +444,28 @@
         padding: 88px 24px;
       }
 
+      .about-head {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .profile-img {
+        width: 130px;
+        height: 130px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .two-col,
+      .philosophy-grid,
+      .list-grid,
       .explore-grid {
         grid-template-columns: 1fr;
       }
@@ -354,6 +478,10 @@
       .explore-card h3 {
         font-size: 24px;
       }
+
+      .footer-links {
+        gap: 28px;
+      }
     }
   </style>
 </head>
@@ -365,6 +493,8 @@
 
       <div class="nav-links">
         <a href="#about">About</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#partnership">Partnership</a>
         <a href="/case-study/">Case</a>
         <a href="/how-i-work/">How I Work</a>
         <a href="#contact">Contact</a>
@@ -379,22 +509,223 @@
     </div>
   </header>
 
-  <section id="about" class="center">
-    <div class="container fade-in-element">
-      <h2 class="section-title">About</h2>
+  <section id="about">
+    <div class="container">
+      <div class="about-head fade-in-element">
+        <img
+          class="profile-img"
+          src="https://assets.st-note.com/production/uploads/images/93491946/profile_49bf2f58f9251f86c590210963a6b45f.jpeg?fit=bounds&format=jpeg&quality=85&width=330"
+          alt="早田天美"
+        />
 
-      <h3 class="big-heading">
-        商品の真価を、<br>
-        売れる言葉へ翻訳する。
-      </h3>
+        <div>
+          <div class="name">早田天美</div>
+          <p class="lead">
+            ひとつの商材に長年留まるバイヤーが多い中、私は23年間、ジュエリーから高級皮革まで複数ジャンルを5年（1万時間）ごとに担当を変えてきました。<br>
+            全く異なる各領域でゼロから本質を見抜き、プロの視座へと到達するプロセスを4度完遂した軌跡です。<br>
+            ここで私が獲得したのは、未知の商材であっても短期間でその商材やブランド、業界について学習し、的確にセールスポイントを掴み、あなたのブランドの「売れる訴求点」を整理し、構造化する「再現性のある学習・分析メソッド」です。<br>
+            商材の枠を超え、いかなる価値も最速で見極め「再定義」し、売り上げに繋げていくこの技術こそが、私の最大の武器です。
+          </p>
+        </div>
+      </div>
 
-      <p class="description">
-        23年間、ジュエリーから高級皮革まで複数ジャンルを横断し、
-        商品の価値を見抜き、売場・EC・言葉へ落とし込んできました。<br><br>
+      <div class="fade-in-element">
+        <h2 class="section-title">Profile & Identity</h2>
 
-        私が行うのは、単なる販促やデザイン改善ではありません。<br>
-        作り手側では当たり前になっている価値を、
-        顧客が理解できる言葉と導線へ整理することです。
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-year">2001年</div>
+            <div>インポーターアシスタント、貿易事務</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2002年</div>
+            <div>ネットショップにてコスチュームジュエリーを販売開始</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2008年ー2026年</div>
+            <div>ジュピターショップチャンネル（TV通販専門チャンネル）にてMD・バイヤーとして16年従事</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2026年</div>
+            <div>社会構想大学院大学 実務家教員養成課程履修中（第18期）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col fade-in-element">
+        <div>
+          <div class="small-label">Numbers & Expertise</div>
+
+          <div class="number-item">
+            <div class="number">10,000 hours</div>
+            <div>各商材ジャンルへの投下時間（5年ごと）</div>
+          </div>
+
+          <div class="number-item">
+            <div class="number">3億円</div>
+            <div>1商品の1日あたりの最高売上高</div>
+          </div>
+
+          <div class="number-item">
+            <div class="number">16 years</div>
+            <div>TV通販専門チャンネル MD・バイヤー歴</div>
+          </div>
+
+          <div class="number-item">
+            <div class="number">23 years</div>
+            <div>バイヤー歴</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="small-label">Behind the Scenes</div>
+
+          <p>
+            <strong>Roots</strong><br>
+            1978年生まれ / 東京・世田谷区出身<br>
+            身長：148cm
+          </p>
+
+          <p>
+            <strong>Hobbies</strong><br>
+            日記を書くこと / 考え事
+          </p>
+
+          <p>
+            <strong>Treasured Items</strong><br>
+            現代では作られていないもの。父から譲り受けた祖父のIWC時計、義母からのランプなど。
+          </p>
+
+          <p>
+            <strong>Inspirations</strong><br>
+            美術全般、庭園美術館、ダリのジュエリー、ダンスチームDAZZLE、原田マハ、西加奈子、西野亮廣、糸井重里、優里、King Gnu、ちゃんみな
+          </p>
+        </div>
+      </div>
+
+      <div class="text-block fade-in-element">
+        <p>
+          かつてテレビ通販の最前線で、1時間に2,000万円前後、1日で1商品3億円前後の売上を記録しました。この結果は、市場の熱狂にただ乗るのではなく、冷静な分析によって商品の「真価」を見抜く視点があったからこそ成し得たものです。
+        </p>
+
+        <p>
+          バイヤーとして長年ものづくりと向き合う中で、私が常に大切にしてきたのは「複雑に絡み合う商品情報を解きほぐし、一人ひとりの心に届く『研ぎ澄まされた言葉』へと変換すること」です。
+        </p>
+
+        <p>
+          専門性を高めれば高めるほど、かえって知識のない方には真価が伝わりにくくなる。業界に根付く高度な「暗黙知」こそが、実はお客様を遠ざけ、「売れにくい理由」を作っていました。
+        </p>
+
+        <p>
+          作り手側の「当たり前」を疑い、プロの知識をあえて解きほぐして翻訳し直す。そこに隠された価値の糸口を見つけ出し、お客様に届く言葉へと再構築していくプロセスにこそ、私は深い面白さを見出しています。
+        </p>
+
+        <p>
+          あなたのブランドの「売れる訴求点」を整理し、世の中に届ける言葉を、共に見つけてみませんか。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="dark">
+    <div class="container">
+      <h2 class="section-title fade-in-element">Core Philosophy</h2>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-card fade-in-element">
+          <span class="num">01</span>
+          <h3>見抜く。</h3>
+          <p>
+            溢れる情報の中から、その商材が持つ唯一無二の「核」を見つけ出す。冷静な自他分析こそが、本質を捉える唯一の道。
+          </p>
+        </div>
+
+        <div class="philosophy-card fade-in-element">
+          <span class="num">02</span>
+          <h3>整える。</h3>
+          <p>
+            価値があるのに、まだ届いていない。その乖離を、論理的な見せ方と言葉の力で埋め、あるべき姿へと再構築する。
+          </p>
+        </div>
+
+        <div class="philosophy-card fade-in-element">
+          <span class="num">03</span>
+          <h3>届ける。</h3>
+          <p>
+            「わからない」を「わかった」へ。一過性のコンサルティングではなく、誠実な対話を通じて、市場との幸福な出会いを創出する。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partnership" class="dark">
+    <div class="container">
+      <h2 class="section-title fade-in-element">Partnership</h2>
+
+      <div class="service-item fade-in-element">
+        <h3>Value Definition</h3>
+        <p>
+          商材の強みを抽出し、市場での立ち位置を明確にします。「なぜ選ばれるのか」を、揺るぎない言葉で定義します。
+        </p>
+      </div>
+
+      <div class="service-item fade-in-element">
+        <h3>Direction & Story</h3>
+        <p>
+          ビジュアルとテキストの両面から、商材の魅力を最大化。顧客の心に深く沈み込む、静かなストーリーを構築します。
+        </p>
+      </div>
+
+      <div class="service-item fade-in-element">
+        <h3>Hands-on Support</h3>
+        <p>
+          単なる助言に留まらず、現場の「わからない」に寄り添い、共に手を動かし、解決の糸口を見出すまで伴走します。
+        </p>
+      </div>
+
+      <div class="service-item fade-in-element">
+        <h3>Data Analysis</h3>
+        <p>
+          売り上げデータによる振り返りと分析。
+        </p>
+      </div>
+
+      <h2 class="section-title fade-in-element" style="margin-top:80px;">What I Can Do / できること</h2>
+
+      <ul class="list-grid fade-in-element">
+        <li>売場の最適化</li>
+        <li>売場に即したブランド選定</li>
+        <li>ファッション雑貨商品企画</li>
+        <li>ブランディング</li>
+        <li>価格決定</li>
+        <li>売上データによる分析</li>
+        <li>財務諸表からの売り上げ・商品強化のご提案</li>
+        <li>在庫処分</li>
+        <li>テレビ通販に関するご相談全般</li>
+        <li>ECサイトの企画・ディレクション</li>
+        <li>ECサイトブラッシュアップのご提案全般</li>
+      </ul>
+
+      <p style="margin-top: 24px; font-size: 12px; letter-spacing: 0.18em; color: rgba(255,255,255,0.55); text-transform: uppercase;">
+        and more...
+      </p>
+
+      <h2 class="section-title fade-in-element" style="margin-top:80px;">Seeking / 募集中</h2>
+
+      <ul class="list-grid fade-in-element">
+        <li>販路が欲しいブランド</li>
+        <li>テレビ通販に関する相談に乗って欲しい人</li>
+        <li>爬虫類のバッグの縫製工場を探している人</li>
+        <li>高級バッグブランドを探している人</li>
+        <li>ポップアップイベントを開催したい人</li>
+        <li>ブランドの商品展開に迷いのある方</li>
+        <li>自社商品、自社ブランドの訴求ポイントに自信が持てない人</li>
+        <li>「バイヤー目線」が知りたい方</li>
+      </ul>
+
+      <p style="margin-top: 24px; font-size: 12px; letter-spacing: 0.18em; color: rgba(255,255,255,0.55); text-transform: uppercase;">
+        and more...
       </p>
     </div>
   </section>
@@ -403,73 +734,39 @@
     <div class="container">
       <div class="explore-grid">
 
-        <a
-          class="explore-card"
-          href="https://work.amamisouda.site/case-study/luxury-bag-ec/"
-        >
+        <a class="explore-card" href="https://work.amamisouda.site/case-study/luxury-bag-ec/">
           <div>
             <div class="card-label">CASE STUDY</div>
             <h3>高級バッグブランドEC再構築</h3>
-            <p>
-              年間EC売上
-              100万 → 300万。
-            </p>
+            <p>年間EC売上100万 → 300万。</p>
           </div>
           <span>View Case →</span>
         </a>
 
-        <a
-          class="explore-card"
-          href="https://work.amamisouda.site/how-i-work/"
-        >
+        <a class="explore-card" href="https://work.amamisouda.site/how-i-work/">
           <div>
             <div class="card-label">HOW I WORK</div>
-            <h3>
-            
-              伝わり方を整える。
-            </h3>
-            <p>
-              問題定義と、
-              構造整理について。
-            </p>
+            <h3>何でも屋ではなく、伝わり方を整える。</h3>
+            <p>問題定義と、構造整理について。</p>
           </div>
           <span>View Service →</span>
         </a>
 
-        <a
-          class="explore-card"
-          href="https://daphnemeria-blog.com/"
-         
+        <a class="explore-card" href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer">
           <div>
             <div class="card-label">BLOG</div>
             <h3>商品分析アーカイブ</h3>
-            <p>
-              商品価値を、
-              どこまで分解できるか。
-            </p>
+            <p>商品価値を、どこまで分解できるか。</p>
           </div>
           <span>View Blog →</span>
         </a>
 
-        <a
-          class="explore-card"
-          href="https://note.com/daphnemeria"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="explore-card" href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer">
           <div>
             <div class="card-label">NOTE</div>
             <h3>MDの頭の中</h3>
-            <p>
-              実務家としての
-              観測と思考。
-            </p>
-
-            <div id="latest-note" class="latest-note">
-              Loading latest note...
-            </div>
+            <p>実務家としての観測と思考。</p>
           </div>
-
           <span>View Note →</span>
         </a>
 
@@ -479,7 +776,7 @@
 
   <footer id="contact">
     <h2 class="footer-title">
-      「当たり前」を、売れる言葉へ。<br />
+      「当たり前」を、売れる言葉へ。<br>
       商品の真価を、共に「翻訳」しましょう。
     </h2>
 
@@ -526,30 +823,6 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://note.com/daphnemeria/rss")
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function(data) {
-        const latestNote = document.getElementById("latest-note");
-
-        if (!data.items || data.items.length === 0) {
-          latestNote.innerHTML = "Latest note could not be loaded.";
-          return;
-        }
-
-        const latest = data.items[0];
-
-        latestNote.innerHTML = `
-          <strong>Latest</strong>
-          ${latest.title}
-        `;
-      })
-      .catch(function() {
-        document.getElementById("latest-note").innerHTML =
-          "Latest note could not be loaded.";
-      });
   </script>
 </body>
 </html>
