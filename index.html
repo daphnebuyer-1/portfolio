@@ -767,23 +767,21 @@
           <span>View Service →</span>
         </a>
 
-        <a class="explore-card" href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer">
-          <div>
-            <div class="card-label">BLOG</div>
-            <h3>商品分析アーカイブ</h3>
-            <p>商品価値を、どこまで分解できるか。</p>
-          </div>
-          <span>View Blog →</span>
-        </a>
+        <a href="https://daphnemeria-blog.com"
+   onclick="gtag('event','click_blog');">
 
-        <a class="explore-card" href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer">
-          <div>
-            <div class="card-label">NOTE</div>
-            <h3>MDの頭の中</h3>
-            <p>実務家としての観測と思考。</p>
-          </div>
-          <span>View Note →</span>
-        </a>
+        <a class="explore-card"
+   href="https://note.com/daphnemeria"
+   target="_blank"
+   rel="noopener noreferrer"
+   onclick="gtag('event', 'click_note');">
+  <div>
+    <div class="card-label">NOTE</div>
+    <h3>MDの頭の中</h3>
+    <p>実務家としての観測と思考。</p>
+  </div>
+  <span>View Note →</span>
+</a>
 
       </div>
     </div>
@@ -795,12 +793,33 @@
       商品の真価を、共に「翻訳」しましょう。
     </h2>
 
-    <div class="footer-links">
-      <a href="mailto:daphnebuyer@gmail.com">Mail</a>
-      <a href="https://daphnemeria-blog.com/" target="_blank" rel="noopener noreferrer">Blog</a>
-      <a href="https://note.com/daphnemeria" target="_blank" rel="noopener noreferrer">Note</a>
-      <a href="https://x.com/daphnebuyer" target="_blank" rel="noopener noreferrer">X</a>
-    </div>
+   <div class="footer-links">
+  <a href="mailto:daphnebuyer@gmail.com"
+     onclick="gtag('event','click_contact');">
+     Mail
+  </a>
+
+  <a href="https://daphnemeria-blog.com/"
+     target="_blank"
+     rel="noopener noreferrer"
+     onclick="gtag('event','click_blog');">
+     Blog
+  </a>
+
+  <a href="https://note.com/daphnemeria"
+     target="_blank"
+     rel="noopener noreferrer"
+     onclick="gtag('event','click_note_footer');">
+     Note
+  </a>
+
+  <a href="https://x.com/daphnebuyer"
+     target="_blank"
+     rel="noopener noreferrer"
+     onclick="gtag('event','click_x');">
+     X
+  </a>
+</div>
 
     <div class="copyright">
       © <span id="year"></span> All Rights Reserved.
